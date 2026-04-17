@@ -33,7 +33,7 @@
       "favicon": "./assets/images/favicon.ico"
     },
     "updates": {
-      "url": "https://u.expo.dev/5c3740ff-5340-4b84-b060-9212a18986fd"
+      "url": "https://u.expo.dev/d25ad9cd-7eb6-4f96-b510-ecbb97f00397"
     },
     "plugins": [
       "expo-router",
