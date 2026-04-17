@@ -1,5 +1,5 @@
 import { Tabs } from 'expo-router';
-import { School, User, Group, FingerprintPattern, FileUser } from 'lucide-react-native';
+import { School, User, ScanQrCode, Flag, Users } from 'lucide-react-native';
 import React from 'react';
 
 import type { GestureResponderEvent } from 'react-native';
@@ -58,17 +58,10 @@ export default function TabLayout() {
         tabBarButton: (props) => <CustomTabBarButton {...props} />,
       }}>
       <Tabs.Screen
-        name="class"
+        name="students"
         options={{
-          title: 'Class',
-          tabBarIcon: ({ color, focused }) => <Group size={28} color={focused ? '#009966' : color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="attendance"
-        options={{
-          title: 'Attendance',
-          tabBarIcon: ({ color, focused }) => <FingerprintPattern size={28} color={focused ? '#009966' : color} />,
+          title: 'Students',
+          tabBarIcon: ({ color, focused }) => <Users size={28} color={focused ? '#009966' : color} />,
         }}
       />
       <Tabs.Screen
@@ -79,10 +72,17 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="result"
+        name="scan"
         options={{
-          title: 'Results',
-          tabBarIcon: ({ color, focused }) => <FileUser size={28} color={focused ? '#009966' : color} />,
+          title: 'Scan',
+          tabBarIcon: ({ color, focused }) => <ScanQrCode size={28} color={focused ? '#009966' : color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="report"
+        options={{
+          title: 'Reports',
+          tabBarIcon: ({ color, focused }) => <Flag size={28} color={focused ? '#009966' : color} />,
         }}
       />
       <Tabs.Screen
