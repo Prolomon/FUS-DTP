@@ -1,5 +1,5 @@
 {
-  "name": "FUS-DTP",
+  "name": "fus-dtp-teacher",
   "main": "expo-router/entry",
   "version": "1.0.0",
   "scripts": {

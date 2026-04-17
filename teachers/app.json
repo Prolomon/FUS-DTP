@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "FUS-DTP STAFF",
-    "slug": "fus-dtp-staff",
+    "name": "FUS-DTP TEACHER",
+    "slug": "fus-dtp-teacher",
     "version": "1.0.0",
     "runtimeVersion": {
       "policy": "appVersion"
@@ -22,7 +22,7 @@
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
-      "package": "edu.staff.arqelion.school",
+      "package": "fus.teacher.dtp",
       "permissions": [
         "android.permission.CAMERA",
         "android.permission.RECORD_AUDIO"
@@ -62,9 +62,7 @@
     },
     "extra": {
       "router": {},
-      "eas": {
-        "projectId": "d21970f2-7b42-4eb3-bf07-11d4526bb079"
-      }
+      "eas": {}
     },
     "owner": "prolomon"
   }
