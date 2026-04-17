@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "FUS-DTP TEACHER",
-    "slug": "fus-dtp-teacher",
+    "name": "FUS-DTP SECURITY",
+    "slug": "fus-dtp-security",
     "version": "1.0.0",
     "runtimeVersion": {
       "policy": "appVersion"
@@ -22,7 +22,7 @@
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
-      "package": "fus.teacher.dtp",
+      "package": "fus.security.dtp",
       "permissions": [
         "android.permission.CAMERA",
         "android.permission.RECORD_AUDIO"
@@ -46,7 +46,7 @@
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/display.png",
+          "image": "./assets/images/logo.png",
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff",
@@ -62,9 +62,7 @@
     },
     "extra": {
       "router": {},
-      "eas": {
-        "projectId": "d25ad9cd-7eb6-4f96-b510-ecbb97f00397"
-      }
+      "eas": {}
     },
     "owner": "prolomon"
   }
