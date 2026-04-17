@@ -1,0 +1,64 @@
+{
+  "expo": {
+    "name": "FUS-DTP",
+    "slug": "fus-dtp-parent",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/arqelion_parent.png",
+    "scheme": "arqelion",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE",
+        "foregroundImage": "./assets/images/arqelion_parent.png",
+        "monochromeImage": "./assets/images/arqelion_parent.png"
+      },
+      "edgeToEdgeEnabled": true,
+      "predictiveBackGestureEnabled": false,
+      "package": "edu.arqelion.school",
+    },
+    "web": {
+      "output": "static",
+      "favicon": "./assets/images/favicon.ico"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/images/logo.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundColor": "#ffffff",
+          "dark": {
+            "backgroundColor": "#ffffff"
+          }
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location to track child's location.",
+          "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location to track child's location.",
+          "locationAlwaysPermission": "Allow $(PRODUCT_NAME) to use your location to track child's location.",
+          "isAndroidBackgroundLocationEnabled": true
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "403d8e2b-4852-4de2-aa9e-2d30e57a20ce"
+      }
+    },
+    "owner": "prolomon"
+  }
+}

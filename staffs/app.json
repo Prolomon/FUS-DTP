@@ -1,0 +1,71 @@
+{
+  "expo": {
+    "name": "FUS-DTP STAFF",
+    "slug": "fus-dtp-staff",
+    "version": "1.0.0",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "orientation": "portrait",
+    "icon": "./assets/images/arqelion_staff.png",
+    "scheme": "arqelion",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#000000",
+        "foregroundImage": "./assets/images/arqelion_staff.png",
+        "monochromeImage": "./assets/images/arqelion_staff.png"
+      },
+      "edgeToEdgeEnabled": true,
+      "predictiveBackGestureEnabled": false,
+      "package": "edu.staff.arqelion.school",
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO"
+      ]
+    },
+    "web": {
+      "output": "static",
+      "favicon": "./assets/images/favicon.ico"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/5c3740ff-5340-4b84-b060-9212a18986fd"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow Arqelion Staff to use the camera for QR code scanning."
+        }
+      ],
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/images/logo.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundColor": "#ffffff",
+          "dark": {
+            "backgroundColor": "#ffffff"
+          }
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "5c3740ff-5340-4b84-b060-9212a18986fd"
+      }
+    },
+    "owner": "prolomon"
+  }
+}
