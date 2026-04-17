@@ -1,9 +1,9 @@
 import { Tabs } from 'expo-router';
-import { FileText, ScanBarcode, User, School } from 'lucide-react-native';
+import { School, User, Group, FingerprintPattern, FileUser } from 'lucide-react-native';
 import React from 'react';
 
-import { Pressable, View } from 'react-native';
 import type { GestureResponderEvent } from 'react-native';
+import { Pressable, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 type CustomTabBarButtonProps = {
@@ -41,7 +41,7 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: '#4169E1', // royal blue
+        tabBarActiveTintColor: '#009966', // royal blue
         tabBarInactiveTintColor: '#687076', // gray
         tabBarActiveBackgroundColor: '#f3f4f6', // light gray background for active tab
         tabBarInactiveBackgroundColor: '#fff', // white for inactive tabs
@@ -58,31 +58,38 @@ export default function TabLayout() {
         tabBarButton: (props) => <CustomTabBarButton {...props} />,
       }}>
       <Tabs.Screen
-        name="scan"
+        name="class"
         options={{
-          title: 'Scan',
-          tabBarIcon: ({ color, focused }) => <ScanBarcode size={28} color={focused ? '#4169E1' : color} />,
+          title: 'Class',
+          tabBarIcon: ({ color, focused }) => <Group size={28} color={focused ? '#009966' : color} />,
         }}
       />
       <Tabs.Screen
-        name="records"
+        name="attendance"
         options={{
-          title: 'Records',
-          tabBarIcon: ({ color, focused }) => <FileText size={28} color={focused ? '#4169E1' : color} />,
+          title: 'Attendance',
+          tabBarIcon: ({ color, focused }) => <FingerprintPattern size={28} color={focused ? '#009966' : color} />,
         }}
       />
       <Tabs.Screen
         name="school"
         options={{
           title: 'School',
-          tabBarIcon: ({ color, focused }) => <School size={28} color={focused ? '#4169E1' : color} />,
+          tabBarIcon: ({ color, focused }) => <School size={28} color={focused ? '#009966' : color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="result"
+        options={{
+          title: 'Results',
+          tabBarIcon: ({ color, focused }) => <FileUser size={28} color={focused ? '#009966' : color} />,
         }}
       />
       <Tabs.Screen
         name="profile"
         options={{
           title: 'Profile',
-          tabBarIcon: ({ color, focused }) => <User size={28} color={focused ? '#4169E1' : color} />,
+          tabBarIcon: ({ color, focused }) => <User size={28} color={focused ? '#009966' : color} />,
         }}
       />
     </Tabs>

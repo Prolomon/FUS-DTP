@@ -12,8 +12,9 @@ export default function RootLayout() {
     <AuthProvider>
        <Stack>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen name="pickup" options={{ headerShown: false }} />
-          <Stack.Screen name="code" options={{ headerShown: false }} />
+          <Stack.Screen name="chat" options={{ headerShown: false }} />
+          <Stack.Screen name="student" options={{ headerShown: false }} />
+          <Stack.Screen name="authenticator" options={{ headerShown: false }} />
         </Stack>
     </AuthProvider>
   );

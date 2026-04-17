@@ -83,7 +83,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const logout = useCallback(async () => {
     await AsyncStorage.removeItem("arqelion_auth");
     setAuthState(null);
-    router.replace('/login');
+    router.replace('/');
 
   }, [router]);
 

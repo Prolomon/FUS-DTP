@@ -1,15 +1,13 @@
 
 import { ThemedText } from '@/components/themed-text';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Eye, EyeOff, Lock } from 'lucide-react-native';
 import React, { useState } from 'react';
-import { Animated, Image, KeyboardAvoidingView, Platform, StyleSheet, TextInput, TouchableOpacity, View } from 'react-native';
-import { useToast } from '../hooks/useToast';
+import { Animated, Image, KeyboardAvoidingView, Platform, StyleSheet, TextInput, TouchableOpacity, View, ToastAndroid } from 'react-native';
 
-import { RelativePathString, useRouter } from 'expo-router';
+import { useRouter } from 'expo-router';
 
-import { login } from '@/lib/services/staff';
+// import { login } from '@/lib/services/staff';
 
 const styles = StyleSheet.create({
     gradientBg: {
@@ -48,7 +46,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         borderRadius: 24,
         padding: 28,
-        shadowColor: '#4169E1',
+        shadowColor: '#009966',
         shadowOffset: { width: 0, height: 8 },
         shadowOpacity: 0.12,
         shadowRadius: 24,
@@ -56,21 +54,21 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     logo: {
-        width: 72,
-        height: 72,
-        marginBottom: 18,
+        width: 80,
+        height: 80,
+        marginBottom: 16,
     },
     title: {
         marginBottom: 8,
         fontSize: 26,
         fontWeight: 'bold',
-        color: '#4169E1',
+        color: '#009966',
         textAlign: 'center',
     },
     subtitle: {
         marginBottom: 24,
         fontSize: 15,
-        color: '#003399',
+        color: '#009966',
         textAlign: 'center',
         fontWeight: '500',
     },
@@ -88,7 +86,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#f7f9ff',
         fontSize: 16,
         color: '#222',
-        shadowColor: '#4169E1',
+        shadowColor: '#009966',
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.06,
         shadowRadius: 4,
@@ -102,7 +100,7 @@ const styles = StyleSheet.create({
         width: 48,
         height: 48,
         borderRadius: 8,
-        backgroundColor: '#e0e7ff',
+        backgroundColor: '#e0ffef',
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -134,7 +132,7 @@ const styles = StyleSheet.create({
     },
 });
 
-const LOGO = require('../assets/images/logo.png');
+const LOGO = require('../assets/images/arqelion_staff.png');
 
 const LoginScreen: React.FC = () => {
     const [email, setEmail] = useState('');
@@ -142,52 +140,39 @@ const LoginScreen: React.FC = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [loading, setLoading] = useState(false);
     const fadeAnim = useState(new Animated.Value(1))[0];
-    const toast = useToast();
     const router = useRouter();
 
     const handleLogin = async () => {
         setLoading(true);
+        Animated.sequence([
+            Animated.timing(fadeAnim, { toValue: 0.5, duration: 120, useNativeDriver: true }),
+            Animated.timing(fadeAnim, { toValue: 1, duration: 120, useNativeDriver: true })
+        ]).start(() => setShowPassword(false));
         try {
             if (!email || !password) {
-                toast.showToast({
-                    message: 'Please enter email and password',
-                    type: 'alert',
-                    status: 'failed',
-                });
+                ToastAndroid.showWithGravity(
+                    'Please enter email and password',
+                    ToastAndroid.SHORT,
+                    ToastAndroid.CENTER,
+                );
                 return;
             }
 
-            const res = await login({ email, password });
+            ToastAndroid.showWithGravity(
+                'Login successful! Redirecting...',
+                ToastAndroid.SHORT,
+                ToastAndroid.CENTER,
+            );
 
-            if (res.error) {
-                toast.showToast({
-                    message: res.error,
-                    type: 'alert',
-                    status: 'failed',
-                });
-                return;
-            }
+            router.replace('/(pages)/(tabs)/school');
 
-            await AsyncStorage.setItem('arqelion_auth', JSON.stringify({
-                staff: res?.staff,
-                token: res?.token, // Use the actual token returned from the login response
-            }));
-
-            // Simulate login success
-            toast.showToast({
-                message: 'Login successful!',
-                type: 'alert',
-                status: 'success',
-            });
-
-            router.replace('scan' as RelativePathString);
         } catch (error: any) {
             console.log('Login error:', error);
-            toast.showToast({
-                message: error.message || 'An error occurred, try again',
-                type: 'alert',
-                status: 'failed',
-            });
+            ToastAndroid.showWithGravity(
+                error.message || 'An error occurred, try again',
+                ToastAndroid.SHORT,
+                ToastAndroid.CENTER,
+            );
         } finally {
             setLoading(false);
         }
@@ -211,11 +196,11 @@ const LoginScreen: React.FC = () => {
                 style={styles.gradientBg}
             />
             <LinearGradient
-                colors={["#6FA3FF", "#fff"]}
+                colors={["#009966", "#fff"]}
                 style={styles.topBubble}
             />
             <LinearGradient
-                colors={["#1F3FAE", "#fff"]}
+                colors={["#009966", "#fff"]}
                 style={styles.bottomBubble}
             />
             <KeyboardAvoidingView
@@ -252,14 +237,14 @@ const LoginScreen: React.FC = () => {
                             />
                             <Animated.View style={{ opacity: fadeAnim }}>
                                 <TouchableOpacity onPress={toggleShowPassword} style={styles.showHideBtn}>
-                                    {showPassword ? <EyeOff size={22} color="#007AFF" /> : <Eye size={22} color="#888" />}
+                                    {showPassword ? <EyeOff size={22} color="#009966" /> : <Eye size={22} color="#888" />}
                                 </TouchableOpacity>
                             </Animated.View>
                         </View>
                     </View>
                     <TouchableOpacity style={styles.button} onPress={loading ? undefined : handleLogin} activeOpacity={0.85}>
                         <LinearGradient
-                            colors={["#4169E1", "#6FA3FF"]}
+                            colors={["#009966", "#009966"]}
                             start={{ x: 0, y: 0 }}
                             end={{ x: 1, y: 0 }}
                             style={styles.buttonGradient}
