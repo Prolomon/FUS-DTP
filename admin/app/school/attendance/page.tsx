@@ -74,7 +74,7 @@ export default function AttendancePage() {
             <p className="text-xs uppercase tracking-[0.2em] text-foreground/50">Daily Operations</p>
             <h2 className="text-2xl font-semibold">Attendance Tracking</h2>
           </div>
-          <Link href="/attendance/analytics">
+          <Link href="/school/attendance/analytics">
             <Button color="primary" radius="full" size="sm" variant="bordered">Analytics</Button>
           </Link>
         </CardHeader>
