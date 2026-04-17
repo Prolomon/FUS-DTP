@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "FUS-DTP TEACHER",
-    "slug": "fus-dtp-teacher",
+    "name": "FUS-DTP HEAD",
+    "slug": "fus-dtp-head",
     "version": "1.0.0",
     "runtimeVersion": {
       "policy": "appVersion"
@@ -22,7 +22,7 @@
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
-      "package": "fus.teacher.dtp",
+      "package": "fus.head.dtp",
       "permissions": [
         "android.permission.CAMERA",
         "android.permission.RECORD_AUDIO"
@@ -33,7 +33,7 @@
       "favicon": "./assets/images/favicon.ico"
     },
     "updates": {
-      "url": "https://u.expo.dev/5c3740ff-5340-4b84-b060-9212a18986fd"
+      "url": "https://u.expo.dev"
     },
     "plugins": [
       "expo-router",
@@ -63,7 +63,7 @@
     "extra": {
       "router": {},
       "eas": {
-        "projectId": "d25ad9cd-7eb6-4f96-b510-ecbb97f00397"
+        "projectId": "29a9e424-f472-4d11-a9ef-7eaea914e200"
       }
     },
     "owner": "prolomon"

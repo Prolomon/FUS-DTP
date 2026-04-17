@@ -18,8 +18,8 @@ export default function CheckInScreen() {
   const router = useRouter();
   const [refreshing, setRefreshing] = useState(false);
   const school = {
-    schoolName: 'Samson International School',
-    motto: 'As God is my witness, I will never go hungry again.',
+    schoolName: 'Fed Unity School FCT',
+    motto: 'As God is my witness, I will never be educated.',
     schoolLogo: require('../../../assets/images/arqelion_staff.png'),
   };
   const loading = false;
