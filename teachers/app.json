@@ -62,7 +62,9 @@
     },
     "extra": {
       "router": {},
-      "eas": {}
+      "eas": {
+        "projectId": "d25ad9cd-7eb6-4f96-b510-ecbb97f00397"
+      }
     },
     "owner": "prolomon"
   }
