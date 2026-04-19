@@ -7,14 +7,45 @@ import { Button } from "@heroui/button";
 import { Input } from "@heroui/input";
 import { Textarea } from "@heroui/input";
 import { Select, SelectItem } from "@heroui/select";
-import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter } from "@heroui/modal";
+import {
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+} from "@heroui/modal";
 import { addToast } from "@heroui/toast";
+import NextLink from "next/link";
 
 const feeSummary = [
-  { label: "Tuition", paid: "NGN 15.4M", target: "NGN 18.0M", completion: 86 },
-  { label: "Transport", paid: "NGN 4.1M", target: "NGN 5.0M", completion: 82 },
-  { label: "Books", paid: "NGN 2.3M", target: "NGN 3.2M", completion: 72 },
-  { label: "PTA", paid: "NGN 1.8M", target: "NGN 2.1M", completion: 85 },
+  {
+    id: "tuition",
+    label: "Tuition",
+    paid: "NGN 15.4M",
+    target: "NGN 18.0M",
+    completion: 86,
+  },
+  {
+    id: "transport",
+    label: "Transport",
+    paid: "NGN 4.1M",
+    target: "NGN 5.0M",
+    completion: 82,
+  },
+  {
+    id: "books",
+    label: "Books",
+    paid: "NGN 2.3M",
+    target: "NGN 3.2M",
+    completion: 72,
+  },
+  {
+    id: "pta",
+    label: "PTA",
+    paid: "NGN 1.8M",
+    target: "NGN 2.1M",
+    completion: 85,
+  },
 ];
 
 export default function FeesPage() {
@@ -39,6 +70,7 @@ export default function FeesPage() {
         color: "warning",
         closeIcon: true,
       });
+
       return;
     }
 
@@ -69,78 +101,109 @@ export default function FeesPage() {
     });
     setShowModal(false);
   };
+
   return (
     <section className="space-y-5 py-4">
       <Card className="border border-default-200/70 bg-background/85">
         <CardHeader className="flex items-center justify-between gap-3 px-6 pt-6">
           <div>
-            <p className="text-xs uppercase tracking-[0.2em] text-foreground/50">Finance Office</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-foreground/50">
+              Finance Office
+            </p>
             <h2 className="text-2xl font-semibold">Fee Management</h2>
           </div>
-          <Button color="primary" radius="full" size="lg" onPress={() => setShowModal(true)}>
+          <Button
+            color="primary"
+            radius="full"
+            size="lg"
+            onPress={() => setShowModal(true)}
+          >
             Add New Fee
           </Button>
         </CardHeader>
         <CardBody className="grid gap-3 px-6 pb-6">
           {feeSummary.map((item) => (
             <div
-              key={item.label}
+              key={item.id}
               className="rounded-2xl border border-default-200/70 bg-default-50/35 p-4 dark:border-white/10 dark:bg-slate-900/35"
             >
               <div className="flex flex-wrap items-center justify-between gap-2">
-                <p className="text-sm font-semibold">{item.label}</p>
-                <p className="text-sm text-foreground/75">{item.paid} / {item.target}</p>
+                <NextLink
+                  className="text-sm font-semibold text-emerald-700 hover:text-emerald-600 hover:underline"
+                  href={`/school/fees/${item.id}`}
+                >
+                  {item.label}
+                </NextLink>
+                <p className="text-sm text-foreground/75">
+                  {item.paid} / {item.target}
+                </p>
               </div>
               <div className="mt-3">
-                <Progress aria-label={`${item.label} payment completion`} size="sm" value={item.completion} />
-                <p className="mt-1 text-xs text-foreground/60">Collection completion: {item.completion}%</p>
+                <Progress
+                  aria-label={`${item.label} payment completion`}
+                  size="sm"
+                  value={item.completion}
+                />
+                <p className="mt-1 text-xs text-foreground/60">
+                  Collection completion: {item.completion}%
+                </p>
               </div>
             </div>
           ))}
         </CardBody>
       </Card>
 
-      <Modal isOpen={showModal} onClose={handleCancel} size="2xl" hideCloseButton>
+      <Modal
+        hideCloseButton
+        isOpen={showModal}
+        size="2xl"
+        onClose={handleCancel}
+      >
         <ModalContent>
           <ModalHeader className="flex flex-col gap-1">Add New Fee</ModalHeader>
           <ModalBody className="h-[65vh] overflow-y-scroll">
             <div className="space-y-8">
               <Input
                 label="Fee Name"
-                placeholder="e.g., Tuition, Books, Transport"
-                value={feeForm.feeName}
-                onChange={(e) => handleChange("feeName", e.target.value)}
-                size="lg"
-                variant="bordered"
                 labelPlacement="outside"
+                placeholder="e.g., Tuition, Books, Transport"
+                size="lg"
+                value={feeForm.feeName}
+                variant="bordered"
+                onChange={(e) => handleChange("feeName", e.target.value)}
               />
               <Textarea
                 label="Description"
-                placeholder="Fee description"
-                value={feeForm.description}
-                onChange={(e) => handleChange("description", e.target.value)}
-                size="lg"
-                variant="bordered"
                 labelPlacement="outside"
                 minRows={3}
+                placeholder="Fee description"
+                size="lg"
+                value={feeForm.description}
+                variant="bordered"
+                onChange={(e) => handleChange("description", e.target.value)}
               />
               <Input
                 label="Price (NGN)"
+                labelPlacement="outside"
                 placeholder="e.g., 50000"
-                value={feeForm.price}
-                onChange={(e) => handleChange("price", e.target.value)}
                 size="lg"
-                variant="bordered"
-                labelPlacement="outside"
                 type="number"
+                value={feeForm.price}
+                variant="bordered"
+                onChange={(e) => handleChange("price", e.target.value)}
               />
-                <Select
-                  label="Payment Frequency"
-                  selectedKeys={[feeForm.paymentFrequency]}
-                  onSelectionChange={(keys) => handleChange("paymentFrequency", Array.from(keys)[0] as string)}
+              <Select
+                label="Payment Frequency"
+                labelPlacement="outside"
+                selectedKeys={[feeForm.paymentFrequency]}
                 size="lg"
                 variant="bordered"
-                labelPlacement="outside"
+                onSelectionChange={(keys) =>
+                  handleChange(
+                    "paymentFrequency",
+                    Array.from(keys)[0] as string,
+                  )
+                }
               >
                 <SelectItem key="Once">Once</SelectItem>
                 <SelectItem key="Monthly">Monthly</SelectItem>
@@ -149,13 +212,13 @@ export default function FeesPage() {
               </Select>
               <Input
                 label="Duration (in months)"
-                placeholder="e.g., 12"
-                value={feeForm.duration}
-                onChange={(e) => handleChange("duration", e.target.value)}
-                size="lg"
-                variant="bordered"
                 labelPlacement="outside"
+                placeholder="e.g., 12"
+                size="lg"
                 type="number"
+                value={feeForm.duration}
+                variant="bordered"
+                onChange={(e) => handleChange("duration", e.target.value)}
               />
             </div>
           </ModalBody>

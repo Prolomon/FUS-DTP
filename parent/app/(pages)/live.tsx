@@ -5,6 +5,7 @@ import { VideoView, useVideoPlayer } from 'expo-video';
 import { Activity, ArrowLeft, Expand, Minimize2, Radio, Shield } from 'lucide-react-native';
 import React, { useMemo, useState } from 'react';
 import {
+	Linking,
 	Modal,
 	Platform,
 	Pressable,
@@ -65,6 +66,8 @@ const LIVE_FEEDS: LiveFeed[] = [
 export default function LiveScreen() {
 	const [selectedFeedId, setSelectedFeedId] = useState(LIVE_FEEDS[0].id);
 	const [isFullscreenVisible, setIsFullscreenVisible] = useState(false);
+	const [streamError, setStreamError] = useState<string | null>(null);
+	const [webViewReloadToken, setWebViewReloadToken] = useState(0);
 
 	const selectedFeed = useMemo(
 		() => LIVE_FEEDS.find((feed) => feed.id === selectedFeedId) || LIVE_FEEDS[0],
@@ -81,6 +84,48 @@ export default function LiveScreen() {
 	}, [selectedFeed.url]);
 
 	const supportsNativeVideo = !isMjpegFeed && !isImageFeed;
+
+	const mjpegHtml = useMemo(() => {
+		if (!isMjpegFeed) {
+			return null;
+		}
+
+		const safeUrl = selectedFeed.url.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+		return `
+			<!doctype html>
+			<html>
+				<head>
+					<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+					<style>
+						html, body {
+							margin: 0;
+							width: 100%;
+							height: 100%;
+							background: #000;
+							overflow: hidden;
+						}
+						.container {
+							width: 100%;
+							height: 100%;
+							display: flex;
+							align-items: center;
+							justify-content: center;
+						}
+						img {
+							width: 100%;
+							height: 100%;
+							object-fit: cover;
+						}
+					</style>
+				</head>
+				<body>
+					<div class="container">
+						<img src="${safeUrl}" alt="Live stream" />
+					</div>
+				</body>
+			</html>
+		`;
+	}, [isMjpegFeed, selectedFeed.url]);
 
 	const player = useVideoPlayer(supportsNativeVideo ? { uri: selectedFeed.url } : null, (videoPlayer) => {
 		videoPlayer.loop = true;
@@ -115,9 +160,44 @@ export default function LiveScreen() {
 		await lockLandscape();
 	};
 
+	const retryStream = () => {
+		setStreamError(null);
+		setWebViewReloadToken((current) => current + 1);
+	};
+
+	const openFeedExternally = async () => {
+		const canOpen = await Linking.canOpenURL(selectedFeed.url);
+		if (!canOpen) {
+			ToastAndroid.show('Cannot open stream URL on this device.', ToastAndroid.SHORT);
+			return;
+		}
+		await Linking.openURL(selectedFeed.url);
+	};
+
 	const closeFullscreen = async () => {
 		setIsFullscreenVisible(false);
 		await lockPortrait();
+	};
+
+	const renderStreamError = () => {
+		if (!streamError) {
+			return null;
+		}
+
+		return (
+			<View style={styles.streamErrorCard}>
+				<Text style={styles.streamErrorTitle}>Stream unavailable</Text>
+				<Text style={styles.streamErrorText}>{streamError}</Text>
+				<View style={styles.streamErrorActions}>
+					<Pressable style={styles.streamErrorBtn} onPress={retryStream}>
+						<Text style={styles.streamErrorBtnText}>Retry</Text>
+					</Pressable>
+					<Pressable style={styles.streamErrorBtnSecondary} onPress={openFeedExternally}>
+						<Text style={styles.streamErrorBtnSecondaryText}>Open URL</Text>
+					</Pressable>
+				</View>
+			</View>
+		);
 	};
 
 	return (
@@ -136,11 +216,20 @@ export default function LiveScreen() {
 				<View style={styles.playerCard}>
 					{isMjpegFeed ? (
 						<WebView
+							key={`inline-${selectedFeed.id}-${webViewReloadToken}`}
 							source={{ uri: selectedFeed.url }}
 							style={styles.video}
 							mixedContentMode="always"
 							scrollEnabled={false}
 							allowsInlineMediaPlayback
+							onLoadStart={() => setStreamError(null)}
+							onError={(event) => {
+								const description = event.nativeEvent.description || 'Unable to connect to camera feed.';
+								setStreamError(description);
+							}}
+							onHttpError={(event) => {
+								setStreamError(`HTTP ${event.nativeEvent.statusCode} while loading camera feed.`);
+							}}
 						/>
 					) : isImageFeed ? (
 						<Image source={{ uri: selectedFeed.url }} style={styles.video} contentFit="cover" />
@@ -155,6 +244,8 @@ export default function LiveScreen() {
 						/>
 					)}
 
+					{renderStreamError()}
+
 					<View style={styles.liveBadge}>
 						<Radio size={12} color="#fff" />
 						<Text style={styles.liveBadgeText}>LIVE</Text>
@@ -166,7 +257,7 @@ export default function LiveScreen() {
 					</Text>
 
 					<View style={styles.actionsRow}>
-						<Pressable style={styles.actionBtn} onPress={isFullscreenVisible ? closeFullscreen : 	requestFullscreen}>
+						<Pressable style={styles.actionBtn} onPress={isFullscreenVisible ? closeFullscreen : requestFullscreen}>
 							<Expand size={16} color="#009966" />
 							<Text style={styles.actionText}>Fullscreen</Text>
 						</Pressable>
@@ -182,6 +273,8 @@ export default function LiveScreen() {
 							style={[styles.feedCard, active && styles.feedCardActive]}
 							onPress={() => {
 								setSelectedFeedId(feed.id);
+								setStreamError(null);
+								setWebViewReloadToken((current) => current + 1);
 							}}
 						>
 							<View style={styles.feedIconWrap}>
@@ -219,11 +312,24 @@ export default function LiveScreen() {
 				<View style={styles.fullscreenContainer}>
 					{isMjpegFeed ? (
 						<WebView
-							source={{ uri: selectedFeed.url }}
+							key={`fullscreen-${selectedFeed.id}-${webViewReloadToken}`}
+							source={{ html: mjpegHtml ?? '' }}
 							style={styles.fullscreenMedia}
 							mixedContentMode="always"
 							scrollEnabled={false}
 							allowsInlineMediaPlayback
+							originWhitelist={['*']}
+							javaScriptEnabled={false}
+							cacheEnabled={false}
+							domStorageEnabled={false}
+							onLoadStart={() => setStreamError(null)}
+							onError={(event) => {
+								const description = event.nativeEvent.description || 'Unable to connect to camera feed.';
+								setStreamError(description);
+							}}
+							onHttpError={(event) => {
+								setStreamError(`HTTP ${event.nativeEvent.statusCode} while loading camera feed.`);
+							}}
 						/>
 					) : isImageFeed ? (
 						<Image source={{ uri: selectedFeed.url }} style={styles.fullscreenMedia} contentFit="contain" />
@@ -237,6 +343,8 @@ export default function LiveScreen() {
 							contentFit="contain"
 						/>
 					)}
+
+					{renderStreamError()}
 
 					<Pressable style={styles.fullscreenCloseBtn} onPress={closeFullscreen}>
 						<Minimize2 size={18} color="#fff" />
@@ -302,6 +410,52 @@ const styles = StyleSheet.create({
 		height: 220,
 		borderRadius: 12,
 		backgroundColor: '#000',
+	},
+	streamErrorCard: {
+		marginTop: 10,
+		backgroundColor: '#fef2f2',
+		borderWidth: 1,
+		borderColor: '#fecaca',
+		borderRadius: 12,
+		padding: 10,
+	},
+	streamErrorTitle: {
+		color: '#991b1b',
+		fontSize: 12,
+		fontWeight: '800',
+	},
+	streamErrorText: {
+		color: '#7f1d1d',
+		fontSize: 12,
+		marginTop: 4,
+	},
+	streamErrorActions: {
+		marginTop: 8,
+		flexDirection: 'row',
+		gap: 8,
+	},
+	streamErrorBtn: {
+		backgroundColor: '#dc2626',
+		borderRadius: 8,
+		paddingHorizontal: 10,
+		paddingVertical: 8,
+	},
+	streamErrorBtnText: {
+		color: '#fff',
+		fontSize: 12,
+		fontWeight: '700',
+	},
+	streamErrorBtnSecondary: {
+		borderColor: '#dc2626',
+		borderWidth: 1,
+		borderRadius: 8,
+		paddingHorizontal: 10,
+		paddingVertical: 8,
+	},
+	streamErrorBtnSecondaryText: {
+		color: '#dc2626',
+		fontSize: 12,
+		fontWeight: '700',
 	},
 	liveBadge: {
 		alignSelf: 'flex-start',

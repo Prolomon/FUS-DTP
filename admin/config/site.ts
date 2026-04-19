@@ -1,7 +1,7 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: "FUS-DTP",
+  name: "FUS-DITP",
   description:
     "A modern student management system for admissions, attendance, staff operations, and parent communication.",
   navItems: [

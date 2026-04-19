@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-
 import {
   Navbar as HeroUINavbar,
   NavbarContent,
@@ -14,38 +13,54 @@ import {
 import { Button } from "@heroui/button";
 import { Link } from "@heroui/link";
 import { link as linkStyles } from "@heroui/theme";
+import Image from "next/image";
 import NextLink from "next/link";
 import clsx from "clsx";
 
+import { fontBrand } from "@/config/fonts";
 import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
-import { Logo } from "@/components/icons";
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <HeroUINavbar
+      disableAnimation
       className="z-50 border-b border-default-200/60 bg-background/85 backdrop-blur-md"
       classNames={{
         menu: "z-[60] top-[var(--navbar-height)] flex h-[calc(100dvh_-_var(--navbar-height))] bg-background/95 px-6 pt-4 backdrop-blur-xl data-[open=true]:flex",
       }}
-      disableAnimation
       // isMenuOpen={isMenuOpen}
       maxWidth="2xl"
       // onMenuOpenChange={setIsMenuOpen}
       position="sticky"
     >
-      <NavbarContent className="min-w-0 flex-1 md:basis-1/4 md:flex-none" justify="start">
+      <NavbarContent
+        className="min-w-0 flex-1 md:basis-1/4 md:flex-none"
+        justify="start"
+      >
         <NavbarBrand as="li" className="max-w-full gap-3">
           <NextLink
             className="flex min-w-0 items-center gap-2 text-foreground"
             href="/#home"
             onClick={() => setIsMenuOpen(false)}
           >
-            {/* <Logo /> */}
-            <p className="truncate font-semibold text-inherit tracking-wide">
-              FUS-DTP
+            <Image
+              priority
+              alt="FUS-DITP logo"
+              className="h-8 w-8 shrink-0 object-contain"
+              height={32}
+              src="/logo.png"
+              width={32}
+            />
+            <p
+              className={clsx(
+                "truncate font-semibold text-inherit tracking-wide",
+                fontBrand.className,
+              )}
+            >
+              FUS-DITP
             </p>
           </NextLink>
         </NavbarBrand>
@@ -84,7 +99,9 @@ export const Navbar = () => {
           </Button>
         </NavbarItem>
         <NavbarItem className="md:hidden">
-          <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} />
+          <NavbarMenuToggle
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          />
         </NavbarItem>
       </NavbarContent>
 
@@ -105,8 +122,8 @@ export const Navbar = () => {
             as={Link}
             className="mt-2 w-full bg-emerald-600 text-white font-medium"
             href="/auth/login"
-            onPress={() => setIsMenuOpen(false)}
             radius="full"
+            onPress={() => setIsMenuOpen(false)}
           >
             Sign In
           </Button>

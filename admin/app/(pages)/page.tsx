@@ -194,7 +194,7 @@ export default function Home() {
               School operations should feel like a product, not paperwork.
             </h1>
             <p className="mt-5 max-w-2xl text-base leading-7 text-foreground/72 md:text-lg">
-              FUS-DTP gives schools one clear control surface for student
+              FUS-DITP gives schools one clear control surface for student
               records, staff management, attendance, result checking, parent
               access, and daily administration.
             </p>
@@ -230,8 +230,12 @@ export default function Home() {
                   className="rounded-[1.4rem] border border-white/40 bg-background/70 p-4 backdrop-blur dark:border-white/10 dark:bg-slate-950/35"
                 >
                   <IconWrap icon={metric.icon} />
-                  <p className="text-2xl font-semibold text-foreground">{metric.value}</p>
-                  <p className="mt-2 text-sm text-foreground/68">{metric.label}</p>
+                  <p className="text-2xl font-semibold text-foreground">
+                    {metric.value}
+                  </p>
+                  <p className="mt-2 text-sm text-foreground/68">
+                    {metric.label}
+                  </p>
                 </div>
               ))}
             </div>
@@ -245,7 +249,9 @@ export default function Home() {
                   <p className="text-[11px] uppercase tracking-[0.24em] text-white/55">
                     Live dashboard
                   </p>
-                  <p className="mt-1 text-sm font-medium">FUS - DTP control center</p>
+                  <p className="mt-1 text-sm font-medium">
+                    FUS-DITP control center
+                  </p>
                 </div>
                 <Chip className="border-0 bg-emerald-400/20 text-emerald-200">
                   Online
@@ -254,10 +260,10 @@ export default function Home() {
 
               <div className="overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/5 p-2">
                 <Image
-                  alt="FUS-DTP dashboard showcase"
+                  priority
+                  alt="FUS-DITP dashboard showcase"
                   className="h-auto w-full rounded-[1.1rem] object-cover"
                   height={600}
-                  priority
                   src="/arqelion-showcase.svg"
                   width={900}
                 />
@@ -296,7 +302,7 @@ export default function Home() {
               National Problem Statement
             </p>
             <h2 className="mt-2 text-3xl font-semibold tracking-tight md:text-5xl">
-              Why FUS-DTP is needed now
+              Why FUS-DITP is needed now
             </h2>
           </div>
           <p className="max-w-xl text-sm leading-6 text-foreground/68">
@@ -329,8 +335,9 @@ export default function Home() {
             Integrated modules for all Unity Schools
           </h2>
           <p className="mt-3 text-base leading-7 text-foreground/68">
-            FUS-DTP combines admissions, academics, staff, finance, hostel operations,
-            and parent collaboration in one centralized national platform.
+            FUS-DITP combines admissions, academics, staff, finance, hostel
+            operations, and parent collaboration in one centralized national
+            platform.
           </p>
         </div>
 
@@ -420,8 +427,9 @@ export default function Home() {
           </h2>
           <p className="mt-3 text-base leading-7 text-foreground/68">
             The platform includes a central command view for enrollment trends,
-            teacher indicators, academic outcomes, finance visibility, and infrastructure
-            monitoring to support faster policy and operational decisions.
+            teacher indicators, academic outcomes, finance visibility, and
+            infrastructure monitoring to support faster policy and operational
+            decisions.
           </p>
         </div>
 
@@ -451,9 +459,9 @@ export default function Home() {
                 Let us set up your school in days, not months
               </h2>
               <p className="mt-4 max-w-2xl text-base leading-7 text-foreground/70">
-                Reach out to schedule a demo, talk through implementation, or request a
-                custom package for your institution. We will help you choose the right
-                rollout path for your school size.
+                Reach out to schedule a demo, talk through implementation, or
+                request a request a custom package for your institution. We will
+                choose the right rollout path for your school size.
               </p>
 
               <div className="mt-7 flex flex-wrap gap-3">

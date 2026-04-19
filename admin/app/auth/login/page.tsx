@@ -28,7 +28,7 @@ export default function LoginPage() {
 			<div className="grid items-stretch gap-6 lg:grid-cols-[1.05fr_0.95fr]">
 				<div className="relative overflow-hidden rounded-[2rem] border border-emerald-950/10 bg-[linear-gradient(135deg,rgba(14,165,233,0.10),rgba(249,115,22,0.12),rgba(255,255,255,0.96))] p-6 shadow-[0_24px_80px_-40px_rgba(8,47,73,0.5)] dark:border-white/10 dark:bg-[linear-gradient(135deg,rgba(8,47,73,0.94),rgba(14,116,144,0.82),rgba(120,53,15,0.68))] md:p-8">
 					<p className="text-xs font-semibold uppercase tracking-[0.24em] text-emerald-800 dark:text-emerald-200">
-						FUS-DTP
+						FUS-DITP
 					</p>
 					<h1 className="mt-4 max-w-xl text-3xl font-semibold leading-tight md:text-5xl">
 						Welcome back to your school dashboard.

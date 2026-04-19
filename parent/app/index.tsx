@@ -10,18 +10,18 @@ const LOGO = require("../assets/images/arqelion_parent.png");
 export default function SplashScreen() {
 	const views = [
 		{
-			title: "Admission and Student Lifecycle",
-			desc: "Digitize registration, admission ranking, letters, identity cards, and records from entry to graduation.",
+			title: "Track Your Child in Real Time",
+			desc: "See attendance, daily pickup status, and important school updates in one clear timeline.",
 			icon: <Users size={24} color="#009966" />,
 		},
 		{
-			title: "Academic and Learning Operations",
-			desc: "Manage schedules, assessments, assignments, digital materials, and performance analytics in one flow.",
+			title: "Stay Close to Academics",
+			desc: "Monitor results, assignments, and teacher feedback so you can support learning from home.",
 			icon: <BookOpen size={24} color="#009966" />,
 		},
 		{
-			title: "Finance, Boarding, and Parent Engagement",
-			desc: "Run fees, PTA levies, hostel allocation, visitor logs, and parent communication from one platform.",
+			title: "Pay Fees and Get Reminders",
+			desc: "Make secure payments, view receipts instantly, and never miss upcoming school fee deadlines.",
 			icon: <ShieldCheck size={24} color="#009966" />,
 		}
 	];
@@ -52,8 +52,8 @@ export default function SplashScreen() {
 					<View style={styles.logoRing}>
 						<Image source={LOGO} style={styles.logo} resizeMode="contain" />
 					</View>
-					<Text style={styles.title}>School operations should feel like a product, not paperwork.</Text>
-					<Text style={styles.subtitle}>One integrated national platform for admissions, academics, staff, finance, hostel operations, and parent collaboration.</Text>
+					<Text style={styles.title}>FEDERAL UNITY SCHOOL DIGITAL INFRASTRUCTURE & TRANSFORMATION PLATFORM (FUS-DITP).</Text>
+					{/* <Text style={styles.subtitle}>Your family dashboard for student progress, school communication, pickup safety, and fee management.</Text> */}
 				</View>
 
 				<View style={styles.multiViewSectionCol}>
@@ -224,12 +224,12 @@ const styles = StyleSheet.create({
 		height: 72,
 	},
 	title: {
-		fontSize: 27,
+		fontSize: 19,
 		fontWeight: "800",
 		color: '#0f172a',
 		letterSpacing: 0.1,
 		textAlign: 'center',
-		lineHeight: 34,
+		lineHeight: 28,
 	},
 	subtitle: {
 		marginTop: 7,
@@ -261,16 +261,16 @@ const styles = StyleSheet.create({
 		elevation: 5,
 	},
 	viewCardTitle: {
-		fontSize: 15,
+		fontSize: 13,
 		fontWeight: '700',
 		color: '#0f172a',
 		marginBottom: 2,
 		textAlign: 'left',
 	},
 	viewCardDesc: {
-		fontSize: 12,
+		fontSize: 10,
 		color: '#5b6472',
 		textAlign: 'left',
-		lineHeight: 17,
+		lineHeight: 14,
 	},
 });

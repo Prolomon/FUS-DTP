@@ -1,13 +1,16 @@
 "use client";
 
 import { useMemo, useState } from "react";
-
 import { Button } from "@heroui/button";
 import { Link } from "@heroui/link";
 import { Input } from "@heroui/input";
-import { Chip } from "@heroui/chip";
 import { Avatar } from "@heroui/avatar";
-import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@heroui/dropdown";
+import {
+    Dropdown,
+    DropdownItem,
+    DropdownMenu,
+    DropdownTrigger,
+} from "@heroui/dropdown";
 import clsx from "clsx";
 import {
     Bell,
@@ -30,7 +33,9 @@ import {
     X,
     Hotel,
     BookOpenText,
-    BookCheck
+    BookCheck,
+    Cctv,
+    Wallet,
 } from "lucide-react";
 import { usePathname } from "next/navigation";
 
@@ -43,6 +48,7 @@ const schoolNavigation = [
     { label: "Hostels", href: "/school/hostel", icon: Hotel },
     { label: "Results", href: "/school/results", icon: BookMarked },
     { label: "Fees", href: "/school/fees", icon: CircleDollarSign },
+    { label: "Wallet", href: "/school/wallet", icon: Wallet },
     { label: "Reports", href: "/school/report", icon: ChartBar },
     { label: "Parents", href: "/school/parent", icon: Handshake },
     { label: "Schedules", href: "/school/schedule", icon: CalendarDays },
@@ -51,6 +57,7 @@ const schoolNavigation = [
     { label: "Expenses", href: "/school/expenses", icon: Landmark },
     { label: "Committees", href: "/school/committee", icon: Users },
     { label: "Drive", href: "/school/drive", icon: FolderKanban },
+    { label: "Feed", href: "/school/feed", icon: Cctv },
     { label: "Settings", href: "/school/settings", icon: Settings },
 ];
 
