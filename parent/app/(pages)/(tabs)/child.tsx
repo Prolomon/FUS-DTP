@@ -20,139 +20,151 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { useAuth } from '@/hooks/useAuth';
 import { useToast } from '@/hooks/useToast';
-import { CheckInRecord, getCheckinRecords, getCodes, Student } from '@/lib/services/parent';
-import { create, deletePickups, getPickups, Pickup } from "@/lib/services/pickup";
+
+type Student = {
+  id: string;
+  studentId: string;
+  firstName: string;
+  middleName?: string | null;
+  lastName: string;
+  dateOfBirth: string;
+  section: string;
+  grade: string;
+  gender: string;
+  nationality: string;
+  stateOfOrigin: string;
+  lga: string;
+  avatar?: string | null;
+  parentId: string;
+  createdAt: string;
+  updatedAt: string;
+  code?: string;
+};
+
+type CheckInRecord = {
+  id: string;
+  studentId: string;
+  student: Student;
+  action?: string | null;
+  pickupPerson?: string | null;
+  pickupPhone?: string | null;
+  pickupRelationship?: string | null;
+  parentId?: string | null;
+  date: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
+type Pickup = {
+  id: string;
+  parentId: string;
+  name: string;
+  phone: string;
+  relationship: string;
+  children?: Student[];
+};
+
+const dummyChildren: Student[] = [
+  {
+    id: 'std-001',
+    studentId: 'std-001',
+    firstName: 'Amara',
+    middleName: 'N.',
+    lastName: 'Okonkwo',
+    dateOfBirth: '2014-04-18',
+    section: 'Primary',
+    grade: 'Grade 6',
+    gender: 'Female',
+    nationality: 'Nigerian',
+    stateOfOrigin: 'Lagos',
+    lga: 'Ikeja',
+    avatar: null,
+    parentId: 'parent-dummy',
+    createdAt: '2026-01-01T08:00:00.000Z',
+    updatedAt: '2026-01-01T08:00:00.000Z',
+    code: '348921',
+  },
+  {
+    id: 'std-002',
+    studentId: 'std-002',
+    firstName: 'Daniel',
+    middleName: 'K.',
+    lastName: 'Ibrahim',
+    dateOfBirth: '2013-09-07',
+    section: 'Primary',
+    grade: 'Grade 5',
+    gender: 'Male',
+    nationality: 'Nigerian',
+    stateOfOrigin: 'Kano',
+    lga: 'Nassarawa',
+    avatar: null,
+    parentId: 'parent-dummy',
+    createdAt: '2026-01-01T08:00:00.000Z',
+    updatedAt: '2026-01-01T08:00:00.000Z',
+    code: '274619',
+  },
+];
+
+const dummyRecords: CheckInRecord[] = [
+  {
+    id: 'checkin-001',
+    studentId: 'std-001',
+    student: dummyChildren[0],
+    action: 'Checked In',
+    pickupPerson: null,
+    pickupPhone: null,
+    pickupRelationship: null,
+    parentId: 'parent-dummy',
+    date: new Date().toISOString(),
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+  },
+  {
+    id: 'checkin-002',
+    studentId: 'std-002',
+    student: dummyChildren[1],
+    action: 'Checked Out',
+    pickupPerson: 'Family Driver',
+    pickupPhone: '08000000000',
+    pickupRelationship: 'driver',
+    parentId: 'parent-dummy',
+    date: new Date().toISOString(),
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+  },
+];
 
 export default function ChildrenScreen() {
   const router = useRouter();
   const toast = useToast();
-  const { auth, token, refresh } = useAuth();
+  const { auth, refresh } = useAuth();
   const [searchQuery, setSearchQuery] = useState('');
   const [refreshing, setRefreshing] = useState(false);
   const [records, setRecords] = useState<CheckInRecord[]>([]);
-  const [modalVisible, setModalVisible] = useState(false);
-  const [selectedChild, setSelectedChild] = useState<Student | null>(null);
-  const [code, setCode] = useState('');
   const [loading, setLoading] = useState(false);
-  const [pickup, setPickup] = useState<boolean>(false);
-  const [formData, setFormData] = useState<{ name: string, phone: string, relationship: string, children: Student[] }>(
-    {
-      name: "",
-      phone: "",
-      relationship: "",
-      children: [] as Student[],
-    }
-  );
-  const [pickupData, setPickupData] = useState<{ pickup: Pickup | null } | null>(null);
 
-  const [showChildrenDropdown, setShowChildrenDropdown] = useState(false);
-  // Relationship select state and options
-  const [showRelationshipOptions, setShowRelationshipOptions] = useState(false);
-
-  const fetchPickups = useCallback(async () => {
-    if (!auth?.id || !token) return;
-    setLoading(true);
-
-    try {
-      const res = await getPickups(auth.id, token);
-      if (res.pickup) {
-        setPickupData(res);
-      }
-    } catch {
-      toast.showToast({ message: "Failed to fetch pickup data", type: "alert", status: "failed" });
-    } finally {
-      setLoading(false);
-    }
-  }, [auth?.id, toast, token]);
-
-  const handleDelete = async () => {
-    setLoading(true);
-
-    try {
-      const res = await deletePickups(pickupData?.pickup?.id as string, token as string);
-      if (res?.success) {
-        setPickupData(null);
-      }
-      toast.showToast({ message: res?.message || "Pick Up deleted successfully", type: "alert", status: res.success ? "success" : "failed" });
-    } catch {
-      toast.showToast({ message: "Failed to fetch pickup data", type: "alert", status: "failed" });
-    } finally {
-      setLoading(false);
-      await refresh();
-    }
-  }
-
-  useEffect(() => {
-    fetchPickups();
-  }, [fetchPickups]);
-
-  // Multi-select handler for children
-  const handleToggleChild = (child: Student) => {
-    setFormData(prev => {
-      const exists = prev.children.some(c => c.id === child.id);
-      return {
-        ...prev,
-        children: exists
-          ? prev.children.filter(c => c.id !== child.id)
-          : [...prev.children, child],
-      };
-    });
-  };
-
-  // Handle form submit
-  async function handleSubmit() {
-
-    setLoading(true)
-    setShowChildrenDropdown(false);
-
-    try {
-
-      const res = await create({ ...formData, parentId: auth?.id as string }, token as string);
-
-      if (res.success) {
-        setPickup(false);
-        toast.showToast({ message: "Pickup created successfully", type: "alert", status: "success" });
-      } else {
-        toast.showToast({ message: res?.message || res?.error || "Failed to create pickup", type: "alert", status: "failed" });
-      }
-    } catch (error: any) {
-      toast.showToast({ message: error?.error || error?.message || "Failed to create pickup", type: "alert", status: "failed" });
-    } finally {
-      setPickup(false);
-      setFormData({ name: "", phone: "", relationship: "", children: [] });
-
-      setLoading(false);
-
-      fetchPickups();
-
-      await refresh();
-    }
-  }
-
-  // Use children from auth, fallback to empty array
-  const children = Array.isArray(auth?.children) ? auth.children : [];
+  // Use children from auth when available, otherwise fall back to local dummy data.
+  const children = Array.isArray(auth?.children) && auth.children.length > 0 ? auth.children : dummyChildren;
 
   const fetchRecords = useCallback(async () => {
     setLoading(true);
-    if (!auth) return;
     try {
-      const data = await getCheckinRecords(auth.id, token as string);
-      setRecords(Array.isArray(data) ? data : data?.checkIns || []);
+      setRecords(dummyRecords);
     } catch {
-      setRecords([]);
+      setRecords(dummyRecords);
       toast.showToast({
-        message: 'Failed to fetch check-in records',
+        message: 'Using dummy records (network unavailable)',
         type: 'alert',
-        status: 'failed',
+        status: 'success',
       });
     } finally {
       setLoading(false);
     }
-  }, [auth, token, toast]);
+  }, [toast]);
 
   useEffect(() => {
     fetchRecords();
-  }, [auth, fetchRecords, token]);
+  }, [auth, fetchRecords]);
 
   const onRefresh = async () => {
     setRefreshing(true);
@@ -179,45 +191,37 @@ export default function ChildrenScreen() {
     return age;
   }
 
-  const handleGetCode = async (childId: string) => {
-    setLoading(true);
-    try {
-      const data = await getCodes(token as string, [childId]);
-
-      setCode((data as any)?.code || '');
-
-      await refresh();
-
-    } catch {
-      toast.showToast({
-        message: 'Failed to fetch student code',
-        type: 'alert',
-        status: 'failed',
-      });
-    } finally {
-      setLoading(false);
-    }
-  }
-
   const filteredChildren = children.filter(child =>
     (child.firstName?.toLowerCase() || '').includes(searchQuery.toLowerCase()) ||
     (child.grade?.toLowerCase() || '').includes(searchQuery.toLowerCase())
   );
 
+  const openStudentProfile = (child: Student) => {
+    const query = [
+      `firstName=${encodeURIComponent(child.firstName || '')}`,
+      `middleName=${encodeURIComponent(child.middleName || '')}`,
+      `lastName=${encodeURIComponent(child.lastName || '')}`,
+      `grade=${encodeURIComponent(child.grade || '')}`,
+      `section=${encodeURIComponent(child.section || '')}`,
+      `studentId=${encodeURIComponent(child.studentId || child.id)}`,
+      `code=${encodeURIComponent(child.code || '')}`,
+    ].join('&');
+
+    router.push(`/student/${child.studentId || child.id}?${query}` as RelativePathString);
+  };
+
   const renderChild = ({ item }: { item: typeof children[0] }) => (
-    <View style={styles.childCardModern}>
+    <TouchableOpacity
+      style={styles.childCardModern}
+      activeOpacity={0.9}
+      onPress={() => openStudentProfile(item)}
+    >
       <View style={styles.avatarModern}>
-        <Text onPress={() => {
-          setSelectedChild(item);
-          setCode(item.code || '');
-          setModalVisible(true);
-        }}>
-          {item.avatar ? (
-            <Image source={{ uri: item.avatar }} style={styles.avatarImageModern} />
-          ) : (
-            <User size={48} color="#4169E1" />
-          )}
-        </Text>
+        {item.avatar ? (
+          <Image source={{ uri: item.avatar }} style={styles.avatarImageModern} />
+        ) : (
+          <User size={48} color="#009966" />
+        )}
       </View>
       <Text style={styles.childNameModern}>{item.firstName} {item.lastName} {item.middleName}</Text>
       <View style={styles.infoRowModern}>
@@ -257,24 +261,9 @@ export default function ChildrenScreen() {
           </View>
         );
       })()}
-    </View>
+    </TouchableOpacity>
   );
 
-  const relationshipOptions = [
-    { label: 'Mother', value: 'mother' },
-    { label: 'Father', value: 'father' },
-    { label: 'Brother', value: 'brother' },
-    { label: 'Sister', value: 'sister' },
-    { label: 'Uncle', value: 'uncle' },
-    { label: 'Aunty', value: 'aunty' },
-    { label: 'Grand Mother', value: 'grand Mother' },
-    { label: 'Grand Father', value: 'grand Father' },
-    { label: 'Sibling', value: 'sibling' },
-    { label: 'Friend', value: 'friend' },
-    { label: 'driver', value: 'driver' },
-    { label: 'School Bus driver', value: 'school bus driver' },
-    { label: 'Teacher', value: 'teacher' },
-  ];
 
   return (
     <SafeAreaView style={styles.container}>
@@ -293,61 +282,19 @@ export default function ChildrenScreen() {
         </View>
       </View>
 
-      {/* pickup list */}
-      <View style={styles.section}>
-        <View style={styles.sectionHeader}>
-          <Text style={styles.sectionTitle}>Pickups</Text>
-          {pickupData?.pickup &&
-            (<TouchableOpacity
-              style={styles.cancelPickupButton}
-              activeOpacity={0.85}
-              onPress={handleDelete}
-            >
-              <Text style={styles.cancelPickupButtonText}>Cancel Pickup</Text>
-            </TouchableOpacity>)
-          }
-        </View>
-        {pickupData?.pickup ? (
-          <TouchableOpacity style={styles.zoneCard} activeOpacity={0.8} onPress={() => router.push(`/pickup` as RelativePathString)}>
-            {loading ? (
-              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, justifyContent: 'center', flex: 1 }}>
-                <ActivityIndicator size="small" color="#0f766e" />
-              </View>
-            ) : (
-              <>
-                <View style={styles.zoneIconWrap}>
-                  <Users size={18} color="#fff" />
-                </View>
-                <View style={styles.zoneTextWrap}>
-                  <Text style={styles.zoneTitle}>{pickupData?.pickup?.name || "Loading"}</Text>
-                  <Text style={styles.zoneSubtitle}>{pickupData?.pickup?.phone} ({pickupData?.pickup?.relationship})</Text>
-                </View>
-                <ChevronRight size={18} color="#94a3b8" />
-              </>
-            )}
-          </TouchableOpacity>
-        ) : (
-          <View style={styles.emptyPickupCard}>
-            <View style={styles.emptyPickupIconWrap}>
-              <Users size={20} color="#4169E1" />
-            </View>
-            <Text style={styles.emptyPickupTitle}>No Pickup Assigned</Text>
-            <Text style={styles.emptyPickupSubtitle}>Add a trusted pickup contact for your child.</Text>
-            <TouchableOpacity
-              style={styles.emptyPickupAction}
-              activeOpacity={0.85}
-              onPress={() => setPickup(true)}
-            >
-              <Text style={styles.emptyPickupActionText}>Create Pickup</Text>
-            </TouchableOpacity>
-          </View>
-        )}
-
+      <View style={styles.childrenHeaderRow}>
+        <Text style={styles.sectionTitle}>My Children</Text>
+        <TouchableOpacity
+          style={styles.pickupShortcutButton}
+          activeOpacity={0.86}
+          onPress={() => router.push('/pickup' as RelativePathString)}
+        >
+          <Text style={styles.pickupShortcutButtonText}>Pickup</Text>
+        </TouchableOpacity>
       </View>
-      <Text style={[styles.sectionTitle, { paddingHorizontal: 18, paddingTop: 8 }]}>My Children</Text>
       {loading ? (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-          <ActivityIndicator size="large" color="#007AFF" />
+          <ActivityIndicator size="large" color="#009966" />
         </View>
       ) : (
         <FlatList
@@ -368,266 +315,6 @@ export default function ChildrenScreen() {
         />
       )}
 
-      {/* Modal for QR code and child id - render once at parent level */}
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => setModalVisible(false)}
-      >
-        <View style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.5)', justifyContent: 'center', alignItems: 'center' }}>
-          <View style={{ backgroundColor: '#fff', borderRadius: 20, padding: 28, width: '90%', maxWidth: 420, alignItems: 'center' }}>
-            {selectedChild && (
-              <>
-                <Text style={{
-                  fontSize: 20,
-                  fontWeight: 'bold',
-                  color: '#333',
-                  marginBottom: 8,
-                  textAlign: 'center',
-                }}>Enter 6-Digit Code / Scan Code</Text>
-                <Text style={{
-                  fontSize: 18,
-                  color: '#666',
-                  marginBottom: 24,
-                  textAlign: 'center',
-                }}>
-                  Checking in: {selectedChild.firstName} {selectedChild.lastName}
-                </Text>
-                <TextInput
-                  style={{
-                    width: '100%',
-                    borderWidth: 2,
-                    borderColor: '#007AFF',
-                    borderRadius: 8,
-                    padding: 16,
-                    fontSize: 24,
-                    textAlign: 'center',
-                    letterSpacing: 8,
-                    marginBottom: 24,
-                  }}
-                  value={code}
-                  onChangeText={setCode}
-                  keyboardType="number-pad"
-                  maxLength={6}
-                  placeholder="000000"
-                  placeholderTextColor="#999"
-                />
-                {loading ? <ActivityIndicator size="large" color="#007AFF" /> : <QRCodeSVG value={code || '000000'} size={300} />}
-              </>
-            )}
-            <View style={{ marginTop: 24, width: '100%', flexDirection: 'row', gap: 12 }}>
-              <View style={{ flex: 1 }}>
-                <Text
-                  style={{
-                    backgroundColor: '#f0f0f0',
-                    color: '#666',
-                    fontWeight: 'bold',
-                    textAlign: 'center',
-                    fontSize: 16,
-                    paddingVertical: 10,
-                    borderRadius: 8,
-                  }}
-                  onPress={() => {
-                    setModalVisible(false);
-                    setSelectedChild(null);
-                    setCode('');
-                  }}
-                >
-                  Cancel
-                </Text>
-              </View>
-              <View style={{ flex: 1 }}>
-                <Text
-                  style={{
-                    backgroundColor: '#007AFF',
-                    color: '#fff',
-                    fontWeight: 'bold',
-                    textAlign: 'center',
-                    fontSize: 16,
-                    paddingVertical: 10,
-                    borderRadius: 8,
-                  }}
-                  onPress={async () => {
-                    if (selectedChild) {
-                      setLoading(true);
-                      await handleGetCode(selectedChild.id);
-                      setLoading(false);
-                    }
-                  }}
-                >
-                  Regenerate
-                </Text>
-              </View>
-            </View>
-          </View>
-        </View>
-      </Modal>
-
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={pickup}
-        onRequestClose={() => {
-          setPickup(false);
-          setShowChildrenDropdown(false);
-          setShowRelationshipOptions(false);
-        }}
-      >
-        <View style={styles.modalOverlay}>
-          <View style={styles.pickupModalContent}>
-            <View style={styles.pickupModalHeader}>
-              <Text style={styles.sectionTitle}>Create Pickup</Text>
-              <TouchableOpacity
-                activeOpacity={0.8}
-                onPress={() => {
-                  setPickup(false);
-                  setShowChildrenDropdown(false);
-                  setShowRelationshipOptions(false);
-                }}
-              >
-                <Text style={styles.pickupModalCloseText}>Close</Text>
-              </TouchableOpacity>
-            </View>
-
-            <ScrollView
-              showsVerticalScrollIndicator={false}
-              keyboardShouldPersistTaps="handled"
-              nestedScrollEnabled
-              contentContainerStyle={styles.pickupModalScrollContent}
-            >
-              <View style={[styles.formCard, styles.formCardInModal]}>
-                {/* name field */}
-                <View style={styles.inputGroup}>
-                  <Text style={styles.inputLabel}>Name</Text>
-                  <View style={styles.inputWrap}>
-                    <Users size={18} color="#64748b" style={{ marginRight: 8 }} />
-                    <TextInput
-                      style={styles.input}
-                      placeholder="Enter name"
-                      placeholderTextColor="#94a3b8"
-                      value={formData.name}
-                      onChangeText={text => setFormData({ ...formData, name: text })}
-                      editable={!loading}
-                    />
-                  </View>
-                </View>
-
-                {/* phone number field */}
-                <View style={styles.inputGroup}>
-                  <Text style={styles.inputLabel}>Phone</Text>
-                  <View style={styles.inputWrap}>
-                    <Phone size={18} color="#64748b" style={{ marginRight: 8 }} />
-                    <TextInput
-                      style={styles.input}
-                      placeholder="Enter phone number"
-                      placeholderTextColor="#94a3b8"
-                      keyboardType="phone-pad"
-                      value={formData.phone}
-                      onChangeText={text => setFormData({ ...formData, phone: text })}
-                      editable={!loading}
-                    />
-                  </View>
-                </View>
-
-                {/* relationship field */}
-                <View style={[styles.inputGroup, styles.relationshipInputGroup]}>
-                  <Text style={styles.inputLabel}>Relationship</Text>
-                  <View style={styles.inputWrap}>
-                    <Shield size={18} color="#64748b" style={{ marginRight: 8 }} />
-                    {/* Relationship select */}
-                    <TouchableOpacity
-                      style={[styles.input, { flexDirection: 'row', alignItems: 'center' }]}
-                      activeOpacity={0.85}
-                      onPress={() => setShowRelationshipOptions(v => !v)}
-                      disabled={loading}
-                    >
-                      <Text style={{ color: formData.relationship ? '#0f172a' : '#94a3b8', fontSize: 15, flex: 1 }}>
-                        {formData.relationship ?
-                          relationshipOptions.find(opt => opt.value === formData.relationship)?.label :
-                          'Select relationship'}
-                      </Text>
-                    </TouchableOpacity>
-                  </View>
-                  {/* Relationship options dropdown */}
-                  {showRelationshipOptions && (
-                    <ScrollView
-                      style={styles.selectDropdown}
-                      nestedScrollEnabled
-                      keyboardShouldPersistTaps="handled"
-                      showsVerticalScrollIndicator
-                    >
-                      {relationshipOptions.map(opt => (
-                        <TouchableOpacity
-                          key={opt.value}
-                          style={styles.selectOption}
-                          onPress={() => {
-                            setFormData({ ...formData, relationship: opt.value });
-                            setShowRelationshipOptions(false);
-                          }}
-                        >
-                          <Text style={styles.selectOptionText}>{opt.label}</Text>
-                        </TouchableOpacity>
-                      ))}
-                    </ScrollView>
-                  )}
-                </View>
-
-                {/* Children multi-select */}
-                <View style={[styles.inputGroup, styles.childrenInputGroup]}>
-                  <Text style={styles.inputLabel}>Children</Text>
-                  <View style={styles.inputWrap}>
-                    <Users size={18} color="#64748b" style={{ marginRight: 8 }} />
-                    <TouchableOpacity
-                      style={[styles.input, { flexDirection: 'row', alignItems: 'center' }]}
-                      activeOpacity={0.85}
-                      onPress={() => setShowChildrenDropdown(v => !v)}
-                      disabled={loading}
-                    >
-                      <Text style={{ color: formData.children.length > 0 ? '#0f172a' : '#94a3b8', fontSize: 15, flex: 1 }}>
-                        {formData.children.length > 0
-                          ? formData.children.map(c => `${c.firstName} ${c.lastName}`).join(', ')
-                          : 'Select children'}
-                      </Text>
-                    </TouchableOpacity>
-                  </View>
-                  {showChildrenDropdown && (
-                    <ScrollView
-                      style={styles.selectDropdown}
-                      nestedScrollEnabled
-                      keyboardShouldPersistTaps="handled"
-                      showsVerticalScrollIndicator
-                    >
-                      {(auth?.children ?? []).length === 0 && (
-                        <Text style={{ color: '#94a3b8', fontSize: 14, padding: 12 }}>No children found</Text>
-                      )}
-                      {(auth?.children ?? []).map((child: Student) => {
-                        const selected = formData.children.some(c => c.id === child.id);
-                        return (
-                          <TouchableOpacity
-                            key={child.id}
-                            style={[styles.selectOption, selected && { backgroundColor: '#4169E1' }]}
-                            onPress={() => handleToggleChild(child)}
-                            activeOpacity={0.7}
-                          >
-                            <Text style={[styles.selectOptionText, selected && { color: '#fff' }]}>
-                              {selected ? '✓ ' : ''}{child.firstName} {child.lastName} {child.middleName}
-                            </Text>
-                          </TouchableOpacity>
-                        );
-                      })}
-                    </ScrollView>
-                  )}
-                </View>
-
-                <TouchableOpacity style={styles.submitButton} onPress={loading ? undefined : handleSubmit} activeOpacity={0.85} disabled={loading}>
-                  <Text style={styles.submitButtonText}>{loading ? "Submitting..." : "Submit"}</Text>
-                </TouchableOpacity>
-              </View>
-            </ScrollView>
-          </View>
-        </View>
-      </Modal>
     </SafeAreaView>
   );
 }
@@ -635,7 +322,7 @@ export default function ChildrenScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: 'ghostwhite',
   },
   header: {
     // removed, no longer used
@@ -655,7 +342,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderWidth: 1.5,
     borderColor: '#e3e8f7',
-    shadowColor: '#4169E1',
+    shadowColor: '#009966',
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.12,
     shadowRadius: 10,
@@ -683,7 +370,7 @@ const styles = StyleSheet.create({
     marginBottom: 18,
     width: '48%',
     alignItems: 'center',
-    shadowColor: '#4169E1',
+    shadowColor: '#009966',
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.12,
     shadowRadius: 10,
@@ -700,7 +387,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 14,
     borderWidth: 2,
-    borderColor: '#4169E1',
+    borderColor: '#009966',
   },
   avatarImageModern: {
     width: 72,
@@ -735,7 +422,7 @@ const styles = StyleSheet.create({
   infoValueModern: {
     fontSize: 15,
     fontWeight: '700',
-    color: '#4169E1',
+    color: '#009966',
   },
   statusBadgeModern: {
     paddingHorizontal: 0,
@@ -802,8 +489,27 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     color: "#0f172a",
   },
+  childrenHeaderRow: {
+    paddingHorizontal: 18,
+    paddingTop: 8,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  pickupShortcutButton: {
+    backgroundColor: '#009966',
+    borderRadius: 10,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+  },
+  pickupShortcutButtonText: {
+    color: '#fff',
+    fontSize: 12,
+    fontWeight: '700',
+    letterSpacing: 0.2,
+  },
   createPickupButton: {
-    backgroundColor: '#4169E1',
+    backgroundColor: '#009966',
     paddingHorizontal: 14,
     paddingVertical: 8,
     borderRadius: 10,
@@ -893,7 +599,7 @@ const styles = StyleSheet.create({
     paddingVertical: 18,
     paddingHorizontal: 16,
     alignItems: 'center',
-    shadowColor: '#4169E1',
+    shadowColor: '#009966',
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.1,
     shadowRadius: 10,
@@ -923,7 +629,7 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   emptyPickupAction: {
-    backgroundColor: '#4169E1',
+    backgroundColor: '#009966',
     borderRadius: 10,
     paddingHorizontal: 14,
     paddingVertical: 8,
@@ -959,7 +665,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   pickupModalCloseText: {
-    color: '#4169E1',
+    color: '#009966',
     fontSize: 14,
     fontWeight: '700',
   },
@@ -1021,7 +727,7 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
   },
   submitButton: {
-    backgroundColor: "#4169E1",
+    backgroundColor: "#009966",
     borderRadius: 10,
     paddingVertical: 13,
     alignItems: "center",
@@ -1051,8 +757,8 @@ const styles = StyleSheet.create({
     borderColor: 'transparent',
   },
   childOptionSelected: {
-    backgroundColor: '#4169E1',
-    borderColor: '#4169E1',
+    backgroundColor: '#009966',
+    borderColor: '#009966',
   },
   childOptionText: {
     color: '#64748b',

@@ -1,28 +1,28 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
-import { Lock, MapPin, Rocket } from 'lucide-react-native';
+import { BookOpen, Lock, ShieldCheck, Users } from 'lucide-react-native';
 import React from "react";
 import { Image, StatusBar, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-const LOGO = require("../assets/images/logo.png");
+const LOGO = require("../assets/images/arqelion_parent.png");
 
 export default function SplashScreen() {
 	const views = [
 		{
-			title: "Live Tracking",
-			desc: "Track what matters most in real time.",
-			icon: <MapPin size={32} color="#4169E1" style={{ marginBottom: 4 }} />,
+			title: "Admission and Student Lifecycle",
+			desc: "Digitize registration, admission ranking, letters, identity cards, and records from entry to graduation.",
+			icon: <Users size={24} color="#009966" />,
 		},
 		{
-			title: "Sync & Secure",
-			desc: "Your data is always safe and synchronized.",
-			icon: <Lock size={32} color="#4169E1" style={{ marginBottom: 4 }} />,
+			title: "Academic and Learning Operations",
+			desc: "Manage schedules, assessments, assignments, digital materials, and performance analytics in one flow.",
+			icon: <BookOpen size={24} color="#009966" />,
 		},
 		{
-			title: "Get Started",
-			desc: "Begin your journey with Arqelion today.",
-			icon: <Rocket size={32} color="#4169E1" style={{ marginBottom: 4 }} />,
+			title: "Finance, Boarding, and Parent Engagement",
+			desc: "Run fees, PTA levies, hostel allocation, visitor logs, and parent communication from one platform.",
+			icon: <ShieldCheck size={24} color="#009966" />,
 		}
 	];
 
@@ -32,23 +32,35 @@ export default function SplashScreen() {
 		<SafeAreaView style={styles.container}>
 			<StatusBar barStyle="dark-content" />
 			<LinearGradient
-				colors={['#eef3ff', '#f5f7ff', '#f5f5f5']}
+				colors={['#f7fbff', '#eef9f4', '#f7f7f3']}
 				start={{ x: 0, y: 0 }}
-				end={{ x: 0.95, y: 1 }}
+				end={{ x: 1, y: 1 }}
 				style={styles.backgroundGradient}
 			/>
+
+			<View style={styles.glowTop} />
+			<View style={styles.glowBottom} />
+
 			<View style={styles.content}>
+				<View style={styles.brandRow}>
+					<View style={styles.brandBadge}>
+						<Text style={styles.brandBadgeText}>FUS-DITP Platform</Text>
+					</View>
+				</View>
+
 				<View style={styles.heroCard}>
-					<Image source={LOGO} style={styles.logo} resizeMode="contain" />
-					<Text style={styles.title}>Arqelion</Text>
-					<Text style={styles.subtitle}>Secure. Always in sync.</Text>
+					<View style={styles.logoRing}>
+						<Image source={LOGO} style={styles.logo} resizeMode="contain" />
+					</View>
+					<Text style={styles.title}>School operations should feel like a product, not paperwork.</Text>
+					<Text style={styles.subtitle}>One integrated national platform for admissions, academics, staff, finance, hostel operations, and parent collaboration.</Text>
 				</View>
 
 				<View style={styles.multiViewSectionCol}>
 					{views.map((view) => (
 						<View key={view.title} style={[styles.viewCard, styles.viewCardActive]}>
 							<View style={styles.cardRow}>
-								{view.icon}
+								<View style={styles.iconBadge}>{view.icon}</View>
 								<View style={styles.cardTextCol}>
 									<Text style={styles.viewCardTitle}>{view.title}</Text>
 									<Text style={styles.viewCardDesc}>{view.desc}</Text>
@@ -57,14 +69,14 @@ export default function SplashScreen() {
 						</View>
 					))}
 				</View>
-				<TouchableOpacity style={styles.loginButtonWrap} onPress={() => router.replace("/login")}>
+				<TouchableOpacity activeOpacity={0.9} style={styles.loginButtonWrap} onPress={() => router.replace("/login")}>
 					<View style={styles.loginButtonRow}>
-						<Lock size={20} color="#fff" style={{ marginRight: 8 }} />
-						<Text style={styles.loginButton}>Login</Text>
+						<Lock size={18} color="#fff" style={{ marginRight: 8 }} />
+						<Text style={styles.loginButton}>Go to Sign In</Text>
 					</View>
 				</TouchableOpacity>
 
-				<Text style={styles.poweredBy}>Powered by Secure System</Text>
+				<Text style={styles.poweredBy}>Built for modern schools and powered by Trs-G</Text>
 			</View>
 		</SafeAreaView>
 	);
@@ -80,43 +92,89 @@ const styles = StyleSheet.create({
 	},
 	content: {
 		flex: 1,
-		paddingHorizontal: 18,
-		paddingTop: 18,
-		paddingBottom: 20,
+		paddingHorizontal: 20,
+		paddingTop: 14,
+		paddingBottom: 18,
 		justifyContent: 'center',
+	},
+	glowTop: {
+		position: 'absolute',
+		width: 240,
+		height: 240,
+		borderRadius: 999,
+		top: -70,
+		right: -70,
+		backgroundColor: 'rgba(0, 153, 102, 0.09)',
+	},
+	glowBottom: {
+		position: 'absolute',
+		width: 280,
+		height: 280,
+		borderRadius: 999,
+		bottom: -110,
+		left: -100,
+		backgroundColor: 'rgba(15, 23, 42, 0.06)',
+	},
+	brandRow: {
+		flexDirection: 'row',
+		justifyContent: 'center',
+		marginBottom: 10,
+	},
+	brandBadge: {
+		backgroundColor: 'rgba(0, 153, 102, 0.12)',
+		paddingHorizontal: 12,
+		paddingVertical: 6,
+		borderRadius: 999,
+		borderWidth: 1,
+		borderColor: 'rgba(0, 153, 102, 0.2)',
+	},
+	brandBadgeText: {
+		fontSize: 11,
+		fontWeight: '700',
+		color: '#007a52',
+		letterSpacing: 0.5,
 	},
 	heroCard: {
-		backgroundColor: '#fff',
-		borderRadius: 20,
-		paddingVertical: 22,
-		paddingHorizontal: 18,
+		backgroundColor: 'rgba(255,255,255,0.94)',
+		borderRadius: 24,
+		paddingVertical: 24,
+		paddingHorizontal: 20,
 		alignItems: 'center',
-		borderWidth: 1.5,
-		borderColor: '#e3e8f7',
-		shadowColor: '#4169E1',
-		shadowOffset: { width: 0, height: 4 },
-		shadowOpacity: 0.12,
-		shadowRadius: 10,
-		elevation: 5,
-		marginBottom: 14,
-		aspectRatio: 1,
+		borderWidth: 1,
+		borderColor: '#dbe8e1',
+		shadowColor: '#0f172a',
+		shadowOffset: { width: 0, height: 8 },
+		shadowOpacity: 0.09,
+		shadowRadius: 16,
+		elevation: 6,
+		marginBottom: 16,
 		width: '100%',
-		alignContent: 'center',
 		justifyContent: 'center',
 	},
+	logoRing: {
+		width: 112,
+		height: 112,
+		borderRadius: 56,
+		alignItems: 'center',
+		justifyContent: 'center',
+		backgroundColor: '#ffffff',
+		borderWidth: 1,
+		borderColor: '#dfe8ea',
+		marginBottom: 6,
+	},
 	loginButtonWrap: {
-		backgroundColor: '#4169E1',
+		backgroundColor: '#007a52',
 		marginTop: 16,
-		paddingVertical: 14,
-		borderRadius: 12,
+		paddingVertical: 15,
+		borderRadius: 14,
 		alignSelf: "stretch",
 		justifyContent: 'center',
 		alignItems: 'center',
-		shadowColor: '#4169E1',
-		shadowOffset: { width: 0, height: 4 },
-		shadowOpacity: 0.16,
-		shadowRadius: 10,
-		elevation: 5,
+		shadowColor: '#007a52',
+		shadowOffset: { width: 0, height: 8 },
+		shadowOpacity: 0.25,
+		shadowRadius: 14,
+		elevation: 7,
 	},
 	loginButtonRow: {
 		flexDirection: 'row',
@@ -125,14 +183,24 @@ const styles = StyleSheet.create({
 	},
 	loginButton: {
 		color: '#fff',
-		fontWeight: 'bold',
+		fontWeight: '700',
 		fontSize: 16,
-		letterSpacing: 0.2,
+		letterSpacing: 0.3,
 	},
 	cardRow: {
 		flexDirection: 'row',
 		alignItems: 'center',
 		width: '100%',
+	},
+	iconBadge: {
+		width: 48,
+		height: 48,
+		borderRadius: 14,
+		backgroundColor: '#eefbf5',
+		borderWidth: 1,
+		borderColor: '#d7efe4',
+		alignItems: 'center',
+		justifyContent: 'center',
 	},
 	cardTextCol: {
 		flex: 1,
@@ -142,62 +210,67 @@ const styles = StyleSheet.create({
 		flexDirection: 'column',
 		justifyContent: 'center',
 		alignItems: 'stretch',
-		gap: 10,
-		marginBottom: 6,
+		gap: 12,
+		marginBottom: 8,
 	},
 	poweredBy: {
-		marginTop: 14,
+		marginTop: 16,
 		fontSize: 12,
-		color: '#64748b',
+		color: '#566273',
 		textAlign: 'center',
 	},
 	logo: {
-		width: 100,
-		height: 100,
+		width: 72,
+		height: 72,
 	},
 	title: {
-		fontSize: 30,
-		fontWeight: "700",
-		color: '#4169E1',
-		letterSpacing: 0.6,
+		fontSize: 27,
+		fontWeight: "800",
+		color: '#0f172a',
+		letterSpacing: 0.1,
+		textAlign: 'center',
+		lineHeight: 34,
 	},
 	subtitle: {
-		marginTop: 6,
+		marginTop: 7,
 		fontSize: 14,
-		color: '#64748b',
+		color: '#4b5563',
 		textAlign: "center",
 		fontWeight: '500',
+		lineHeight: 20,
+		paddingHorizontal: 2,
 	},
 	viewCard: {
 		width: '100%',
-		minHeight: 78,
-		borderRadius: 18,
+		minHeight: 86,
+		borderRadius: 16,
 		padding: 16,
 		alignItems: 'flex-start',
 		justifyContent: 'center',
-		backgroundColor: '#fff',
+		backgroundColor: 'rgba(255,255,255,0.95)',
 	},
 	viewCardActive: {
-		backgroundColor: '#fff',
+		backgroundColor: 'rgba(255,255,255,0.95)',
 		opacity: 1,
-		borderWidth: 1.5,
-		borderColor: '#e3e8f7',
-		shadowColor: '#4169E1',
-		shadowOffset: { width: 0, height: 4 },
-		shadowOpacity: 0.12,
-		shadowRadius: 10,
+		borderWidth: 1,
+		borderColor: '#dbe8e1',
+		shadowColor: '#0f172a',
+		shadowOffset: { width: 0, height: 6 },
+		shadowOpacity: 0.07,
+		shadowRadius: 12,
 		elevation: 5,
 	},
 	viewCardTitle: {
 		fontSize: 15,
-		fontWeight: 'bold',
-		color: '#4169E1',
+		fontWeight: '700',
+		color: '#0f172a',
 		marginBottom: 2,
 		textAlign: 'left',
 	},
 	viewCardDesc: {
 		fontSize: 12,
-		color: '#64748b',
+		color: '#5b6472',
 		textAlign: 'left',
+		lineHeight: 17,
 	},
 });

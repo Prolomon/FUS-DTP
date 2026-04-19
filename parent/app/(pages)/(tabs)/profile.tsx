@@ -1,27 +1,32 @@
-import { useAuth } from '@/hooks/useAuth';
-import { Lock, LogOut, Mail, MapPin, Phone, RefreshCw, User } from 'lucide-react-native';
+import { Lock, LogOut, Mail, MapPin, Phone, RefreshCw, User, FingerprintPattern, ScanFace } from 'lucide-react-native';
 import React, { useState } from 'react';
 import {
   ActivityIndicator,
   Modal,
+  Platform,
   RefreshControl,
   ScrollView,
   StatusBar,
   StyleSheet,
   Text,
   TextInput,
+  ToastAndroid,
   TouchableOpacity,
   View
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { useToast } from '@/hooks/useToast';
-import { changePassword } from '@/lib/services/parent';
-import * as Updates from "expo-updates";
-
 export default function ProfileScreen() {
-  const { logout, token, auth, refresh } = useAuth();
-  const toast = useToast();
+  const parentData = {
+    id: 'parent-001',
+    parentName: 'Mr. Emeka Okonkwo',
+    parentEmail: 'emeka.okonkwo@example.com',
+    parentPhone: '08012345678',
+    parentAlternatePhone: '08087654321',
+    parentState: 'Lagos',
+    parentLga: 'Ikeja',
+    address: '12 Allen Avenue, Ikeja, Lagos',
+  };
   const [passwordModalVisible, setPasswordModalVisible] = useState(false);
   const [logoutModalVisible, setLogoutModalVisible] = useState(false);
   // Add show/hide password state
@@ -31,6 +36,7 @@ export default function ProfileScreen() {
     confirmPassword: false,
   });
   const [refreshing, setRefreshing] = useState(false);
+  const [biometricEnabled, setBiometricEnabled] = useState(false);
 
   type PasswordField = 'currentPassword' | 'newPassword' | 'confirmPassword';
 
@@ -43,20 +49,27 @@ export default function ProfileScreen() {
   const handleChangePassword = async () => {
     setRefreshing(true);
     if (passwordForm.newPassword !== passwordForm.confirmPassword) {
-      toast.showToast({ message: 'New passwords do not match', type: 'alert', status: 'failed' });
+      ToastAndroid.show('New passwords do not match', ToastAndroid.SHORT);
+      setRefreshing(false);
       return;
     }
     if (passwordForm.newPassword.length < 6) {
-      toast.showToast({ message: 'Password must be at least 6 characters', type: 'alert', status: 'failed' });
+      ToastAndroid.show('Password must be at least 6 characters', ToastAndroid.SHORT);
+      setRefreshing(false);
       return;
     }
     try {
-      await changePassword(auth?.id || '', passwordForm, token as string);
+      console.log('Password change payload:', {
+        parentId: parentData.id,
+        currentPassword: passwordForm.currentPassword,
+        newPassword: passwordForm.newPassword,
+      });
       setPasswordModalVisible(false);
       setPasswordForm({ currentPassword: '', newPassword: '', confirmPassword: '' });
-      toast.showToast({ message: 'Password changed successfully', type: 'alert', status: 'success' });
+      ToastAndroid.show('Password change logged successfully', ToastAndroid.SHORT);
     } catch (error: any) {
-      toast.showToast({ message: error?.message || 'Failed to change password', type: 'alert', status: 'failed' });
+      console.log('Failed to log password payload:', error?.message || error);
+      ToastAndroid.show('Failed to process password change', ToastAndroid.SHORT);
     } finally {
       setRefreshing(false);
     }
@@ -65,68 +78,35 @@ export default function ProfileScreen() {
   const handleLogout = () => {
     setRefreshing(true);
     setLogoutModalVisible(false);
-    logout();
+    console.log('Logout action triggered for', parentData.parentEmail);
+    ToastAndroid.show('Logout action triggered', ToastAndroid.SHORT);
+    setTimeout(() => setRefreshing(false), 400);
   };
 
-  const checkForUpdates = async () => {
-    if (__DEV__) {
-      toast.showToast({
-        message: 'Update checks work only in a production build (not Expo Go/dev mode)',
-        type: 'alert',
-        status: 'failed'
-      });
-      return;
-    }
-
-    if (!Updates.isEnabled) {
-      toast.showToast({
-        message: 'Updates are disabled for this build',
-        type: 'alert',
-        status: 'failed'
-      });
-      return;
-    }
-
-    setRefreshing(true);
-    try {
-      const update = await Updates.checkForUpdateAsync();
-      if (update.isAvailable) {
-        await Updates.fetchUpdateAsync();
-        toast.showToast({ message: 'Update downloaded. Restarting app...', type: 'alert', status: 'success' });
-        await Updates.reloadAsync();
-        return;
-      }
-
-      toast.showToast({ message: 'You are already on the latest version', type: 'alert', status: 'success' });
-    } catch (error: any) {
-      toast.showToast({
-        message: error?.message ? `Error checking for updates: ${error.message}` : 'Error checking for updates',
-        type: 'alert',
-        status: 'failed'
-      });
-      console.error('Error checking for updates:', error);
-    } finally {
-      setRefreshing(false);
-    }
+  const toggleBiometricLock = () => {
+    setBiometricEnabled((current) => !current);
+    const nextState = !biometricEnabled;
+    console.log('Biometric lock set to:', nextState);
+    ToastAndroid.show(
+      `${Platform.OS === 'android' ? 'Fingerprint Lock' : 'Face Lock'} ${nextState ? 'enabled' : 'disabled'}`,
+      ToastAndroid.SHORT,
+    );
   };
 
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="dark-content" />
 
-      {refreshing && (
-        <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 10, justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(255,255,255,0.6)' }}>
-          <ActivityIndicator size="large" color="#4169E1" />
-        </View>
-      )}
-
       <ScrollView
         refreshControl={
           <RefreshControl
             refreshing={refreshing}
-            onRefresh={async () => await refresh()}
-            colors={['#4169E1']}
-            tintColor="#4169E1"
+            onRefresh={async () => {
+              setRefreshing(true);
+              setTimeout(() => setRefreshing(false), 500);
+            }}
+            colors={['#009966']}
+            tintColor="#009966"
           />
         }
       >
@@ -138,95 +118,102 @@ export default function ProfileScreen() {
               backgroundColor: '#f3f4f6',
               borderRadius: 60,
               padding: 24,
-              shadowColor: '#4169E1',
+              shadowColor: '#009966',
               shadowOffset: { width: 0, height: 2 },
               shadowOpacity: 0.08,
               shadowRadius: 8,
               elevation: 4,
             }}>
-              <User size={64} color="#4169E1" />
+              <User size={64} color="#009966" />
             </View>
-            <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#222', marginTop: 12 }}>{auth?.parentName || ''}</Text>
+            <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#222', marginTop: 12 }}>{parentData.parentName}</Text>
           </View>
         </View>
 
         <View style={{ marginBottom: 16 }}>
-          <View style={{ backgroundColor: '#fff', borderRadius: 18, marginHorizontal: 16, padding: 20, shadowColor: '#4169E1', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.06, shadowRadius: 8, elevation: 2 }}>
-            <Text style={{ fontSize: 16, fontWeight: '600', color: '#4169E1', marginBottom: 12 }}>Contact Information</Text>
+          <View style={{ backgroundColor: '#fff', borderRadius: 18, marginHorizontal: 16, padding: 20, shadowColor: '#009966', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.06, shadowRadius: 8, elevation: 2 }}>
+            <Text style={{ fontSize: 16, fontWeight: '600', color: '#009966', marginBottom: 12 }}>Contact Information</Text>
             <View style={{ flexDirection: 'row', alignItems: 'flex-start', marginBottom: 16 }}>
               <View style={{ width: 38, height: 38, borderRadius: 10, borderWidth: 1, borderColor: '#e0e7ef', backgroundColor: '#f7faff', alignItems: 'center', justifyContent: 'center', marginRight: 14, marginTop: 2 }}>
-                <Mail size={22} color="#4169E1" />
+                <Mail size={22} color="#009966" />
               </View>
               <View style={{ flex: 1 }}>
                 <Text style={{ fontWeight: '500', color: '#222', fontSize: 13, marginBottom: 2 }}>Email</Text>
-                <Text style={{ color: '#444', fontSize: 16 }}>{auth?.parentEmail || ''}</Text>
+                <Text style={{ color: '#444', fontSize: 16 }}>{parentData.parentEmail}</Text>
               </View>
             </View>
             <View style={{ flexDirection: 'row', alignItems: 'flex-start', marginBottom: 16 }}>
               <View style={{ width: 38, height: 38, borderRadius: 10, borderWidth: 1, borderColor: '#e0e7ef', backgroundColor: '#f7faff', alignItems: 'center', justifyContent: 'center', marginRight: 14, marginTop: 2 }}>
-                <Phone size={22} color="#4169E1" />
+                <Phone size={22} color="#009966" />
               </View>
               <View style={{ flex: 1 }}>
                 <Text style={{ fontWeight: '500', color: '#222', fontSize: 13, marginBottom: 2 }}>Phone</Text>
-                <Text style={{ color: '#444', fontSize: 16 }}>{auth?.parentPhone || ''}</Text>
+                <Text style={{ color: '#444', fontSize: 16 }}>{parentData.parentPhone}</Text>
               </View>
             </View>
-            {auth?.parentAlternatePhone ? (
+            {parentData.parentAlternatePhone ? (
               <View style={{ flexDirection: 'row', alignItems: 'flex-start', marginBottom: 16 }}>
                 <View style={{ width: 38, height: 38, borderRadius: 10, borderWidth: 1, borderColor: '#e0e7ef', backgroundColor: '#f7faff', alignItems: 'center', justifyContent: 'center', marginRight: 14, marginTop: 2 }}>
-                  <Phone size={22} color="#4169E1" />
+                  <Phone size={22} color="#009966" />
                 </View>
                 <View style={{ flex: 1 }}>
                   <Text style={{ fontWeight: '500', color: '#222', fontSize: 13, marginBottom: 2 }}>Alt. Phone</Text>
-                  <Text style={{ color: '#444', fontSize: 16 }}>{auth?.parentAlternatePhone}</Text>
+                  <Text style={{ color: '#444', fontSize: 16 }}>{parentData.parentAlternatePhone}</Text>
                 </View>
               </View>
             ) : null}
-            {auth?.parentState ? (
+            {parentData.parentState ? (
               <View style={{ flexDirection: 'row', alignItems: 'flex-start', marginBottom: 16 }}>
                 <View style={{ width: 38, height: 38, borderRadius: 10, borderWidth: 1, borderColor: '#e0e7ef', backgroundColor: '#f7faff', alignItems: 'center', justifyContent: 'center', marginRight: 14, marginTop: 2 }}>
-                  <MapPin size={22} color="#4169E1" />
+                  <MapPin size={22} color="#009966" />
                 </View>
                 <View style={{ flex: 1 }}>
                   <Text style={{ fontWeight: '500', color: '#222', fontSize: 13, marginBottom: 2 }}>State</Text>
-                  <Text style={{ color: '#444', fontSize: 16 }}>{auth?.parentState}</Text>
+                  <Text style={{ color: '#444', fontSize: 16 }}>{parentData.parentState}</Text>
                 </View>
               </View>
             ) : null}
-            {auth?.parentLga ? (
+            {parentData.parentLga ? (
               <View style={{ flexDirection: 'row', alignItems: 'flex-start', marginBottom: 16 }}>
                 <View style={{ width: 38, height: 38, borderRadius: 10, borderWidth: 1, borderColor: '#e0e7ef', backgroundColor: '#f7faff', alignItems: 'center', justifyContent: 'center', marginRight: 14, marginTop: 2 }}>
-                  <MapPin size={22} color="#4169E1" />
+                  <MapPin size={22} color="#009966" />
                 </View>
                 <View style={{ flex: 1 }}>
                   <Text style={{ fontWeight: '500', color: '#222', fontSize: 13, marginBottom: 2 }}>LGA</Text>
-                  <Text style={{ color: '#444', fontSize: 16 }}>{auth?.parentLga}</Text>
+                  <Text style={{ color: '#444', fontSize: 16 }}>{parentData.parentLga}</Text>
                 </View>
               </View>
             ) : null}
             <View style={{ flexDirection: 'row', alignItems: 'flex-start', marginBottom: 0 }}>
               <View style={{ width: 38, height: 38, borderRadius: 10, borderWidth: 1, borderColor: '#e0e7ef', backgroundColor: '#f7faff', alignItems: 'center', justifyContent: 'center', marginRight: 14, marginTop: 2 }}>
-                <MapPin size={22} color="#4169E1" />
+                <MapPin size={22} color="#009966" />
               </View>
               <View style={{ flex: 1 }}>
                 <Text style={{ fontWeight: '500', color: '#222', fontSize: 13, marginBottom: 2 }}>Address</Text>
-                <Text style={{ color: '#444', fontSize: 16 }}>{auth?.address || ''}</Text>
+                <Text style={{ color: '#444', fontSize: 16 }}>{parentData.address}</Text>
               </View>
             </View>
           </View>
 
-          <View style={{ flexDirection: 'column', justifyContent: 'space-between', marginTop: 28, marginHorizontal: 16, gap: 12 }}>
-            <TouchableOpacity style={{ flex: 1, backgroundColor: '#4169E1', borderRadius: 12, paddingVertical: 14, alignItems: 'center', flexDirection: 'row', justifyContent: 'center' }} onPress={() => setPasswordModalVisible(true)}>
+          <View style={{ flexDirection: 'column', justifyContent: 'space-between', marginTop: 16, marginHorizontal: 16, gap: 12 }}>
+            <TouchableOpacity style={{ flex: 1, backgroundColor: '#009966', borderRadius: 12, paddingVertical: 14, alignItems: 'center', flexDirection: 'row', justifyContent: 'center' }} onPress={() => setPasswordModalVisible(true)}>
               <Lock size={20} color="#fff" style={{ marginRight: 8 }} />
               <Text style={{ color: '#fff', fontWeight: 'bold', fontSize: 16 }}>Change Password</Text>
             </TouchableOpacity>
+            <TouchableOpacity style={{ flex: 1, backgroundColor: '#fff', borderRadius: 12, paddingVertical: 14, alignItems: 'center', borderWidth: 1, borderColor: '#009966', flexDirection: 'row', justifyContent: 'center' }} onPress={toggleBiometricLock}>
+              {Platform.OS === 'android' ? (
+                <FingerprintPattern size={20} color="#009966" style={{ marginRight: 8 }} />
+              ) : (
+                <ScanFace size={20} color="#009966" style={{ marginRight: 8 }} />
+              )}
+              <Text style={{ color: '#009966', fontWeight: 'bold', fontSize: 16 }}>
+                {Platform.OS === 'android' ? 'Fingerprint Lock' : 'Face Lock'} {biometricEnabled ? 'On' : 'Off'}
+              </Text>
+            </TouchableOpacity>
+
             <TouchableOpacity style={{ flex: 1, backgroundColor: '#fff', borderRadius: 12, paddingVertical: 14, alignItems: 'center', borderWidth: 1, borderColor: '#c62828', flexDirection: 'row', justifyContent: 'center' }} onPress={() => setLogoutModalVisible(true)}>
               <LogOut size={20} color="#c62828" style={{ marginRight: 8 }} />
               <Text style={{ color: '#c62828', fontWeight: 'bold', fontSize: 16 }}>Logout</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={{ flex: 1, backgroundColor: '#fff', borderRadius: 12, paddingVertical: 14, alignItems: 'center', borderWidth: 1, borderColor: '#4169E1', flexDirection: 'row', justifyContent: 'center' }} onPress={checkForUpdates}>
-              <RefreshCw size={20} color="#4169E1" style={{ marginRight: 8 }} />
-              <Text style={{ color: '#4169E1', fontWeight: 'bold', fontSize: 16 }}>Check for Updates</Text>
             </TouchableOpacity>
 
           </View>
@@ -256,7 +243,7 @@ export default function ProfileScreen() {
                       placeholderTextColor="#888"
                     />
                     <TouchableOpacity onPress={() => setShowPassword(s => ({ ...s, [field]: !s[field] }))}>
-                      <Text style={{ color: '#4169E1', fontWeight: 'bold', fontSize: 15, padding: 8 }}>
+                      <Text style={{ color: '#009966', fontWeight: 'bold', fontSize: 15, padding: 8 }}>
                         {showPassword[field] ? 'Hide' : 'Show'}
                       </Text>
                     </TouchableOpacity>
@@ -357,7 +344,7 @@ const styles = StyleSheet.create({
     color: '#333',
   },
   infoSection: {
-    backgroundColor: '#fff', borderRadius: 18, marginHorizontal: 16, padding: 20, shadowColor: '#4169E1', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.06, shadowRadius: 8, elevation: 2
+    backgroundColor: '#fff', borderRadius: 18, marginHorizontal: 16, padding: 20, shadowColor: '#009966', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.06, shadowRadius: 8, elevation: 2
     , marginBottom: 24,
   },
   infoTextContainer: {

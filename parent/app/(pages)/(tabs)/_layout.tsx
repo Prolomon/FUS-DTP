@@ -1,9 +1,9 @@
 import { Tabs } from 'expo-router';
-import { Baby, FileText, MapPin, User, School } from 'lucide-react-native';
+import { Baby, FileText, MapPin, School, User, WalletCards } from 'lucide-react-native';
 import React from 'react';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { Pressable, View } from 'react-native';
 import type { GestureResponderEvent } from 'react-native';
+import { Pressable, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 type CustomTabBarButtonProps = {
   children: React.ReactNode;
@@ -41,7 +41,7 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: '#4169E1', // royal blue
+        tabBarActiveTintColor: '#009966', // royal blue
         tabBarInactiveTintColor: '#687076', // gray
         tabBarActiveBackgroundColor: '#f3f4f6', // light gray background for active tab
         tabBarInactiveBackgroundColor: '#fff', // white for inactive tabs
@@ -61,35 +61,35 @@ export default function TabLayout() {
         name="child"
         options={{
           title: 'Children',
-          tabBarIcon: ({ color, focused }) => <Baby size={28} color={focused ? '#4169E1' : color} />,
+          tabBarIcon: ({ color, focused }) => <Baby size={28} color={focused ? '#009966' : color} />,
         }}
       />
       <Tabs.Screen
-        name="records"
+        name="payment"
         options={{
-          title: 'Records',
-          tabBarIcon: ({ color, focused }) => <FileText size={28} color={focused ? '#4169E1' : color} />,
+          title: 'Payments',
+          tabBarIcon: ({ color, focused }) => <WalletCards size={28} color={focused ? '#009966' : color} />,
         }}
       />
       <Tabs.Screen
         name="school"
         options={{
           title: 'School',
-          tabBarIcon: ({ color, focused }) => <School size={28} color={focused ? '#4169E1' : color} />,
+          tabBarIcon: ({ color, focused }) => <School size={28} color={focused ? '#009966' : color} />,
         }}
       />
       <Tabs.Screen
         name="track"
         options={{
           title: 'Track',
-          tabBarIcon: ({ color, focused }) => <MapPin size={28} color={focused ? '#4169E1' : color} />,
+          tabBarIcon: ({ color, focused }) => <MapPin size={28} color={focused ? '#009966' : color} />,
         }}
       />
       <Tabs.Screen
         name="profile"
         options={{
           title: 'Profile',
-          tabBarIcon: ({ color, focused }) => <User size={28} color={focused ? '#4169E1' : color} />,
+          tabBarIcon: ({ color, focused }) => <User size={28} color={focused ? '#009966' : color} />,
         }}
       />
     </Tabs>

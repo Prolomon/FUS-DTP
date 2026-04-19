@@ -19,16 +19,24 @@ import {
   StatusBar,
   StyleSheet,
   Text,
+  ToastAndroid,
   TouchableOpacity,
   View
 } from "react-native";
 
-import { useAuth } from '@/hooks/useAuth';
-import { useToast } from "@/hooks/useToast";
-import { getSchool, School } from '@/lib/services/school';
 import * as Location from 'expo-location';
 import { SafeAreaView } from "react-native-safe-area-context";
 import WebView from 'react-native-webview';
+import { RelativePathString, router } from "expo-router";
+
+type School = {
+  id: string;
+  name: string;
+  location?: {
+    lat: number;
+    lon: number;
+  };
+};
 
 const TIMELINE = [
   {
@@ -73,11 +81,9 @@ const toSafeCoordinate = (value: number | null | undefined) => (
 );
 
 export default function TrackScreen() {
-  const { token, auth } = useAuth();
   const [, setLoading] = useState(false);
   const [school, setSchool] = useState<School | null>(null);
   const [location, setLocation] = useState<Location.LocationObject | null>(null);
-  const { showToast } = useToast();
   const [, requestPermission] = Location.useForegroundPermissions();
   const mapWebViewRef = useRef<any>(null);
   const [isMapReady, setIsMapReady] = useState(false);
@@ -115,7 +121,7 @@ export default function TrackScreen() {
 <body>
   <div id="map"></div>
   <script>
-    var fallbackCenter = [6.5244, 3.3792];
+    var fallbackCenter = [9.0765, 7.3986];
     var map = L.map('map').setView(fallbackCenter, 12);
     var userMarker = null;
     var schoolMarker = null;
@@ -216,7 +222,7 @@ export default function TrackScreen() {
     try {
       const permissionResponse = await requestPermission();
       if (!permissionResponse.granted) {
-        showToast({ message: "Permission to access location was denied", type: 'alert', status: 'failed' });
+        ToastAndroid.show("Permission to access location was denied", ToastAndroid.SHORT);
         return;
       }
 
@@ -226,9 +232,9 @@ export default function TrackScreen() {
       setLocation(currentLocation);
     } catch (error) {
       console.error('Error fetching current location:', error);
-      showToast({ message: "Error fetching current location", type: 'alert', status: 'failed' });
+      ToastAndroid.show("Error fetching current location", ToastAndroid.SHORT);
     }
-  }, [requestPermission, showToast]);
+  }, [requestPermission]);
 
   useEffect(() => {
     let subscription: Location.LocationSubscription | null = null;
@@ -255,21 +261,26 @@ export default function TrackScreen() {
   const fetchSchool = useCallback(async () => {
     setLoading(true);
     try {
-      const data = await getSchool(auth?.schoolUid || '', token as string);
-      setSchool(data);
+      const dummySchool: School = {
+        id: 'school-001',
+        name: 'Demo International School',
+        location: {
+          lat: 9.0765,
+          lon: 7.3986,
+        },
+      };
+      setSchool(dummySchool);
     } catch (error) {
       console.error('Error fetching school:', error);
-      showToast({ message: "Error fetching school information", type: 'alert', status: 'failed' });
+      ToastAndroid.show("Error fetching school information", ToastAndroid.SHORT);
     } finally {
       setLoading(false);
     }
-  }, [auth?.schoolUid, showToast, token]);
+  }, []);
 
   useEffect(() => {
-    if (auth?.schoolUid) {
-      fetchSchool();
-    }
-  }, [auth?.schoolUid, fetchSchool, token]);
+    fetchSchool();
+  }, [fetchSchool]);
 
   const handleRefresh = useCallback(async () => {
     await Promise.all([fetchSchool(), fetchCurrentLocation()]);
@@ -303,9 +314,6 @@ export default function TrackScreen() {
     startCoordinate.latitude,
     startCoordinate.longitude,
   ]);
-
-  // const initialLatitude = (startCoordinate.latitude + destinationCoordinate.latitude) / 2;
-  // const initialLongitude = (startCoordinate.longitude + destinationCoordinate.longitude) / 2;
 
   return (
     <SafeAreaView style={styles.container}>
@@ -360,7 +368,7 @@ export default function TrackScreen() {
           </View>
         </View>
 
-        <TouchableOpacity style={[styles.submitButton, { marginBottom: 0, marginTop: 20 }]} activeOpacity={0.8} onPress={() => Alert.alert('Live Stream', 'This will open the live stream of the child\'s location once you signup your child to the service.')}>
+        <TouchableOpacity style={[styles.submitButton, { marginBottom: 0, marginTop: 20 }]} activeOpacity={0.8} onPress={() => router.push('live' as RelativePathString)}>
           <Text style={styles.submitButtonText}>Watch Child Live</Text>
         </TouchableOpacity>
 
@@ -468,7 +476,7 @@ const styles = StyleSheet.create({
   headerChip: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#4169E1",
+    backgroundColor: "#009966",
     borderRadius: 20,
     paddingHorizontal: 20,
     paddingVertical: 10,
@@ -696,7 +704,7 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
   },
   submitButton: {
-    backgroundColor: "#4169E1",
+    backgroundColor: "#009966",
     borderRadius: 10,
     paddingVertical: 13,
     alignItems: "center",
@@ -726,8 +734,8 @@ const styles = StyleSheet.create({
     borderColor: 'transparent',
   },
   childOptionSelected: {
-    backgroundColor: '#4169E1',
-    borderColor: '#4169E1',
+    backgroundColor: '#009966',
+    borderColor: '#009966',
   },
   childOptionText: {
     color: '#64748b',

@@ -1,21 +1,22 @@
 import { Calendar, Clock, Search, User, Users } from 'lucide-react-native';
 import React, { useCallback, useEffect, useState } from 'react';
 import {
-  FlatList,
-  Image,
-  RefreshControl,
-  StatusBar,
-  StyleSheet,
-  Text,
-  TextInput,
-  View, ActivityIndicator
+    ActivityIndicator,
+    FlatList,
+    Image,
+    RefreshControl,
+    StatusBar,
+    StyleSheet,
+    Text,
+    TextInput,
+    View
 } from 'react-native';
 
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { useAuth } from '@/hooks/useAuth';
-import { CheckInRecord, getCheckinRecords } from '@/lib/services/parent';
 import useToast from '@/hooks/useToast';
+import { CheckInRecord, getCheckinRecords } from '@/lib/services/parent';
 
 export default function RecordsScreen() {
   const { token, auth } = useAuth();
@@ -121,7 +122,7 @@ export default function RecordsScreen() {
 
       <View style={{ paddingHorizontal: 18, paddingTop: 18, marginBottom: 8 }}>
         <View style={styles.searchContainerModern}>
-          <Search size={20} color="#4169E1" style={styles.searchIcon} />
+          <Search size={20} color="#009966" style={styles.searchIcon} />
           <TextInput
             style={styles.searchInputModern}
             placeholder="Search by name, date, or time..."
@@ -134,7 +135,7 @@ export default function RecordsScreen() {
 
       {refreshing ? (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-          <ActivityIndicator size="large" color="#4169E1" />
+          <ActivityIndicator size="large" color="#009966" />
         </View>
       ) : (
         <FlatList
@@ -200,7 +201,7 @@ const styles = StyleSheet.create({
     marginBottom: 18,
     flexDirection: 'row',
     alignItems: 'center',
-    shadowColor: '#4169E1',
+    shadowColor: '#009966',
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.12,
     shadowRadius: 10,
@@ -217,7 +218,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginRight: 16,
     borderWidth: 2,
-    borderColor: '#4169E1',
+    borderColor: '#009966',
   },
   recordInfo: {
     flex: 1,
@@ -241,7 +242,7 @@ const styles = StyleSheet.create({
   },
   detailText: {
     fontSize: 15,
-    color: '#4169E1',
+    color: '#009966',
     fontWeight: '600',
   },
   emptyContainer: {
@@ -259,7 +260,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderWidth: 1.5,
     borderColor: '#e3e8f7',
-    shadowColor: '#4169E1',
+    shadowColor: '#009966',
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.12,
     shadowRadius: 10,
