@@ -1,5 +1,5 @@
 import { Tabs } from 'expo-router';
-import { School, User, Group, FingerprintPattern, FileUser } from 'lucide-react-native';
+import { School, User, Group, FileUser, Users } from 'lucide-react-native';
 import React from 'react';
 
 import type { GestureResponderEvent } from 'react-native';
@@ -65,10 +65,10 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="attendance"
+        name="staff"
         options={{
-          title: 'Attendance',
-          tabBarIcon: ({ color, focused }) => <FingerprintPattern size={28} color={focused ? '#009966' : color} />,
+          title: 'Staffs',
+          tabBarIcon: ({ color, focused }) => <Users size={28} color={focused ? '#009966' : color} />,
         }}
       />
       <Tabs.Screen
