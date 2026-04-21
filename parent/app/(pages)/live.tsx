@@ -234,13 +234,29 @@ export default function LiveScreen() {
 					) : isImageFeed ? (
 						<Image source={{ uri: selectedFeed.url }} style={styles.video} contentFit="cover" />
 					) : (
-						<VideoView
-							player={player}
+						// <VideoView
+						// 	player={player}
+						// 	style={styles.video}
+						// 	nativeControls
+						// 	allowsFullscreen
+						// 	allowsPictureInPicture
+						// 	contentFit="cover"
+						// />
+						<WebView
+							key={`inline-${selectedFeed.id}-${webViewReloadToken}`}
+							source={{ uri: selectedFeed.url }}
 							style={styles.video}
-							nativeControls
-							allowsFullscreen
-							allowsPictureInPicture
-							contentFit="cover"
+							mixedContentMode="always"
+							scrollEnabled={false}
+							allowsInlineMediaPlayback
+							onLoadStart={() => setStreamError(null)}
+							onError={(event) => {
+								const description = event.nativeEvent.description || 'Unable to connect to camera feed.';
+								setStreamError(description);
+							}}
+							onHttpError={(event) => {
+								setStreamError(`HTTP ${event.nativeEvent.statusCode} while loading camera feed.`);
+							}}
 						/>
 					)}
 

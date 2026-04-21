@@ -17,36 +17,36 @@ type LiveFeed = {
 
 const LIVE_FEEDS: LiveFeed[] = [
   {
-    id: "bus",
-    title: "School Bus",
-    provider: "Bus feed",
-    quality: "HD adaptive",
-    location: "Worldwide",
-    url: "http://204.106.237.68:88/mjpg/1/video.mjpg",
+    id: 'bus',
+    title: 'School Bus',
+    provider: 'Bus feed',
+    quality: 'HD adaptive',
+    location: 'Worldwide',
+    url: 'https://fus-ditp-server.onrender.com/feed/live/2',
   },
   {
-    id: "assembly",
-    title: "Assembly",
-    provider: "Assembly Feed",
-    quality: "720p",
-    location: "City route",
-    url: "https://mt.cdn.iteris-atis.com/camera_images/other_cameras_5545.jpg",
+    id: 'assembly',
+    title: 'Assembly',
+    provider: 'Assembly Feed',
+    quality: '720p',
+    location: 'City route',
+    url: 'https://fus-ditp-server.onrender.com/feed/live/3',
   },
   {
-    id: "class-room",
-    title: "Class Room",
-    provider: "Class Feed",
-    quality: "HD stream",
-    location: "Campus gate",
-    url: "https://mt.cdn.iteris-atis.com/camera_images/other_cameras_5545.jpg",
+    id: 'class-room',
+    title: 'Class Room',
+    provider: 'Class Feed',
+    quality: 'HD stream',
+    location: 'Campus gate',
+    url: 'https://fus-ditp-server.onrender.com/feed/live/4',
   },
   {
-    id: "cafeteria",
-    title: "Cafeteria",
-    provider: "Cafeteria Feed",
-    quality: "Low latency",
-    location: "School corridor",
-    url: "https://video.dot.state.mn.us/public/C9071.stream/playlist.m3u8",
+    id: 'cafeteria',
+    title: 'Cafeteria',
+    provider: 'Cafeteria Feed',
+    quality: 'Low latency',
+    location: 'School corridor',
+    url: 'https://fus-ditp-server.onrender.com/feed/live/5',
   },
 ];
 
@@ -96,7 +96,7 @@ export default function FeedPage() {
             <div className="">
               <div className="overflow-hidden rounded-2xl border border-default-200/70 bg-black/95">
                 <iframe
-                  allow="autoplay; fullscreen"
+                  allow="autoplay; fullscreen; picture-in-picture"
                   className="block aspect-video h-full w-full border-0 overflow-hidden"
                   referrerPolicy="no-referrer"
                   src={selectedFeed.url}
