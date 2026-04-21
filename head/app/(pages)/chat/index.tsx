@@ -1,5 +1,5 @@
 import { RelativePathString, useRouter } from 'expo-router';
-import { ChevronRight, User, Users } from 'lucide-react-native';
+import { ArrowLeft, ChevronRight, User, Users } from 'lucide-react-native';
 import React, { useState } from 'react';
 import {
   ActivityIndicator,
@@ -18,8 +18,8 @@ export default function CheckInScreen() {
   const router = useRouter();
   const [refreshing, setRefreshing] = useState(false);
   const school = {
-    schoolName: 'Samson International School',
-    motto: 'As God is my witness, I will never go hungry again.',
+    schoolName: 'Fed Unity School FCT',
+    motto: 'As God is my witness, I will never be educated.',
     schoolLogo: require('../../../assets/images/arqelion_staff.png'),
   };
   const loading = false;
@@ -93,7 +93,10 @@ export default function CheckInScreen() {
 
           <View style={styles.chatsHeaderRow}>
             <Text style={styles.chatsTitle}>Chats</Text>
-            <Text style={styles.chatsCount}>{chats.length}</Text>
+            <TouchableOpacity activeOpacity={0.84} style={styles.backButton} onPress={() => router.back()}>
+              <ArrowLeft size={17} color="#13293d" strokeWidth={2.4} />
+              <Text style={styles.backButtonText}>Back</Text>
+            </TouchableOpacity>
           </View>
 
           <ScrollView
@@ -248,6 +251,20 @@ const styles = StyleSheet.create({
     borderRadius: 999,
     paddingHorizontal: 9,
     paddingVertical: 4,
+  },
+  backButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
+    backgroundColor: '#f3f6fa',
+    borderRadius: 11,
+    paddingHorizontal: 10,
+    paddingVertical: 8,
+  },
+  backButtonText: {
+    color: '#13293d',
+    fontSize: 13,
+    fontWeight: '700',
   },
   chatItem: {
     backgroundColor: '#ffffff',

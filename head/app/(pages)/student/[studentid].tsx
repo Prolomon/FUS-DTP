@@ -94,7 +94,10 @@ export default function StudentDetailsScreen() {
           <Text style={styles.headerButtonText}>Back</Text>
         </Pressable>
 
-        <Pressable style={styles.resultButton} onPress={() => {}}>
+        <Pressable
+          style={styles.resultButton}
+          onPress={() => router.push({ pathname: '/result', params: { uid: details.id } })}
+        >
           <FileBarChart2 size={16} color="#fff" strokeWidth={2.4} />
           <Text style={styles.resultButtonText}>View Result</Text>
         </Pressable>

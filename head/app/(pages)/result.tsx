@@ -1,4 +1,6 @@
-import React, { useMemo, useState } from 'react';
+import { useLocalSearchParams, useRouter } from 'expo-router';
+import { ArrowLeft } from 'lucide-react-native';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Alert, Image, ScrollView, StatusBar, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -33,7 +35,7 @@ type StudentReport = {
 
 const tempReports: StudentReport[] = [
 	{
-		uid: 'UID-2026-001',
+		uid: 'std-001',
 		admissionNo: 'SIS/2026/001',
 		name: 'Amara Okonkwo',
 		className: 'SS2 Gold',
@@ -53,7 +55,7 @@ const tempReports: StudentReport[] = [
 		],
 	},
 	{
-		uid: 'UID-2026-002',
+		uid: 'std-002',
 		admissionNo: 'SIS/2026/002',
 		name: 'Daniel Ibrahim',
 		className: 'SS2 Gold',
@@ -73,7 +75,7 @@ const tempReports: StudentReport[] = [
 		],
 	},
 	{
-		uid: 'UID-2026-003',
+		uid: 'std-003',
 		admissionNo: 'SIS/2026/003',
 		name: 'Blessing Afolabi',
 		className: 'SS2 Gold',
@@ -93,7 +95,7 @@ const tempReports: StudentReport[] = [
 		],
 	},
 	{
-		uid: 'UID-2026-004',
+		uid: 'std-004',
 		admissionNo: 'SIS/2026/004',
 		name: 'Mubarak Musa',
 		className: 'SS2 Gold',
@@ -113,7 +115,7 @@ const tempReports: StudentReport[] = [
 		],
 	},
 	{
-		uid: 'UID-2026-005',
+		uid: 'std-005',
 		admissionNo: 'SIS/2026/005',
 		name: 'Nora Edet',
 		className: 'SS2 Gold',
@@ -141,8 +143,18 @@ const searchOptions: { label: string; value: SearchField }[] = [
 ];
 
 export default function ResultScreen() {
+	const router = useRouter();
+	const params = useLocalSearchParams<{ uid?: string }>();
 	const [searchBy, setSearchBy] = useState<SearchField>('uid');
 	const [searchQuery, setSearchQuery] = useState('');
+
+	useEffect(() => {
+		const uid = Array.isArray(params.uid) ? params.uid[0] : params.uid;
+		if (uid) {
+			setSearchBy('uid');
+			setSearchQuery(uid);
+		}
+	}, [params.uid]);
 
 	const foundReport = useMemo(() => {
 		const query = searchQuery.trim().toLowerCase();
@@ -161,6 +173,15 @@ export default function ResultScreen() {
 	return (
 		<SafeAreaView style={styles.container}>
 			<StatusBar barStyle="dark-content" />
+			<View style={styles.header}>
+				<TouchableOpacity activeOpacity={0.84} style={styles.backButton} onPress={() => router.back()}>
+					<ArrowLeft size={18} color="#13293d" strokeWidth={2.4} />
+				</TouchableOpacity>
+
+				<Text style={styles.headerTitle}>Result</Text>
+				<View style={styles.headerSpacer} />
+			</View>
+
 			<ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
 				<View style={styles.searchCard}>
 					<Text style={styles.searchTitle}>Find Student Result</Text>
@@ -285,6 +306,31 @@ const styles = StyleSheet.create({
 		paddingHorizontal: 16,
 		paddingTop: 12,
 		paddingBottom: 28,
+	},
+	header: {
+		paddingHorizontal: 16,
+		paddingVertical: 12,
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'space-between',
+		backgroundColor: '#fff',
+		borderBottomWidth: 1,
+		borderBottomColor: '#e3eaf1',
+	},
+	backButton: {
+		alignItems: 'center',
+		backgroundColor: '#f3f6fa',
+		borderRadius: 11,
+		paddingHorizontal: 10,
+		paddingVertical: 9,
+	},
+	headerTitle: {
+		fontSize: 16,
+		fontWeight: '800',
+		color: '#13293d',
+	},
+	headerSpacer: {
+		width: 40,
 	},
 	searchCard: {
 		backgroundColor: '#fff',

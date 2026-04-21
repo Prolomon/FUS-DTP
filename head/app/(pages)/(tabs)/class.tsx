@@ -78,6 +78,7 @@ export default function ClassScreen() {
 	return (
 		<SafeAreaView style={styles.container}>
 			<StatusBar barStyle="dark-content" />
+
 			<ScrollView
 				contentContainerStyle={styles.content}
 				showsVerticalScrollIndicator={false}

@@ -11,8 +11,7 @@ export default function RootLayout() {
   return (
     <AuthProvider>
        <Stack>
-          <Stack.Screen name="[chatid]" options={{ headerShown: false }} />
-          <Stack.Screen name="more" options={{ headerShown: false }} />
+          <Stack.Screen name="[paymentid]" options={{ headerShown: false }} />
           <Stack.Screen name="index" options={{ headerShown: false }} />
         </Stack>
     </AuthProvider>

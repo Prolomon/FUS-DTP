@@ -164,7 +164,7 @@ const LoginScreen: React.FC = () => {
                 ToastAndroid.CENTER,
             );
 
-            router.replace('/(pages)/(tabs)/school');
+            router.replace('/(pages)/(tabs)/home');
 
         } catch (error: any) {
             console.log('Login error:', error);

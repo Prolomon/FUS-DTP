@@ -1,8 +1,8 @@
 import { useRouter } from 'expo-router';
-import { Lock, LogOut, Mail, MapPin, Phone } from 'lucide-react-native';
+import { Lock, LogOut, Mail, MapPin, Phone, Fingerprint, ScanFace } from 'lucide-react-native';
 import React from 'react';
 import {
-  Image,
+  Platform, Image,
   ScrollView,
   StatusBar,
   StyleSheet,
@@ -125,15 +125,25 @@ export default function ProfileScreen() {
               <Text style={{ color: '#fff', fontWeight: 'bold', fontSize: 16 }}>Change Password</Text>
             </TouchableOpacity>
 
+            {/* authenticator button - fingerprint/face unlock depending on platform */}
+            <TouchableOpacity
+              style={{ flex: 1, backgroundColor: '#fff', borderRadius: 12, paddingVertical: 14, alignItems: 'center', borderWidth: 2, borderColor: '#009966', flexDirection: 'row', justifyContent: 'center' }}
+              onPress={() => router.push('/(pages)/authenticator')}
+            >
+              {Platform.OS === 'android' ? (
+                <Fingerprint size={20} color="#009966" style={{ marginRight: 8 }} />
+              ) : (
+                <ScanFace size={20} color="#009966" style={{ marginRight: 8 }} />
+              )}
+              <Text style={{ color: '#009966', fontWeight: 'bold', fontSize: 16 }}>
+                {Platform.OS === 'android' ? 'Fingerprint' : 'Face Unlock'}
+              </Text>
+            </TouchableOpacity>
+
             {/* logout button  */}
             <TouchableOpacity style={{ flex: 1, backgroundColor: '#fff', borderRadius: 12, paddingVertical: 14, alignItems: 'center', borderWidth: 1, borderColor: '#c62828', flexDirection: 'row', justifyContent: 'center' }}>
               <LogOut size={20} color="#c62828" style={{ marginRight: 8 }} />
               <Text style={{ color: '#c62828', fontWeight: 'bold', fontSize: 16 }}>Logout</Text>
-            </TouchableOpacity>
-
-            {/* authenticator button */}
-            <TouchableOpacity style={{ flex: 1, backgroundColor: '#fff', borderRadius: 12, paddingVertical: 14, alignItems: 'center', borderWidth: 2, borderColor: '#009966', flexDirection: 'row', justifyContent: 'center' }} onPress={() => router.push('/(pages)/authenticator')}>
-              <Text style={{ color: '#009966', fontWeight: 'bold', fontSize: 16 }}>Authenticator</Text>
             </TouchableOpacity>
           </View>
         </View>

@@ -1,5 +1,5 @@
 import { Tabs } from 'expo-router';
-import { School, User, Group, FileUser, Users } from 'lucide-react-native';
+import { School, User, Group, Users, Home } from 'lucide-react-native';
 import React from 'react';
 
 import type { GestureResponderEvent } from 'react-native';
@@ -72,17 +72,17 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="school"
+        name="home"
         options={{
-          title: 'School',
-          tabBarIcon: ({ color, focused }) => <School size={28} color={focused ? '#009966' : color} />,
+          title: 'Home',
+          tabBarIcon: ({ color, focused }) => <Home size={28} color={focused ? '#009966' : color} />,
         }}
       />
       <Tabs.Screen
-        name="result"
+        name="parent"
         options={{
-          title: 'Results',
-          tabBarIcon: ({ color, focused }) => <FileUser size={28} color={focused ? '#009966' : color} />,
+          title: 'Parents',
+          tabBarIcon: ({ color, focused }) => <Users size={28} color={focused ? '#009966' : color} />,
         }}
       />
       <Tabs.Screen
