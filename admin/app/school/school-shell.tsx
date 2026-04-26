@@ -39,6 +39,7 @@ import {
   HousePlus,
   UserPlus,
   ChartPie,
+  BrainCircuit
 } from "lucide-react";
 import { usePathname } from "next/navigation";
 
@@ -130,7 +131,7 @@ const schoolNavigation = [
 //   },
 //   {
 //     label: "E-Learning",
-//     icon: Cctv,
+//     icon: BrainCircuit,
 //     group: [
 //       {
 //         label: "Virtual Classes",
