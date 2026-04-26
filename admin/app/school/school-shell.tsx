@@ -102,44 +102,44 @@ const schoolNavigation = [
       { label: "Fees", href: "/school/fees", icon: CircleDollarSign },
     ],
   },
-  {
-    label: "Analytics",
-    icon: ChartPie,
-    group: [
-      {
-        label: "Student Performance",
-        href: "/school/analytics/student",
-        icon: ChartBar,
-      },
-      {
-        label: "Parent Engagement",
-        href: "/school/analytics/parent",
-        icon: ChartBar,
-      },
-      {
-        label: "Staff Performance",
-        href: "/school/analytics/staff",
-        icon: ChartBar,
-      },
-      {
-        label: "Financial Analytics",
-        href: "/school/analytics/financial",
-        icon: ChartBar,
-      },
-    ],
-  },
-  {
-    label: "E-Learning",
-    icon: Cctv,
-    group: [
-      {
-        label: "Virtual Classes",
-        href: "/school/e-learning/virtual",
-        icon: ClipboardCheck,
-      },
-      { label: "Libraries", href: "/school/e-learning/libraries", icon: Cctv },
-    ],
-  },
+//   {
+//     label: "Analytics",
+//     icon: ChartPie,
+//     group: [
+//       {
+//         label: "Student Performance",
+//         href: "/school/analytics/student",
+//         icon: ChartBar,
+//       },
+//       {
+//         label: "Parent Engagement",
+//         href: "/school/analytics/parent",
+//         icon: ChartBar,
+//       },
+//       {
+//         label: "Staff Performance",
+//         href: "/school/analytics/staff",
+//         icon: ChartBar,
+//       },
+//       {
+//         label: "Financial Analytics",
+//         href: "/school/analytics/financial",
+//         icon: ChartBar,
+//       },
+//     ],
+//   },
+//   {
+//     label: "E-Learning",
+//     icon: Cctv,
+//     group: [
+//       {
+//         label: "Virtual Classes",
+//         href: "/school/e-learning/virtual",
+//         icon: ClipboardCheck,
+//       },
+//       { label: "Libraries", href: "/school/e-learning/libraries", icon: Cctv },
+//     ],
+//   },
   {
     label: "Access Control",
     icon: Cctv,
