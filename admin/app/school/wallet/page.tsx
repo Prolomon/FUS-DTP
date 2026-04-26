@@ -18,7 +18,7 @@ import {
 } from "lucide-react";
 
 const walletData = {
-  balance: "NGN 524,300",
+  balance: "NGN 5,024,300",
   accountNumber: "1234567890",
 };
 
@@ -142,7 +142,7 @@ export default function WalletPage() {
         <CardBody className="py-8 px-6">
           <div className="flex items-start justify-between">
             <div>
-              <p className="text-white/80 text-sm font-medium mb-2">Wallet Balance</p>
+              <p className="text-white/80 text-sm font-medium mb-2">Account Balance</p>
               <h1 className="text-white text-4xl font-bold">{walletData.balance}</h1>
               <p className="text-white/70 text-xs mt-3">
                 Account: {walletData.accountNumber}
@@ -207,7 +207,7 @@ export default function WalletPage() {
       </div>
 
       {/* Transaction History */}
-      <Card>
+      <Card className="p-4">
         <CardHeader className="flex gap-3 pb-4">
           <History className="w-5 h-5 text-default-500" />
           <div className="flex flex-col">
@@ -215,7 +215,7 @@ export default function WalletPage() {
             <p className="text-sm text-default-500">Recent wallet activities</p>
           </div>
         </CardHeader>
-        <CardBody className="divide-y">
+        <CardBody className="divide-y divide-gray-200">
           {transactions.map((transaction) => (
             <div
               key={transaction.id}
