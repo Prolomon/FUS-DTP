@@ -111,8 +111,16 @@ const schoolNavigation = [
         href: "/school/analytics/student",
         icon: ChartBar,
       },
-      { label: "Parent Engagement", href: "/school/analytics/parent", icon: ChartBar },
-      { label: "Staff Performance", href: "/school/analytics/staff", icon: ChartBar },
+      {
+        label: "Parent Engagement",
+        href: "/school/analytics/parent",
+        icon: ChartBar,
+      },
+      {
+        label: "Staff Performance",
+        href: "/school/analytics/staff",
+        icon: ChartBar,
+      },
       {
         label: "Financial Analytics",
         href: "/school/analytics/financial",
