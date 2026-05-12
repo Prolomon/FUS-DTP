@@ -40,7 +40,9 @@ import {
   UserPlus,
   ChartPie,
   BrainCircuit,
-  ScrollText
+  ScrollText,
+  MonitorCloud,
+  LibaryBig
 } from "lucide-react";
 import { usePathname } from "next/navigation";
 
@@ -131,18 +133,21 @@ const schoolNavigation = [
 //       },
 //     ],
 //   },
-//   {
-//     label: "E-Learning",
-//     icon: BrainCircuit,
-//     group: [
-//       {
-//         label: "Virtual Classes",
-//         href: "/school/e-learning/virtual",
-//         icon: ClipboardCheck,
-//       },
-//       { label: "Libraries", href: "/school/e-learning/libraries", icon: Cctv },
-//     ],
-//   },
+  {
+    label: "E-Learning",
+    icon: BrainCircuit,
+    group: [
+      {
+        label: "Virtual Classes",
+        href: "/school/e-learning/virtual",
+        icon: MonitorCloud,
+      },
+      { label: "Libraries", href: "/school/e-learning/libraries", icon: LibaryBig },
+      { label: "Courses", href: "/school/e-learning/courses", icon: LibaryBig },
+      { label: "Exam & Quiz", href: "/school/e-learning/exam-&-quiz", icon: LibaryBig },
+
+    ],
+  },
   {
     label: "Access Control",
     icon: Cctv,
