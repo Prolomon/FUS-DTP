@@ -39,7 +39,8 @@ import {
   HousePlus,
   UserPlus,
   ChartPie,
-  BrainCircuit
+  BrainCircuit,
+  ScrollText
 } from "lucide-react";
 import { usePathname } from "next/navigation";
 
@@ -101,6 +102,7 @@ const schoolNavigation = [
       { label: "Account", href: "/school/wallet", icon: Wallet },
       { label: "Expenses", href: "/school/expenses", icon: Landmark },
       { label: "Fees", href: "/school/fees", icon: CircleDollarSign },
+      { label: "Report", href: "/school/report/finance", icon: ScrollText },
     ],
   },
 //   {
