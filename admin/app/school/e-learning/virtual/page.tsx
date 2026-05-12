@@ -14,32 +14,34 @@ import { Users, BookOpen, GraduationCap, Download } from "lucide-react";
 
 export default function DashboardPage() {
   return (
-    <div className="p-6 space-y-8">
-      {/* Header */}
-      <header className="flex items-center justify-between">
-        <h1
-          className="text-2xl font-bold flex items-center gap-2"
-          style={{ color: "#009966" }}
-        >
-          <GraduationCap className="w-6 h-6" />
-          Learning Management System Dashboard
-        </h1>
-        <Button
-          style={{ backgroundColor: "#009966", color: "white" }}
-          variant="solid"
-          startContent={<Download className="w-4 h-4" />}
-        >
-          Download Report
-        </Button>
-      </header>
+    <div className="py-4 space-y-5">
+      <div>
+        {/* Header */}
+        <header className="flex items-center justify-between">
+          <h1
+            className="text-2xl font-bold flex items-center gap-2"
+            style={{ color: "#009966" }}
+          >
+            <GraduationCap className="w-6 h-6" />
+            Learning Management System Dashboard
+          </h1>
+          <Button
+            style={{ backgroundColor: "#009966", color: "white" }}
+            variant="solid"
+            startContent={<Download className="w-4 h-4" />}
+          >
+            Download Report
+          </Button>
+        </header>
 
-      <p className="text-sm text-gray-600 italic">
-        This dashboard is prepared according to the IPSAS-Compliant Accounting System.
-      </p>
+        <p className="text-sm text-gray-600 italic">
+          This dashboard is prepared according to the IPSAS-Compliant Accounting System.
+        </p>
+      </div>
 
       {/* Top Summary Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <Card className="shadow-md border" style={{ borderColor: "#009966" }}>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <Card className="shadow-md border p-2 border-gray-400">
           <CardHeader className="flex items-center gap-2">
             <Users className="w-5 h-5" style={{ color: "#009966" }} />
             <h2 className="text-lg font-semibold">Total Students</h2>
@@ -49,7 +51,7 @@ export default function DashboardPage() {
           </CardBody>
         </Card>
 
-        <Card className="shadow-md border" style={{ borderColor: "#009966" }}>
+        <Card className="shadow-md border p-2 border-gray-400">
           <CardHeader className="flex items-center gap-2">
             <BookOpen className="w-5 h-5" style={{ color: "#009966" }} />
             <h2 className="text-lg font-semibold">Total Courses</h2>
@@ -59,7 +61,7 @@ export default function DashboardPage() {
           </CardBody>
         </Card>
 
-        <Card className="shadow-md border" style={{ borderColor: "#009966" }}>
+        <Card className="shadow-md border p-2 border-gray-400">
           <CardHeader className="flex items-center gap-2">
             <GraduationCap className="w-5 h-5" style={{ color: "#009966" }} />
             <h2 className="text-lg font-semibold">Total Tutors</h2>
@@ -71,11 +73,10 @@ export default function DashboardPage() {
       </div>
 
       {/* Bottom Section: Split 60/40 */}
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
         {/* Student List (60%) */}
         <Card
-          className="md:col-span-3 shadow-md border"
-          style={{ borderColor: "#009966" }}
+          className="md:col-span-3 shadow-md border border-gray-400"
         >
           <CardHeader>
             <h2 className="text-lg font-semibold" style={{ color: "#009966" }}>
@@ -112,8 +113,7 @@ export default function DashboardPage() {
 
         {/* Assessments (40%) */}
         <Card
-          className="md:col-span-2 shadow-md border"
-          style={{ borderColor: "#009966" }}
+          className="md:col-span-2 shadow-md border border-gray-400"
         >
           <CardHeader>
             <h2 className="text-lg font-semibold" style={{ color: "#009966" }}>

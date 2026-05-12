@@ -22,9 +22,9 @@ const courses = [
 
 export default function CoursesPage() {
   return (
-    <div className="p-6 space-y-8">
+    <div className="py-4 space-y-5">
       {/* Header */}
-      <Card className="shadow-md border" style={{ borderColor: "#009966" }}>
+      <Card className="shadow-md border border-gray-400 p-2">
         <CardHeader className="flex items-center justify-between">
           <h1
             className="text-2xl font-bold flex items-center gap-2"
@@ -48,12 +48,11 @@ export default function CoursesPage() {
       </Card>
 
       {/* Courses Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {courses.map((course) => (
           <Card
             key={course.id}
-            className="shadow-md border hover:shadow-lg transition"
-            style={{ borderColor: "#009966" }}
+            className="shadow-md border hover:shadow-lg transition border-gray-400"
           >
             <CardHeader>
               <Link

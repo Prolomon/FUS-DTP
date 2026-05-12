@@ -35,9 +35,9 @@ export default function ExamQuizPage() {
   const [isQuizModalOpen, setQuizModalOpen] = useState(false);
 
   return (
-    <div className="p-6 space-y-8">
+    <div className="py-4 space-y-y">
       {/* Header */}
-      <Card className="shadow-md border" style={{ borderColor: "#009966" }}>
+      <Card className="shadow-md border border-gray-400 p-2">
         <CardHeader className="flex items-center justify-between">
           <h1
             className="text-2xl font-bold flex items-center gap-2"
@@ -61,12 +61,12 @@ export default function ExamQuizPage() {
       </Card>
 
       {/* Tabs */}
-      <Tabs aria-label="Exam and Quiz Tabs" color="primary" variant="bordered">
+      <Tabs aria-label="Exam and Quiz Tabs" color="success" variant="bordered">
         {/* Exams Tab */}
         <Tab
           key="exams"
           title={
-            <span className="flex items-center gap-2">
+            <span className="flex items-center gap-2 w-full">
               <FileText className="w-4 h-4" /> Exams
             </span>
           }
@@ -80,39 +80,35 @@ export default function ExamQuizPage() {
               Create Exam
             </Button>
           </div>
-          <Card className="shadow-md border" style={{ borderColor: "#009966" }}>
-            <CardBody>
-              <Table aria-label="Exams Table" className="text-sm">
-                <TableHeader>
-                  <TableColumn>Course</TableColumn>
-                  <TableColumn>Date</TableColumn>
-                  <TableColumn>Venue</TableColumn>
-                  <TableColumn>Status</TableColumn>
-                </TableHeader>
-                <TableBody>
-                  <TableRow>
-                    <TableCell>Accounting Basics</TableCell>
-                    <TableCell>2026-06-01</TableCell>
-                    <TableCell>Hall A</TableCell>
-                    <TableCell>Scheduled</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell>Public Finance</TableCell>
-                    <TableCell>2026-06-05</TableCell>
-                    <TableCell>Hall B</TableCell>
-                    <TableCell>Scheduled</TableCell>
-                  </TableRow>
-                </TableBody>
-              </Table>
-            </CardBody>
-          </Card>
+          <Table aria-label="Exams Table" className="text-sm">
+            <TableHeader>
+              <TableColumn>Course</TableColumn>
+              <TableColumn>Date</TableColumn>
+              <TableColumn>Venue</TableColumn>
+              <TableColumn>Status</TableColumn>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell>Accounting Basics</TableCell>
+                <TableCell>2026-06-01</TableCell>
+                <TableCell>Hall A</TableCell>
+                <TableCell>Scheduled</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Public Finance</TableCell>
+                <TableCell>2026-06-05</TableCell>
+                <TableCell>Hall B</TableCell>
+                <TableCell>Scheduled</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
         </Tab>
 
         {/* Quizzes Tab */}
         <Tab
           key="quizzes"
           title={
-            <span className="flex items-center gap-2">
+            <span className="flex items-center gap-2 w-full">
               <ClipboardList className="w-4 h-4" /> Quizzes
             </span>
           }
@@ -126,37 +122,33 @@ export default function ExamQuizPage() {
               Create Quiz
             </Button>
           </div>
-          <Card className="shadow-md border" style={{ borderColor: "#009966" }}>
-            <CardBody>
-              <Table aria-label="Quizzes Table" className="text-sm">
-                <TableHeader>
-                  <TableColumn>Course</TableColumn>
-                  <TableColumn>Date</TableColumn>
-                  <TableColumn>Status</TableColumn>
-                </TableHeader>
-                <TableBody>
-                  <TableRow>
-                    <TableCell>Business Ethics</TableCell>
-                    <TableCell>2026-06-02</TableCell>
-                    <TableCell>Scheduled</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell>Economics 101</TableCell>
-                    <TableCell>2026-06-03</TableCell>
-                    <TableCell>Scheduled</TableCell>
-                  </TableRow>
-                </TableBody>
-              </Table>
-            </CardBody>
-          </Card>
+          <Table aria-label="Quizzes Table" className="text-sm">
+            <TableHeader>
+              <TableColumn>Course</TableColumn>
+              <TableColumn>Date</TableColumn>
+              <TableColumn>Status</TableColumn>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell>Business Ethics</TableCell>
+                <TableCell>2026-06-02</TableCell>
+                <TableCell>Scheduled</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Economics 101</TableCell>
+                <TableCell>2026-06-03</TableCell>
+                <TableCell>Scheduled</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
         </Tab>
       </Tabs>
 
       {/* Exam Modal */}
-      <Modal isOpen={isExamModalOpen} onOpenChange={setExamModalOpen}>
+      <Modal isOpen={isExamModalOpen} onOpenChange={setExamModalOpen} size="2xl">
         <ModalContent>
           <ModalHeader>Create Exam</ModalHeader>
-          <ModalBody className="space-y-4">
+          <ModalBody className="space-y-4 grid grid-cols-2 max-md:grid-cols-1">
             <Select label="Subject">
               <SelectItem key="accounting">Accounting Basics</SelectItem>
               <SelectItem key="finance">Public Finance</SelectItem>
@@ -195,10 +187,10 @@ export default function ExamQuizPage() {
       </Modal>
 
       {/* Quiz Modal */}
-      <Modal isOpen={isQuizModalOpen} onOpenChange={setQuizModalOpen}>
+      <Modal isOpen={isQuizModalOpen} onOpenChange={setQuizModalOpen} size="2xl">
         <ModalContent>
           <ModalHeader>Create Quiz</ModalHeader>
-          <ModalBody className="space-y-4">
+          <ModalBody className="space-y-4  grid grid-cols-2 max-md:grid-cols-1">
             <Select label="Subject">
               <SelectItem key="accounting">Accounting Basics</SelectItem>
               <SelectItem key="finance">Public Finance</SelectItem>
