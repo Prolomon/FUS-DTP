@@ -22,7 +22,7 @@ const LIVE_FEEDS: LiveFeed[] = [
     provider: 'Bus feed',
     quality: 'HD adaptive',
     location: 'Worldwide',
-    url: 'https://fus-ditp-server.onrender.com/feed/live/2',
+    url: 'http://195.134.183.68:8000/mjpg/video.mjpg?COUNTER',
   },
   {
     id: 'assembly',
@@ -30,7 +30,7 @@ const LIVE_FEEDS: LiveFeed[] = [
     provider: 'Assembly Feed',
     quality: '720p',
     location: 'City route',
-    url: 'https://fus-ditp-server.onrender.com/feed/live/3',
+    url: 'http://80.62.172.130/mjpg/video.mjpg?COUNTER',
   },
   {
     id: 'class-room',
@@ -38,7 +38,7 @@ const LIVE_FEEDS: LiveFeed[] = [
     provider: 'Class Feed',
     quality: 'HD stream',
     location: 'Campus gate',
-    url: 'https://fus-ditp-server.onrender.com/feed/live/4',
+    url: 'http://165.234.182.103/mjpg/video.mjpg',
   },
   {
     id: 'cafeteria',
@@ -46,7 +46,7 @@ const LIVE_FEEDS: LiveFeed[] = [
     provider: 'Cafeteria Feed',
     quality: 'Low latency',
     location: 'School corridor',
-    url: 'https://fus-ditp-server.onrender.com/feed/live/5',
+    url: 'http://96.35.163.110/mjpg/video.mjpg',
   },
 ];
 
