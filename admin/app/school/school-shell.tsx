@@ -42,7 +42,7 @@ import {
   BrainCircuit,
   ScrollText,
   MonitorCloud,
-  LibaryBig
+  LibraryBig
 } from "lucide-react";
 import { usePathname } from "next/navigation";
 
@@ -143,7 +143,7 @@ const schoolNavigation = [
         icon: MonitorCloud,
       },
       { label: "Libraries", href: "/school/e-learning/libraries", icon: LibaryBig },
-      { label: "Courses", href: "/school/e-learning/courses", icon: LibaryBig },
+      { label: "Courses", href: "/school/e-learning/courses", icon: LibraryBig },
       { label: "Exam & Quiz", href: "/school/e-learning/exam-&-quiz", icon: LibaryBig },
 
     ],
