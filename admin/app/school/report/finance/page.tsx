@@ -27,7 +27,7 @@ const SectionHeader = ({ title }: { title: string }) => (
 export default function FinancialReportPage() {
   return (
     <div className="flex flex-col gap-6 p-6 max-w-[1400px] mx-auto bg-[#fcfcfc] min-h-screen font-sans">
-      
+
       {/* HEADER SECTION */}
       <div className="flex justify-between items-center bg-white p-6 rounded-2xl border border-default-200 shadow-sm">
         <div className="flex gap-4 items-center">
@@ -48,7 +48,7 @@ export default function FinancialReportPage() {
           <Button variant="bordered" className="font-semibold border-default-200">
             Preview
           </Button>
-          <Button 
+          <Button
             startContent={<Download size={18} />}
             className="font-semibold bg-[#662d91] text-white shadow-md"
           >
@@ -66,10 +66,10 @@ export default function FinancialReportPage() {
           </p>
           <p className="text-xs text-default-400 mt-1">FOR THE YEAR ENDED 31 DECEMBER 2024</p>
         </CardHeader>
-        
+
         <CardBody className="px-8 pb-8 pt-0">
-          <Tabs 
-            aria-label="IPSAS Statements" 
+          <Tabs
+            aria-label="IPSAS Statements"
             variant="underlined"
             classNames={{
               tabList: "gap-8 w-full relative rounded-none p-0 border-b border-divider",
@@ -79,7 +79,7 @@ export default function FinancialReportPage() {
             }}
           >
             {/* 1. STATEMENT OF FINANCIAL PERFORMANCE */}
-            <Tab key="perf" title={<div className="flex items-center gap-2 font-bold"><TrendingUp size={16}/> Performance</div>}>
+            <Tab key="perf" title={<div className="flex items-center gap-2 font-bold"><TrendingUp size={16} /> Performance</div>}>
               <div className="mt-6 space-y-8">
                 <section>
                   <SectionHeader title="1. STATEMENT OF FINANCIAL PERFORMANCE" />
@@ -97,8 +97,8 @@ export default function FinancialReportPage() {
                       <TableRow><TableCell>3. Examination and Certification Fees</TableCell><TableCell>3</TableCell><TableCell className="text-right font-mono">215,000,000</TableCell><TableCell className="text-right font-mono">180,000,000</TableCell></TableRow>
                       <TableRow><TableCell>4. ICT Service Charges</TableCell><TableCell>4</TableCell><TableCell className="text-right font-mono">145,000,000</TableCell><TableCell className="text-right font-mono">98,000,000</TableCell></TableRow>
                       <TableRow><TableCell>5. Donations and Development Support</TableCell><TableCell>5</TableCell><TableCell className="text-right font-mono">120,000,000</TableCell><TableCell className="text-right font-mono">75,000,000</TableCell></TableRow>
-                      <TableRow className="font-bold border-t-2 border-slate-200"><TableCell>TOTAL REVENUE</TableCell><TableCell/><TableCell className="text-right font-mono">6,150,000,000</TableCell><TableCell className="text-right font-mono">4,953,000,000</TableCell></TableRow>
-                      
+                      <TableRow className="font-bold border-t-2 border-slate-200"><TableCell colSpan={2}>TOTAL REVENUE</TableCell><TableCell className="text-right font-mono">6,150,000,000</TableCell><TableCell className="text-right font-mono">4,953,000,000</TableCell></TableRow>
+
                       <TableRow className="bg-default-50 font-bold pt-4"><TableCell colSpan={4}>B. EXPENSES</TableCell></TableRow>
                       <TableRow><TableCell>1. Staff Costs</TableCell><TableCell>6</TableCell><TableCell className="text-right font-mono">2,165,000,000</TableCell><TableCell className="text-right font-mono">1,910,000,000</TableCell></TableRow>
                       <TableRow><TableCell>2. Pension Expense</TableCell><TableCell>7</TableCell><TableCell className="text-right font-mono">215,000,000</TableCell><TableCell className="text-right font-mono">190,000,000</TableCell></TableRow>
@@ -119,7 +119,7 @@ export default function FinancialReportPage() {
             </Tab>
 
             {/* 2. STATEMENT OF FINANCIAL POSITION */}
-            <Tab key="pos" title={<div className="flex items-center gap-2 font-bold"><Landmark size={16}/> Position</div>}>
+            <Tab key="pos" title={<div className="flex items-center gap-2 font-bold"><Landmark size={16} /> Position</div>}>
               <div className="mt-6 space-y-6">
                 <SectionHeader title="2. STATEMENT OF FINANCIAL POSITION" />
                 <Table removeWrapper aria-label="Statement of Position">
@@ -134,15 +134,15 @@ export default function FinancialReportPage() {
                     <TableRow><TableCell>1. Property, Plant and Equipment</TableCell><TableCell>16</TableCell><TableCell className="text-right font-mono">3,950,000,000</TableCell><TableCell className="text-right font-mono">3,120,000,000</TableCell></TableRow>
                     <TableRow><TableCell>2. Intangible Assets (Software)</TableCell><TableCell>17</TableCell><TableCell className="text-right font-mono">1,180,000,000</TableCell><TableCell className="text-right font-mono">850,000,000</TableCell></TableRow>
                     <TableRow><TableCell>3. Right-of-Use Assets</TableCell><TableCell>18</TableCell><TableCell className="text-right font-mono">240,000,000</TableCell><TableCell className="text-right font-mono">180,000,000</TableCell></TableRow>
-                    <TableRow className="font-bold bg-slate-100"><TableCell>Total Non-Current Assets</TableCell><TableCell/><TableCell className="text-right font-mono">5,370,000,000</TableCell><TableCell className="text-right font-mono">4,150,000,000</TableCell></TableRow>
-                    
+                    <TableRow className="font-bold bg-slate-100"><TableCell colSpan={2}>Total Non-Current Assets</TableCell><TableCell className="text-right font-mono">5,370,000,000</TableCell><TableCell className="text-right font-mono">4,150,000,000</TableCell></TableRow>
+
                     <TableRow className="font-bold bg-default-50 text-[#662d91]"><TableCell colSpan={4}>B. CURRENT ASSETS</TableCell></TableRow>
                     <TableRow><TableCell>1. Cash and Cash Equivalents</TableCell><TableCell>19</TableCell><TableCell className="text-right font-mono">1,850,000,000</TableCell><TableCell className="text-right font-mono">1,250,000,000</TableCell></TableRow>
                     <TableRow><TableCell>2. Accounts Receivable</TableCell><TableCell>20</TableCell><TableCell className="text-right font-mono">320,000,000</TableCell><TableCell className="text-right font-mono">205,000,000</TableCell></TableRow>
                     <TableRow><TableCell>3. Prepayments</TableCell><TableCell>21</TableCell><TableCell className="text-right font-mono">85,000,000</TableCell><TableCell className="text-right font-mono">60,000,000</TableCell></TableRow>
                     <TableRow><TableCell>4. Inventories</TableCell><TableCell>22</TableCell><TableCell className="text-right font-mono">45,000,000</TableCell><TableCell className="text-right font-mono">30,000,000</TableCell></TableRow>
-                    <TableRow className="font-bold bg-slate-100"><TableCell>Total Current Assets</TableCell><TableCell/><TableCell className="text-right font-mono">2,300,000,000</TableCell><TableCell className="text-right font-mono">1,545,000,000</TableCell></TableRow>
-                    
+                    <TableRow className="font-bold bg-slate-100"><TableCell colSpan={2}>Total Current Assets</TableCell><TableCell className="text-right font-mono">2,300,000,000</TableCell><TableCell className="text-right font-mono">1,545,000,000</TableCell></TableRow>
+
                     <TableRow className="font-black h-12 bg-purple-100"><TableCell colSpan={2}>TOTAL ASSETS</TableCell><TableCell className="text-right font-mono">7,670,000,000</TableCell><TableCell className="text-right font-mono">5,695,000,000</TableCell></TableRow>
 
                     <TableRow className="font-bold bg-default-50 text-[#662d91]"><TableCell colSpan={4}>C. LIABILITIES</TableCell></TableRow>
@@ -151,7 +151,7 @@ export default function FinancialReportPage() {
                     <TableRow><TableCell>3. Pension Liabilities</TableCell><TableCell>25</TableCell><TableCell className="text-right font-mono">95,000,000</TableCell><TableCell className="text-right font-mono">80,000,000</TableCell></TableRow>
                     <TableRow><TableCell>4. Deferred Revenue</TableCell><TableCell>26</TableCell><TableCell className="text-right font-mono">210,000,000</TableCell><TableCell className="text-right font-mono">145,000,000</TableCell></TableRow>
                     <TableRow className="font-bold bg-slate-100 border-b-2 border-slate-300"><TableCell colSpan={2}>Total Liabilities</TableCell><TableCell className="text-right font-mono">890,000,000</TableCell><TableCell className="text-right font-mono">625,000,000</TableCell></TableRow>
-                    
+
                     <TableRow className="font-black bg-slate-900 text-white"><TableCell colSpan={2}>TOTAL LIABILITIES AND NET ASSETS</TableCell><TableCell className="text-right font-mono">7,670,000,000</TableCell><TableCell className="text-right font-mono">5,695,000,000</TableCell></TableRow>
                   </TableBody>
                 </Table>
@@ -159,7 +159,7 @@ export default function FinancialReportPage() {
             </Tab>
 
             {/* 3. STATEMENT OF CASH FLOWS */}
-            <Tab key="cash" title={<div className="flex items-center gap-2 font-bold"><Wallet size={16}/> Cash Flows</div>}>
+            <Tab key="cash" title={<div className="flex items-center gap-2 font-bold"><Wallet size={16} /> Cash Flows</div>}>
               <div className="mt-6 space-y-6">
                 <SectionHeader title="3. STATEMENT OF CASH FLOWS" />
                 <Table removeWrapper aria-label="Statement of Cash Flows">
@@ -171,18 +171,24 @@ export default function FinancialReportPage() {
                   </TableHeader>
                   <TableBody>
                     <TableRow className="font-bold bg-default-50"><TableCell colSpan={4}>A. CASH FLOWS FROM OPERATING ACTIVITIES</TableCell></TableRow>
-                    <TableRow><TableCell>Cash received from Government Grants</TableCell><TableCell/><TableCell className="text-right font-mono">4,820,000,000</TableCell><TableCell className="text-right font-mono">3,920,000,000</TableCell></TableRow>
-                    <TableRow><TableCell>Cash received from IGR and Other Sources</TableCell><TableCell/><TableCell className="text-right font-mono">1,080,000,000</TableCell><TableCell className="text-right font-mono">850,000,000</TableCell></TableRow>
-                    <TableRow><TableCell>Cash paid to Suppliers and Employees</TableCell><TableCell/><TableCell className="text-right font-mono text-danger">(3,495,000,000)</TableCell><TableCell className="text-right font-mono text-danger">(2,850,000,000)</TableCell></TableRow>
-                    <TableRow><TableCell>Cash paid for Operations and Overheads</TableCell><TableCell/><TableCell className="text-right font-mono text-danger">(820,000,000)</TableCell><TableCell className="text-right font-mono text-danger">(600,000,000)</TableCell></TableRow>
+                    <TableRow><TableCell colSpan={2}>Cash received from Government Grants</TableCell><TableCell className="text-right font-mono">4,820,000,000</TableCell><TableCell className="text-right font-mono">3,920,000,000</TableCell></TableRow>
+                    <TableRow><TableCell colSpan={2}>Cash received from IGR and Other Sources</TableCell><TableCell className="text-right font-mono">1,080,000,000</TableCell><TableCell className="text-right font-mono">850,000,000</TableCell></TableRow>
+                    <TableRow><TableCell colSpan={2}>Cash paid to Suppliers and Employees</TableCell><TableCell className="text-right font-mono text-danger">(3,495,000,000)</TableCell><TableCell className="text-right font-mono text-danger">(2,850,000,000)</TableCell></TableRow>
+                    <TableRow><TableCell colSpan={2}>Cash paid for Operations and Overheads</TableCell><TableCell className="text-right font-mono text-danger">(820,000,000)</TableCell><TableCell className="text-right font-mono text-danger">(600,000,000)</TableCell></TableRow>
                     <TableRow className="font-bold border-t border-divider"><TableCell colSpan={2}>Net Cash from Operating Activities</TableCell><TableCell className="text-right font-mono">1,585,000,000</TableCell><TableCell className="text-right font-mono">1,320,000,000</TableCell></TableRow>
-                    
+
                     <TableRow className="font-bold bg-default-50 pt-4"><TableCell colSpan={4}>B. CASH FLOWS FROM INVESTING ACTIVITIES</TableCell></TableRow>
-                    <TableRow><TableCell>Purchase of Property, Plant and Equipment</TableCell><TableCell/><TableCell className="text-right font-mono text-danger">(1,250,000,000)</TableCell><TableCell className="text-right font-mono text-danger">(950,000,000)</TableCell></TableRow>
-                    <TableRow><TableCell>Purchase of Intangible Assets (Software)</TableCell><TableCell/><TableCell className="text-right font-mono text-danger">(420,000,000)</TableCell><TableCell className="text-right font-mono text-danger">(310,000,000)</TableCell></TableRow>
-                    <TableRow><TableCell>Proceeds from Disposal of Assets</TableCell><TableCell/><TableCell className="text-right font-mono">20,000,000</TableCell><TableCell className="text-right font-mono">15,000,000</TableCell></TableRow>
+                    <TableRow>
+                      <TableCell colSpan={2}>Purchase of Property, Plant and Equipment</TableCell>
+                      <TableCell className="text-right font-mono text-danger">(1,250,000,000)</TableCell>
+                      <TableCell className="text-right font-mono text-danger">(950,000,000)</TableCell>
+                    </TableRow>
+                    <TableRow><TableCell colSpan={2}>Purchase of Intangible Assets (Software)</TableCell><TableCell className="text-right font-mono text-danger">(420,000,000)</TableCell><TableCell className="text-right font-mono text-danger">(310,000,000)</TableCell></TableRow>
+                    <TableRow><TableCell colSpan={2}>Proceeds from Disposal of Assets</TableCell>
+                    <TableCell className="text-right font-mono">20,000,000</TableCell>
+                    <TableCell className="text-right font-mono">15,000,000</TableCell></TableRow>
                     <TableRow className="font-bold border-t border-divider"><TableCell colSpan={2}>Net Cash Used in Investing Activities</TableCell><TableCell className="text-right font-mono text-danger">(1,650,000,000)</TableCell><TableCell className="text-right font-mono text-danger">(1,245,000,000)</TableCell></TableRow>
-                    
+
                     <TableRow className="font-black bg-slate-900 text-white h-14 border-t-4 border-[#662d91]">
                       <TableCell colSpan={2}>CASH AND CASH EQUIVALENTS AT 31 DECEMBER</TableCell>
                       <TableCell className="text-right font-mono">1,850,000,000</TableCell>
