@@ -22,7 +22,7 @@ const LIVE_FEEDS: LiveFeed[] = [
     provider: 'Bus feed',
     quality: 'HD adaptive',
     location: 'Worldwide',
-    url: 'http://195.134.183.68:8000/mjpg/video.mjpg?COUNTER',
+    url: 'https://fus-ditp-server.onrender.com/feed/live/2',
   },
   {
     id: 'assembly',
@@ -30,7 +30,7 @@ const LIVE_FEEDS: LiveFeed[] = [
     provider: 'Assembly Feed',
     quality: '720p',
     location: 'City route',
-    url: 'http://80.62.172.130/mjpg/video.mjpg?COUNTER',
+    url: 'https://fus-ditp-server.onrender.com/feed/live/3',
   },
   {
     id: 'class-room',
@@ -38,7 +38,7 @@ const LIVE_FEEDS: LiveFeed[] = [
     provider: 'Class Feed',
     quality: 'HD stream',
     location: 'Campus gate',
-    url: 'http://165.234.182.103/mjpg/video.mjpg',
+    url: 'https://fus-ditp-server.onrender.com/feed/live/4',
   },
   {
     id: 'cafeteria',
@@ -46,12 +46,11 @@ const LIVE_FEEDS: LiveFeed[] = [
     provider: 'Cafeteria Feed',
     quality: 'Low latency',
     location: 'School corridor',
-    url: 'http://96.35.163.110/mjpg/video.mjpg',
+    url: 'https://fus-ditp-server.onrender.com/feed/live/5',
   },
 ];
 
 export default function FeedPage() {
-  
   const [selectedFeedId, setSelectedFeedId] = useState(LIVE_FEEDS[0]?.id ?? "");
 
   const selectedFeed = useMemo(
