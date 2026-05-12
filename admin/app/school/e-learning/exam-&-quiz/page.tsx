@@ -25,9 +25,8 @@ import {
   ModalBody,
   ModalFooter,
 } from "@heroui/modal";
-import { Input } from "@heroui/input";
+import { Input, Textarea } from "@heroui/input";
 import { Select, SelectItem } from "@heroui/select";
-import { Textarea } from "@heroui/textarea";
 import { useState } from "react";
 import { FileText, ClipboardList, PlusCircle } from "lucide-react";
 

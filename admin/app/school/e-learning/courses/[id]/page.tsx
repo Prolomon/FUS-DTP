@@ -9,7 +9,7 @@ import { Tabs, Tab } from "@heroui/tabs";
 import { Button } from "@heroui/button";
 import { Accordion, AccordionItem } from "@heroui/accordion";
 import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell } from "@heroui/table";
-import { Textarea } from "@heroui/textarea";
+import { Textarea } from "@heroui/input";
 import { FileText, Video, FileDown } from "lucide-react";
 
 export default function CoursePage() {
