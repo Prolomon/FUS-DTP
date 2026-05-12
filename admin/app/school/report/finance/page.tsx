@@ -31,7 +31,7 @@ export default function FinancialReportPage() {
       {/* HEADER SECTION */}
       <div className="flex justify-between items-center bg-white p-6 rounded-2xl border border-default-200 shadow-sm">
         <div className="flex gap-4 items-center">
-          <div className="p-3 bg-[#662d91]/10 rounded-xl text-[#662d91]">
+          <div className="p-3 bg-[#009966]/10 rounded-xl text-[#009966]">
             <Landmark size={32} />
           </div>
           <div>
@@ -50,7 +50,7 @@ export default function FinancialReportPage() {
           </Button>
           <Button
             startContent={<Download size={18} />}
-            className="font-semibold bg-[#662d91] text-white shadow-md"
+            className="font-semibold bg-[#009966] text-white shadow-md"
           >
             Download Full Report
           </Button>
@@ -61,7 +61,7 @@ export default function FinancialReportPage() {
       <Card className="border-none shadow-sm rounded-2xl overflow-hidden">
         <CardHeader className="flex flex-col items-start px-8 pt-8 pb-4 bg-white">
           <h2 className="text-xl font-bold text-slate-800 uppercase">Annual Financial Statements</h2>
-          <p className="text-sm text-[#662d91] font-semibold tracking-wide uppercase">
+          <p className="text-sm text-[#009966] font-semibold tracking-wide uppercase">
             Federal Unified School Digital Transformation Platform (FUS-DITP)
           </p>
           <p className="text-xs text-default-400 mt-1">FOR THE YEAR ENDED 31 DECEMBER 2024</p>
@@ -73,9 +73,9 @@ export default function FinancialReportPage() {
             variant="underlined"
             classNames={{
               tabList: "gap-8 w-full relative rounded-none p-0 border-b border-divider",
-              cursor: "w-full bg-[#662d91]",
+              cursor: "w-full bg-[#009966]",
               tab: "max-w-fit px-0 h-14",
-              tabContent: "group-data-[selected=true]:text-[#662d91] font-bold text-sm uppercase"
+              tabContent: "group-data-[selected=true]:text-[#009966] font-bold text-sm uppercase"
             }}
           >
             {/* 1. STATEMENT OF FINANCIAL PERFORMANCE */}
@@ -111,7 +111,7 @@ export default function FinancialReportPage() {
                       <TableRow><TableCell>9. Monitoring and Evaluation</TableCell><TableCell>14</TableCell><TableCell className="text-right font-mono">75,000,000</TableCell><TableCell className="text-right font-mono">62,000,000</TableCell></TableRow>
                       <TableRow><TableCell>10. Administrative Expenses</TableCell><TableCell>15</TableCell><TableCell className="text-right font-mono">128,000,000</TableCell><TableCell className="text-right font-mono">101,000,000</TableCell></TableRow>
                       <TableRow className="font-bold bg-slate-900 text-white"><TableCell colSpan={2}>TOTAL EXPENSES</TableCell><TableCell className="text-right font-mono">4,411,000,000</TableCell><TableCell className="text-right font-mono">3,668,000,000</TableCell></TableRow>
-                      <TableRow className="font-black h-14 bg-purple-50 text-[#662d91]"><TableCell colSpan={2}>SURPLUS FOR THE YEAR</TableCell><TableCell className="text-right font-mono underline decoration-double text-lg">1,739,000,000</TableCell><TableCell className="text-right font-mono underline decoration-double text-lg">1,285,000,000</TableCell></TableRow>
+                      <TableRow className="font-black h-14 bg-purple-50 text-[#009966]"><TableCell colSpan={2}>SURPLUS FOR THE YEAR</TableCell><TableCell className="text-right font-mono underline decoration-double text-lg">1,739,000,000</TableCell><TableCell className="text-right font-mono underline decoration-double text-lg">1,285,000,000</TableCell></TableRow>
                     </TableBody>
                   </Table>
                 </section>
@@ -130,13 +130,13 @@ export default function FinancialReportPage() {
                     <TableColumn align="end">2023 (₦)</TableColumn>
                   </TableHeader>
                   <TableBody>
-                    <TableRow className="font-bold bg-default-50 text-[#662d91]"><TableCell colSpan={4}>A. NON-CURRENT ASSETS</TableCell></TableRow>
+                    <TableRow className="font-bold bg-default-50 text-[#009966]"><TableCell colSpan={4}>A. NON-CURRENT ASSETS</TableCell></TableRow>
                     <TableRow><TableCell>1. Property, Plant and Equipment</TableCell><TableCell>16</TableCell><TableCell className="text-right font-mono">3,950,000,000</TableCell><TableCell className="text-right font-mono">3,120,000,000</TableCell></TableRow>
                     <TableRow><TableCell>2. Intangible Assets (Software)</TableCell><TableCell>17</TableCell><TableCell className="text-right font-mono">1,180,000,000</TableCell><TableCell className="text-right font-mono">850,000,000</TableCell></TableRow>
                     <TableRow><TableCell>3. Right-of-Use Assets</TableCell><TableCell>18</TableCell><TableCell className="text-right font-mono">240,000,000</TableCell><TableCell className="text-right font-mono">180,000,000</TableCell></TableRow>
                     <TableRow className="font-bold bg-slate-100"><TableCell colSpan={2}>Total Non-Current Assets</TableCell><TableCell className="text-right font-mono">5,370,000,000</TableCell><TableCell className="text-right font-mono">4,150,000,000</TableCell></TableRow>
 
-                    <TableRow className="font-bold bg-default-50 text-[#662d91]"><TableCell colSpan={4}>B. CURRENT ASSETS</TableCell></TableRow>
+                    <TableRow className="font-bold bg-default-50 text-[#009966]"><TableCell colSpan={4}>B. CURRENT ASSETS</TableCell></TableRow>
                     <TableRow><TableCell>1. Cash and Cash Equivalents</TableCell><TableCell>19</TableCell><TableCell className="text-right font-mono">1,850,000,000</TableCell><TableCell className="text-right font-mono">1,250,000,000</TableCell></TableRow>
                     <TableRow><TableCell>2. Accounts Receivable</TableCell><TableCell>20</TableCell><TableCell className="text-right font-mono">320,000,000</TableCell><TableCell className="text-right font-mono">205,000,000</TableCell></TableRow>
                     <TableRow><TableCell>3. Prepayments</TableCell><TableCell>21</TableCell><TableCell className="text-right font-mono">85,000,000</TableCell><TableCell className="text-right font-mono">60,000,000</TableCell></TableRow>
@@ -145,7 +145,7 @@ export default function FinancialReportPage() {
 
                     <TableRow className="font-black h-12 bg-purple-100"><TableCell colSpan={2}>TOTAL ASSETS</TableCell><TableCell className="text-right font-mono">7,670,000,000</TableCell><TableCell className="text-right font-mono">5,695,000,000</TableCell></TableRow>
 
-                    <TableRow className="font-bold bg-default-50 text-[#662d91]"><TableCell colSpan={4}>C. LIABILITIES</TableCell></TableRow>
+                    <TableRow className="font-bold bg-default-50 text-[#009966]"><TableCell colSpan={4}>C. LIABILITIES</TableCell></TableRow>
                     <TableRow><TableCell>1. Accounts Payable</TableCell><TableCell>23</TableCell><TableCell className="text-right font-mono">420,000,000</TableCell><TableCell className="text-right font-mono">290,000,000</TableCell></TableRow>
                     <TableRow><TableCell>2. Accrued Expenses</TableCell><TableCell>24</TableCell><TableCell className="text-right font-mono">165,000,000</TableCell><TableCell className="text-right font-mono">110,000,000</TableCell></TableRow>
                     <TableRow><TableCell>3. Pension Liabilities</TableCell><TableCell>25</TableCell><TableCell className="text-right font-mono">95,000,000</TableCell><TableCell className="text-right font-mono">80,000,000</TableCell></TableRow>
@@ -189,7 +189,7 @@ export default function FinancialReportPage() {
                     <TableCell className="text-right font-mono">15,000,000</TableCell></TableRow>
                     <TableRow className="font-bold border-t border-divider"><TableCell colSpan={2}>Net Cash Used in Investing Activities</TableCell><TableCell className="text-right font-mono text-danger">(1,650,000,000)</TableCell><TableCell className="text-right font-mono text-danger">(1,245,000,000)</TableCell></TableRow>
 
-                    <TableRow className="font-black bg-slate-900 text-white h-14 border-t-4 border-[#662d91]">
+                    <TableRow className="font-black bg-slate-900 text-white h-14 border-t-4 border-[#009966]">
                       <TableCell colSpan={2}>CASH AND CASH EQUIVALENTS AT 31 DECEMBER</TableCell>
                       <TableCell className="text-right font-mono">1,850,000,000</TableCell>
                       <TableCell className="text-right font-mono">1,675,000,000</TableCell>
@@ -218,9 +218,9 @@ export default function FinancialReportPage() {
 
         <Card className="bg-purple-50 border-none">
           <CardBody className="p-6 flex flex-col justify-center items-center text-center">
-            <Info size={24} className="text-[#662d91] mb-2" />
-            <p className="text-sm font-bold text-[#662d91]">Digital Ledger Verification</p>
-            <p className="text-[10px] text-[#662d91]/70 mt-1 max-w-[250px]">
+            <Info size={24} className="text-[#009966] mb-2" />
+            <p className="text-sm font-bold text-[#009966]">Digital Ledger Verification</p>
+            <p className="text-[10px] text-[#009966]/70 mt-1 max-w-[250px]">
               This statement is generated via the FUS-DITP URMS System. Automated audit trail logs are attached to the PDF export.
             </p>
           </CardBody>
