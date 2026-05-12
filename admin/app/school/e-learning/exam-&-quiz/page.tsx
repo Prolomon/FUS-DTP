@@ -39,14 +39,23 @@ export default function ExamQuizPage() {
       {/* Header */}
       <Card className="shadow-md border" style={{ borderColor: "#009966" }}>
         <CardHeader className="flex items-center justify-between">
-          <h1 className="text-2xl font-bold flex items-center gap-2" style={{ color: "#009966" }}>
+          <h1
+            className="text-2xl font-bold flex items-center gap-2"
+            style={{ color: "#009966" }}
+          >
             <ClipboardList className="w-6 h-6" />
             Exams & Quizzes
           </h1>
+          <Button
+            style={{ backgroundColor: "#009966", color: "white" }}
+            variant="solid"
+          >
+            Manage
+          </Button>
         </CardHeader>
         <CardBody>
           <p className="text-sm text-gray-600">
-            Manage course exams and quizzes. Create, edit, and track assessments.
+            Create, edit, and track assessments for your courses.
           </p>
         </CardBody>
       </Card>
@@ -71,28 +80,32 @@ export default function ExamQuizPage() {
               Create Exam
             </Button>
           </div>
-          <Table aria-label="Exams Table">
-            <TableHeader>
-              <TableColumn>Course</TableColumn>
-              <TableColumn>Date</TableColumn>
-              <TableColumn>Venue</TableColumn>
-              <TableColumn>Status</TableColumn>
-            </TableHeader>
-            <TableBody>
-              <TableRow>
-                <TableCell>Accounting Basics</TableCell>
-                <TableCell>2026-06-01</TableCell>
-                <TableCell>Hall A</TableCell>
-                <TableCell>Scheduled</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>Public Finance</TableCell>
-                <TableCell>2026-06-05</TableCell>
-                <TableCell>Hall B</TableCell>
-                <TableCell>Scheduled</TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
+          <Card className="shadow-md border" style={{ borderColor: "#009966" }}>
+            <CardBody>
+              <Table aria-label="Exams Table" className="text-sm">
+                <TableHeader>
+                  <TableColumn>Course</TableColumn>
+                  <TableColumn>Date</TableColumn>
+                  <TableColumn>Venue</TableColumn>
+                  <TableColumn>Status</TableColumn>
+                </TableHeader>
+                <TableBody>
+                  <TableRow>
+                    <TableCell>Accounting Basics</TableCell>
+                    <TableCell>2026-06-01</TableCell>
+                    <TableCell>Hall A</TableCell>
+                    <TableCell>Scheduled</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell>Public Finance</TableCell>
+                    <TableCell>2026-06-05</TableCell>
+                    <TableCell>Hall B</TableCell>
+                    <TableCell>Scheduled</TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </CardBody>
+          </Card>
         </Tab>
 
         {/* Quizzes Tab */}
@@ -113,25 +126,29 @@ export default function ExamQuizPage() {
               Create Quiz
             </Button>
           </div>
-          <Table aria-label="Quizzes Table">
-            <TableHeader>
-              <TableColumn>Course</TableColumn>
-              <TableColumn>Date</TableColumn>
-              <TableColumn>Status</TableColumn>
-            </TableHeader>
-            <TableBody>
-              <TableRow>
-                <TableCell>Business Ethics</TableCell>
-                <TableCell>2026-06-02</TableCell>
-                <TableCell>Scheduled</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>Economics 101</TableCell>
-                <TableCell>2026-06-03</TableCell>
-                <TableCell>Scheduled</TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
+          <Card className="shadow-md border" style={{ borderColor: "#009966" }}>
+            <CardBody>
+              <Table aria-label="Quizzes Table" className="text-sm">
+                <TableHeader>
+                  <TableColumn>Course</TableColumn>
+                  <TableColumn>Date</TableColumn>
+                  <TableColumn>Status</TableColumn>
+                </TableHeader>
+                <TableBody>
+                  <TableRow>
+                    <TableCell>Business Ethics</TableCell>
+                    <TableCell>2026-06-02</TableCell>
+                    <TableCell>Scheduled</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell>Economics 101</TableCell>
+                    <TableCell>2026-06-03</TableCell>
+                    <TableCell>Scheduled</TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </CardBody>
+          </Card>
         </Tab>
       </Tabs>
 

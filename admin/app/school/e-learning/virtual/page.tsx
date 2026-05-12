@@ -17,12 +17,15 @@ export default function DashboardPage() {
     <div className="p-6 space-y-8">
       {/* Header */}
       <header className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold flex items-center gap-2">
-          <GraduationCap className="w-6 h-6 text-blue-600" />
+        <h1
+          className="text-2xl font-bold flex items-center gap-2"
+          style={{ color: "#009966" }}
+        >
+          <GraduationCap className="w-6 h-6" />
           Learning Management System Dashboard
         </h1>
         <Button
-          color="primary"
+          style={{ backgroundColor: "#009966", color: "white" }}
           variant="solid"
           startContent={<Download className="w-4 h-4" />}
         >
@@ -36,33 +39,33 @@ export default function DashboardPage() {
 
       {/* Top Summary Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <Card>
+        <Card className="shadow-md border" style={{ borderColor: "#009966" }}>
           <CardHeader className="flex items-center gap-2">
-            <Users className="w-5 h-5 text-purple-600" />
+            <Users className="w-5 h-5" style={{ color: "#009966" }} />
             <h2 className="text-lg font-semibold">Total Students</h2>
           </CardHeader>
           <CardBody>
-            <p className="text-2xl font-bold">1,250</p>
+            <p className="text-3xl font-bold text-gray-800">1,250</p>
           </CardBody>
         </Card>
 
-        <Card>
+        <Card className="shadow-md border" style={{ borderColor: "#009966" }}>
           <CardHeader className="flex items-center gap-2">
-            <BookOpen className="w-5 h-5 text-green-600" />
+            <BookOpen className="w-5 h-5" style={{ color: "#009966" }} />
             <h2 className="text-lg font-semibold">Total Courses</h2>
           </CardHeader>
           <CardBody>
-            <p className="text-2xl font-bold">85</p>
+            <p className="text-3xl font-bold text-gray-800">85</p>
           </CardBody>
         </Card>
 
-        <Card>
+        <Card className="shadow-md border" style={{ borderColor: "#009966" }}>
           <CardHeader className="flex items-center gap-2">
-            <GraduationCap className="w-5 h-5 text-blue-600" />
+            <GraduationCap className="w-5 h-5" style={{ color: "#009966" }} />
             <h2 className="text-lg font-semibold">Total Tutors</h2>
           </CardHeader>
           <CardBody>
-            <p className="text-2xl font-bold">32</p>
+            <p className="text-3xl font-bold text-gray-800">32</p>
           </CardBody>
         </Card>
       </div>
@@ -70,12 +73,17 @@ export default function DashboardPage() {
       {/* Bottom Section: Split 60/40 */}
       <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
         {/* Student List (60%) */}
-        <Card className="md:col-span-3">
+        <Card
+          className="md:col-span-3 shadow-md border"
+          style={{ borderColor: "#009966" }}
+        >
           <CardHeader>
-            <h2 className="text-lg font-semibold">Student List</h2>
+            <h2 className="text-lg font-semibold" style={{ color: "#009966" }}>
+              Student List
+            </h2>
           </CardHeader>
           <CardBody>
-            <Table aria-label="Student List Table">
+            <Table aria-label="Student List Table" className="text-sm">
               <TableHeader>
                 <TableColumn>Name</TableColumn>
                 <TableColumn>Course</TableColumn>
@@ -103,12 +111,17 @@ export default function DashboardPage() {
         </Card>
 
         {/* Assessments (40%) */}
-        <Card className="md:col-span-2">
+        <Card
+          className="md:col-span-2 shadow-md border"
+          style={{ borderColor: "#009966" }}
+        >
           <CardHeader>
-            <h2 className="text-lg font-semibold">Assessments</h2>
+            <h2 className="text-lg font-semibold" style={{ color: "#009966" }}>
+              Assessments
+            </h2>
           </CardHeader>
           <CardBody>
-            <Table aria-label="Assessments Table">
+            <Table aria-label="Assessments Table" className="text-sm">
               <TableHeader>
                 <TableColumn>Assessment</TableColumn>
                 <TableColumn>Course</TableColumn>

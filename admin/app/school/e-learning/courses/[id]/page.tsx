@@ -18,11 +18,17 @@ export default function CoursePage() {
       {/* Header */}
       <Card className="shadow-md border" style={{ borderColor: "#009966" }}>
         <CardHeader className="flex items-center justify-between">
-          <h1 className="text-2xl font-bold flex items-center gap-2" style={{ color: "#009966" }}>
+          <h1
+            className="text-2xl font-bold flex items-center gap-2"
+            style={{ color: "#009966" }}
+          >
             <Video className="w-6 h-6" />
             Course: Introduction to LMS
           </h1>
-          <Button style={{ backgroundColor: "#009966", color: "white" }}>
+          <Button
+            style={{ backgroundColor: "#009966", color: "white" }}
+            variant="solid"
+          >
             Enroll
           </Button>
         </CardHeader>
@@ -53,10 +59,10 @@ export default function CoursePage() {
                 </p>
 
                 {/* PDF Card */}
-                <Card className="flex items-center justify-between p-4 shadow-md">
+                <Card className="flex items-center justify-between p-4 shadow-md border" style={{ borderColor: "#009966" }}>
                   <div className="flex items-center gap-3">
-                    <FileText className="w-6 h-6 text-gray-600" />
-                    <span className="font-medium">LMS Overview.pdf</span>
+                    <FileText className="w-6 h-6" style={{ color: "#009966" }} />
+                    <span className="font-medium text-gray-800">LMS Overview.pdf</span>
                   </div>
                   <span className="text-sm text-gray-500">2.4 MB</span>
                   <Button
@@ -84,45 +90,49 @@ export default function CoursePage() {
 
             {/* Students */}
             <Tab key="students" title="Students">
-              <Table aria-label="Students Table">
-                <TableHeader>
-                  <TableColumn>Name</TableColumn>
-                  <TableColumn>Student ID</TableColumn>
-                  <TableColumn>Rank</TableColumn>
-                  <TableColumn>Score</TableColumn>
-                  <TableColumn>Assessment</TableColumn>
-                </TableHeader>
-                <TableBody>
-                  <TableRow>
-                    <TableCell>Ada Lovelace</TableCell>
-                    <TableCell>ST001</TableCell>
-                    <TableCell>1</TableCell>
-                    <TableCell>95%</TableCell>
-                    <TableCell>Done</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell>John Doe</TableCell>
-                    <TableCell>ST002</TableCell>
-                    <TableCell>2</TableCell>
-                    <TableCell>88%</TableCell>
-                    <TableCell>Done</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell>Mary Johnson</TableCell>
-                    <TableCell>ST003</TableCell>
-                    <TableCell>3</TableCell>
-                    <TableCell>72%</TableCell>
-                    <TableCell>Not Done</TableCell>
-                  </TableRow>
-                </TableBody>
-              </Table>
+              <Card className="shadow-md border" style={{ borderColor: "#009966" }}>
+                <CardBody>
+                  <Table aria-label="Students Table" className="text-sm">
+                    <TableHeader>
+                      <TableColumn>Name</TableColumn>
+                      <TableColumn>Student ID</TableColumn>
+                      <TableColumn>Rank</TableColumn>
+                      <TableColumn>Score</TableColumn>
+                      <TableColumn>Assessment</TableColumn>
+                    </TableHeader>
+                    <TableBody>
+                      <TableRow>
+                        <TableCell>Ada Lovelace</TableCell>
+                        <TableCell>ST001</TableCell>
+                        <TableCell>1</TableCell>
+                        <TableCell>95%</TableCell>
+                        <TableCell>Done</TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell>John Doe</TableCell>
+                        <TableCell>ST002</TableCell>
+                        <TableCell>2</TableCell>
+                        <TableCell>88%</TableCell>
+                        <TableCell>Done</TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell>Mary Johnson</TableCell>
+                        <TableCell>ST003</TableCell>
+                        <TableCell>3</TableCell>
+                        <TableCell>72%</TableCell>
+                        <TableCell>Not Done</TableCell>
+                      </TableRow>
+                    </TableBody>
+                  </Table>
+                </CardBody>
+              </Card>
             </Tab>
           </Tabs>
         </div>
 
         {/* Module List (30%) */}
         <div className="lg:col-span-2">
-          <Card className="shadow-md">
+          <Card className="shadow-md border" style={{ borderColor: "#009966" }}>
             <CardHeader>
               <h2 className="text-lg font-semibold" style={{ color: "#009966" }}>
                 Course Modules

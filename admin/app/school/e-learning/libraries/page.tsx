@@ -26,11 +26,13 @@ export default function LibraryPage() {
   return (
     <div className="p-6 space-y-8">
       {/* Header Card */}
-      <Card className="shadow-md">
+      <Card className="shadow-md border" style={{ borderColor: "#009966" }}>
         <CardHeader className="flex items-center justify-between">
-          <h1 className="text-2xl font-bold">Library</h1>
+          <h1 className="text-2xl font-bold" style={{ color: "#009966" }}>
+            Library
+          </h1>
           <Button
-            color="primary"
+            style={{ backgroundColor: "#009966", color: "white" }}
             variant="solid"
             startContent={<Upload className="w-4 h-4" />}
           >
@@ -47,7 +49,11 @@ export default function LibraryPage() {
       {/* Grid of Items */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {libraryItems.map((item) => (
-          <Card key={item.id} className="shadow-md">
+          <Card
+            key={item.id}
+            className="shadow-md border hover:shadow-lg transition"
+            style={{ borderColor: "#009966" }}
+          >
             <CardBody className="flex justify-center">
               <Image
                 src={item.image}
@@ -57,31 +63,31 @@ export default function LibraryPage() {
             </CardBody>
             <CardFooter className="flex items-center justify-between">
               <div className="flex flex-col">
-                <span className="font-medium">{item.name}</span>
+                <span className="font-medium text-gray-800">{item.name}</span>
                 <span className="text-xs text-gray-500">{item.type}</span>
               </div>
               <Dropdown>
                 <DropdownTrigger>
                   <Button isIconOnly variant="light">
-                    <MoreVertical className="w-5 h-5" />
+                    <MoreVertical className="w-5 h-5" style={{ color: "#009966" }} />
                   </Button>
                 </DropdownTrigger>
                 <DropdownMenu aria-label="Item Actions">
                   <DropdownItem
                     key="download"
-                    startContent={<Download className="w-4 h-4" />}
+                    startContent={<Download className="w-4 h-4" style={{ color: "#009966" }} />}
                   >
                     Download
                   </DropdownItem>
                   <DropdownItem
                     key="forward"
-                    startContent={<Forward className="w-4 h-4" />}
+                    startContent={<Forward className="w-4 h-4" style={{ color: "#009966" }} />}
                   >
                     Forward
                   </DropdownItem>
                   <DropdownItem
                     key="share"
-                    startContent={<Share2 className="w-4 h-4" />}
+                    startContent={<Share2 className="w-4 h-4" style={{ color: "#009966" }} />}
                   >
                     Share
                   </DropdownItem>

@@ -24,13 +24,19 @@ export default function CoursesPage() {
   return (
     <div className="p-6 space-y-8">
       {/* Header */}
-      <Card className="shadow-md border border-emerald-600">
+      <Card className="shadow-md border" style={{ borderColor: "#009966" }}>
         <CardHeader className="flex items-center justify-between">
-          <h1 className="text-2xl font-bold flex items-center gap-2 text-emerald-600">
+          <h1
+            className="text-2xl font-bold flex items-center gap-2"
+            style={{ color: "#009966" }}
+          >
             <BookOpen className="w-6 h-6" />
             Courses
           </h1>
-          <Button color="primary" variant="solid">
+          <Button
+            style={{ backgroundColor: "#009966", color: "white" }}
+            variant="solid"
+          >
             Browse All
           </Button>
         </CardHeader>
@@ -46,12 +52,14 @@ export default function CoursesPage() {
         {courses.map((course) => (
           <Card
             key={course.id}
-            className="shadow-md hover:shadow-lg transition border border-gray-200"
+            className="shadow-md border hover:shadow-lg transition"
+            style={{ borderColor: "#009966" }}
           >
             <CardHeader>
               <Link
                 href={`/school/e-learning/courses/${course.id}`}
-                className="text-lg font-semibold text-emerald-600 hover:underline flex items-center gap-2"
+                className="text-lg font-semibold hover:underline flex items-center gap-2"
+                style={{ color: "#009966" }}
               >
                 {course.title}
                 <ArrowRight className="w-4 h-4" />
