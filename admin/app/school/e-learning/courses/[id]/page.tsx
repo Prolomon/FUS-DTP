@@ -48,49 +48,9 @@ export default function CoursePage() {
 
       {/* Bottom Section */}
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 mt-8">
-        {/* Course Modules (60%) */}
-        <div className="lg:col-span-3">
-          <Card className="shadow-md border" style={{ borderColor: "#009966" }}>
-            <CardHeader>
-              <h2 className="text-lg font-semibold" style={{ color: "#009966" }}>
-                Course Modules
-              </h2>
-            </CardHeader>
-            <CardBody>
-              <Accordion>
-                <AccordionItem key="module1" title="Module 1: Introduction to LMS">
-                  <ul className="list-disc pl-6 space-y-1 text-gray-700">
-                    <li>Overview of LMS</li>
-                    <li>History of e-learning</li>
-                    <li>Benefits of LMS</li>
-                    <li>Key features</li>
-                    <li>Case studies</li>
-                  </ul>
-                </AccordionItem>
-                <AccordionItem key="module2" title="Module 2: Course Creation">
-                  <ul className="list-disc pl-6 space-y-1 text-gray-700">
-                    <li>Creating modules</li>
-                    <li>Adding multimedia</li>
-                    <li>Structuring lessons</li>
-                    <li>Publishing courses</li>
-                  </ul>
-                </AccordionItem>
-                <AccordionItem key="module3" title="Module 3: User Management">
-                  <ul className="list-disc pl-6 space-y-1 text-gray-700">
-                    <li>Adding students</li>
-                    <li>Assigning roles</li>
-                    <li>Tracking attendance</li>
-                    <li>Managing permissions</li>
-                  </ul>
-                </AccordionItem>
-              </Accordion>
-            </CardBody>
-          </Card>
-        </div>
-
-        {/* Tabs Section (40%) */}
+        {/* Tabs Section (60%) */}
         <div className="lg:col-span-2">
-          <Card className="shadow-md border" style={{ borderColor: "#009966" }}>
+          <Card className="shadow-md border border-gray-200">
             <CardHeader>
               <h2 className="text-lg font-semibold" style={{ color: "#009966" }}>
                 Course Resources
@@ -197,6 +157,46 @@ export default function CoursePage() {
                   </Table>
                 </Tab>
               </Tabs>
+            </CardBody>
+          </Card>
+        </div>
+
+        {/* Course Modules (40%) */}
+        <div className="lg:col-span-2">
+          <Card className="shadow-md border border-gray-200">
+            <CardHeader>
+              <h2 className="text-lg font-semibold" style={{ color: "#009966" }}>
+                Course Modules
+              </h2>
+            </CardHeader>
+            <CardBody>
+              <Accordion>
+                <AccordionItem key="module1" title="Module 1: Introduction to LMS">
+                  <ul className="list-disc pl-6 space-y-1 text-gray-700">
+                    <li>Overview of LMS</li>
+                    <li>History of e-learning</li>
+                    <li>Benefits of LMS</li>
+                    <li>Key features</li>
+                    <li>Case studies</li>
+                  </ul>
+                </AccordionItem>
+                <AccordionItem key="module2" title="Module 2: Course Creation">
+                  <ul className="list-disc pl-6 space-y-1 text-gray-700">
+                    <li>Creating modules</li>
+                    <li>Adding multimedia</li>
+                    <li>Structuring lessons</li>
+                    <li>Publishing courses</li>
+                  </ul>
+                </AccordionItem>
+                <AccordionItem key="module3" title="Module 3: User Management">
+                  <ul className="list-disc pl-6 space-y-1 text-gray-700">
+                    <li>Adding students</li>
+                    <li>Assigning roles</li>
+                    <li>Tracking attendance</li>
+                    <li>Managing permissions</li>
+                  </ul>
+                </AccordionItem>
+              </Accordion>
             </CardBody>
           </Card>
         </div>

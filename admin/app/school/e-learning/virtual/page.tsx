@@ -41,7 +41,7 @@ export default function DashboardPage() {
 
       {/* Top Summary Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <Card className="shadow-md border p-2 border-gray-400">
+        <Card className="shadow-md border p-2 border-gray-200">
           <CardHeader className="flex items-center gap-2">
             <Users className="w-5 h-5" style={{ color: "#009966" }} />
             <h2 className="text-lg font-semibold">Total Students</h2>
@@ -51,7 +51,7 @@ export default function DashboardPage() {
           </CardBody>
         </Card>
 
-        <Card className="shadow-md border p-2 border-gray-400">
+        <Card className="shadow-md border p-2 border-gray-200">
           <CardHeader className="flex items-center gap-2">
             <BookOpen className="w-5 h-5" style={{ color: "#009966" }} />
             <h2 className="text-lg font-semibold">Total Courses</h2>
@@ -61,7 +61,7 @@ export default function DashboardPage() {
           </CardBody>
         </Card>
 
-        <Card className="shadow-md border p-2 border-gray-400">
+        <Card className="shadow-md border p-2 border-gray-200">
           <CardHeader className="flex items-center gap-2">
             <GraduationCap className="w-5 h-5" style={{ color: "#009966" }} />
             <h2 className="text-lg font-semibold">Total Tutors</h2>
@@ -76,7 +76,7 @@ export default function DashboardPage() {
       <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
         {/* Student List (60%) */}
         <Card
-          className="md:col-span-3 shadow-md border border-gray-400"
+          className="md:col-span-3 shadow-md border border-gray-200"
         >
           <CardHeader>
             <h2 className="text-lg font-semibold" style={{ color: "#009966" }}>
@@ -113,7 +113,7 @@ export default function DashboardPage() {
 
         {/* Assessments (40%) */}
         <Card
-          className="md:col-span-2 shadow-md border border-gray-400"
+          className="md:col-span-2 shadow-md border border-gray-200"
         >
           <CardHeader>
             <h2 className="text-lg font-semibold" style={{ color: "#009966" }}>

@@ -24,7 +24,7 @@ export default function CoursesPage() {
   return (
     <div className="py-4 space-y-5">
       {/* Header */}
-      <Card className="shadow-md border border-gray-400 p-2">
+      <Card className="shadow-md border border-gray-200 p-2">
         <CardHeader className="flex items-center justify-between">
           <h1
             className="text-2xl font-bold flex items-center gap-2"
@@ -52,7 +52,7 @@ export default function CoursesPage() {
         {courses.map((course) => (
           <Card
             key={course.id}
-            className="shadow-md border hover:shadow-lg transition border-gray-400"
+            className="shadow-md border hover:shadow-lg transition border-gray-200"
           >
             <CardHeader>
               <Link

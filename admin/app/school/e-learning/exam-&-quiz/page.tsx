@@ -35,9 +35,9 @@ export default function ExamQuizPage() {
   const [isQuizModalOpen, setQuizModalOpen] = useState(false);
 
   return (
-    <div className="py-4 space-y-y">
+    <div className="py-4 space-y-4">
       {/* Header */}
-      <Card className="shadow-md border border-gray-400 p-2">
+      <Card className="shadow-md border border-gray-200 p-2">
         <CardHeader className="flex items-center justify-between">
           <h1
             className="text-2xl font-bold flex items-center gap-2"
