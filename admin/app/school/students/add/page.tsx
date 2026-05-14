@@ -98,17 +98,17 @@ export default function AddStudentPage() {
     const stateOptions: string[] = useMemo(() => nigeriaStates.map((s) => s.state), [nigeriaStates]);
 
     const lgaOptions: string[] = useMemo(() => {
-        const found = nigeriaStates.find((s) => String(s.state).toLowerCase() === String(formData.address.state).toLowerCase());
+        const found = nigeriaStates.find((s) => s.state === formData.address.state);
         return found ? found.lgas : [];
     }, [formData.address.state, nigeriaStates]);
 
     const wardOptions: string[] = useMemo(() => {
-        const found = lgaOptions.find((s) => String(s.lga).toLowerCase() === String(formData.address.lga).toLowerCase());
+        const found = lgaOptions.find((s) => s.lga === formData.address.lga);
         return found ? found.wards : [];
     }, [formData.address.state, nigeriaStates]);
 
     const lgaOriginOptions: string[] = useMemo(() => {
-        const found = nigeriaStates.find((s) => String(s.state).toLowerCase() === String(formData.stateOfOrigin).toLowerCase());
+        const found = nigeriaStates.find((s) => s.state === formData.stateOfOrigin);
         return found ? found.lgas : [];
     }, [formData.stateOfOrigin, nigeriaStates]);
 
@@ -286,6 +286,7 @@ export default function AddStudentPage() {
                             size="lg"
                             variant="bordered"
                             labelPlacement="outside"
+                            className="capitalize"
                         >
                             {stateOptions.map(opt => (
                                 <SelectItem key={opt}>{opt}</SelectItem>
@@ -299,6 +300,7 @@ export default function AddStudentPage() {
                             variant="bordered"
                             labelPlacement="outside"
                             isDisabled={!formData.stateOfOrigin}
+                            className="capitalize"
                         >
                             {lgaOriginOptions.map((opt: string) => (
                                 <SelectItem key={opt.lga}>{opt.lga}</SelectItem>
@@ -311,6 +313,7 @@ export default function AddStudentPage() {
                             size="lg"
                             variant="bordered"
                             labelPlacement="outside"
+                            className="capitalize"
                         >
                             {stateOptions.map(opt => (
                                 <SelectItem key={opt}>{opt}</SelectItem>
@@ -338,6 +341,7 @@ export default function AddStudentPage() {
                             variant="bordered"
                             labelPlacement="outside"
                             isDisabled={!formData.address.ward}
+                            className="capitalize"
                         >
                             {wardOptions.map((opt: string) => (
                                 <SelectItem key={opt}>{opt}</SelectItem>
