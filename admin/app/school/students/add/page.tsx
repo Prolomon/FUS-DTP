@@ -57,7 +57,7 @@ export default function AddStudentPage() {
         school: "",
     });
 
-    const [nigeriaStates, setNigeriaStates] = useState<{ state: string; lgas: string[] }[]>([]);
+    const [nigeriaStates, setNigeriaStates] = useState<{ state: string; lgas: any[] }[]>([]);
     const schoolList = [
         "Alvan Ikoku College of Education, Owerri, Imo State",
 "Federal College of Education, Osiele, Abeokuta, Ogun State.",
@@ -150,6 +150,7 @@ export default function AddStudentPage() {
                 lga: "",
                 street: "",
                 postalCode: "",
+                ward: ""
             },
             parentId: "",
             parentName: "",
@@ -157,6 +158,7 @@ export default function AddStudentPage() {
             parentEmail: "",
             admissionNumber: "",
             classAdmitted: "",
+            school: ""
         });
         addToast({
             title: "Clear Form",
