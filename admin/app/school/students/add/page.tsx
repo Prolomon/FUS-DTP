@@ -304,7 +304,7 @@ export default function AddStudentPage() {
                             isDisabled={!formData.stateOfOrigin}
                             className="capitalize"
                         >
-                            {lgaOriginOptions.map((opt: string) => (
+                            {lgaOriginOptions.map((opt: any) => (
                                 <SelectItem key={opt.lga}>{opt.lga}</SelectItem>
                             ))}
                         </Select>
@@ -331,7 +331,7 @@ export default function AddStudentPage() {
                             isDisabled={!formData.address.state}
                             className="capitalize"
                         >
-                            {lgaOptions.map((opt: string) => (
+                            {lgaOptions.map((opt: any) => (
                                 <SelectItem key={opt.lga}>{opt.lga}</SelectItem>
                             ))}
                         </Select>
