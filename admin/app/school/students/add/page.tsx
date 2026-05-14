@@ -387,7 +387,7 @@ export default function AddStudentPage() {
                         <Select
                             label="School"
                             selectedKeys={[formData.school]}
-                            onSelectionChange={keys => handleAddressChange("school", Array.from(keys)[0] as string)}
+                            onSelectionChange={keys => handleChange("school", Array.from(keys)[0] as string)}
                             size="lg"
                             variant="bordered"
                             labelPlacement="outside"
