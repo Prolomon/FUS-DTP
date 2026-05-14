@@ -46,6 +46,7 @@ export default function AddStudentPage() {
             lga: "",
             street: "",
             postalCode: "",
+            ward: "",
         },
         parentId: "",
         parentName: "",
@@ -53,12 +54,35 @@ export default function AddStudentPage() {
         parentEmail: "",
         admissionNumber: "",
         classAdmitted: "",
+        school: "",
     });
 
     const [nigeriaStates, setNigeriaStates] = useState<{ state: string; lgas: string[] }[]>([]);
+    const schoolList = [
+        "Alvan Ikoku College of Education, Owerri, Imo State",
+"Federal College of Education, Osiele, Abeokuta, Ogun State.",
+"Federal College of Education, Eha-Amufu, Enugu State.",
+"Federal College of Education, Kano, Kano State.",
+"Federal College of Education, Katsina State.",
+"Federal college of Education, Kontagora Niger State.",
+"Federal College of Education, Obudu, Cross River State.",
+"Federal College of Education, Okene, Kogi State.",
+"Federal College of Education, Pankshin, Plateau State",
+"Federal College of Education, Yola, Adamawa State.",
+"Federal College of Education, Zaria, Kaduna State.",
+"Federal College of Education (Technical), Akoka, Lagos State.",
+"Federal College of Education (Technical), Asaba, Delta State.",
+"Federal College of Education (Technical), Bichi, Kano State.",
+"Federal College of Education (Technical) Gombe, Gombe State.",
+"Federal College of Education (Technical) (Female Only) Gusau, Zamfara State.",
+"Fed College of Education (Technical), Omoku, Rivers State.",
+"Federal College of Education (Technical) Potiskum, Yobe State.",
+"Federal College of Education (Technical) Umunze, Anambra State.",
+"Federal College of Education (Special) Oyo, Oyo State.",
+    ]
 
     useEffect(() => {
-        fetch("/Json/nigeria-state-and-lgas.json")
+        fetch("/Json/state-lga-ward-polling-unit.json")
             .then(res => res.json())
             .then(data => setNigeriaStates(data));
     }, []);
@@ -74,12 +98,17 @@ export default function AddStudentPage() {
     const stateOptions: string[] = useMemo(() => nigeriaStates.map((s) => s.state), [nigeriaStates]);
 
     const lgaOptions: string[] = useMemo(() => {
-        const found = nigeriaStates.find((s) => s.state === formData.address.state);
+        const found = nigeriaStates.find((s) => String(s.state).toLowerCase() === String(formData.address.state).toLowerCase());
         return found ? found.lgas : [];
     }, [formData.address.state, nigeriaStates]);
 
+    const wardOptions: string[] = useMemo(() => {
+        const found = lgaOptions.find((s) => String(s.lga).toLowerCase() === String(formData.address.lga).toLowerCase());
+        return found ? found.wards : [];
+    }, [formData.address.state, nigeriaStates]);
+
     const lgaOriginOptions: string[] = useMemo(() => {
-        const found = nigeriaStates.find((s) => s.state === formData.stateOfOrigin);
+        const found = nigeriaStates.find((s) => String(s.state).toLowerCase() === String(formData.stateOfOrigin).toLowerCase());
         return found ? found.lgas : [];
     }, [formData.stateOfOrigin, nigeriaStates]);
 
@@ -272,7 +301,7 @@ export default function AddStudentPage() {
                             isDisabled={!formData.stateOfOrigin}
                         >
                             {lgaOriginOptions.map((opt: string) => (
-                                <SelectItem key={opt}>{opt}</SelectItem>
+                                <SelectItem key={opt.lga}>{opt.lga}</SelectItem>
                             ))}
                         </Select>
                         <Select
@@ -295,8 +324,22 @@ export default function AddStudentPage() {
                             variant="bordered"
                             labelPlacement="outside"
                             isDisabled={!formData.address.state}
+                            className="capitalize"
                         >
                             {lgaOptions.map((opt: string) => (
+                                <SelectItem key={opt.lga}>{opt.lga}</SelectItem>
+                            ))}
+                        </Select>
+                        <Select
+                            label="Ward"
+                            selectedKeys={[formData.address.ward]}
+                            onSelectionChange={keys => handleAddressChange("ward", Array.from(keys)[0] as string)}
+                            size="lg"
+                            variant="bordered"
+                            labelPlacement="outside"
+                            isDisabled={!formData.address.ward}
+                        >
+                            {wardOptions.map((opt: string) => (
                                 <SelectItem key={opt}>{opt}</SelectItem>
                             ))}
                         </Select>
@@ -335,6 +378,18 @@ export default function AddStudentPage() {
                             labelPlacement="outside"
                             readOnly
                         />
+                        <Select
+                            label="School"
+                            selectedKeys={[formData.school]}
+                            onSelectionChange={keys => handleAddressChange("school", Array.from(keys)[0] as string)}
+                            size="lg"
+                            variant="bordered"
+                            labelPlacement="outside"
+                        >
+                            {schoolList.map((opt: string) => (
+                                <SelectItem key={opt}>{opt}</SelectItem>
+                            ))}
+                        </Select>
                         <Input
                             label="Admission Number"
                             value={formData.admissionNumber}
