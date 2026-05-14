@@ -95,19 +95,19 @@ export default function AddStudentPage() {
         setFormData((prev) => ({ ...prev, address: { ...prev.address, [key]: value } }));
     };
 
-    const stateOptions: string[] = useMemo(() => nigeriaStates.map((s) => s.state), [nigeriaStates]);
+    const stateOptions: any[] = useMemo(() => nigeriaStates.map((s) => s.state), [nigeriaStates]);
 
-    const lgaOptions: string[] = useMemo(() => {
+    const lgaOptions: any[] = useMemo(() => {
         const found = nigeriaStates.find((s) => s.state === formData.address.state);
         return found ? found.lgas : [];
     }, [formData.address.state, nigeriaStates]);
 
-    const wardOptions: string[] = useMemo(() => {
+    const wardOptions: any[] = useMemo(() => {
         const found = lgaOptions.find((s) => s.lga === formData.address.lga);
         return found ? found.wards : [];
     }, [formData.address.state, nigeriaStates]);
 
-    const lgaOriginOptions: string[] = useMemo(() => {
+    const lgaOriginOptions: any[] = useMemo(() => {
         const found = nigeriaStates.find((s) => s.state === formData.stateOfOrigin);
         return found ? found.lgas : [];
     }, [formData.stateOfOrigin, nigeriaStates]);
