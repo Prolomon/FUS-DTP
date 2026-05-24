@@ -1,0 +1,48 @@
+{
+  "default_branch": "main",
+  "branches": [
+    "dependabot/npm_and_yarn/admin/npm_and_yarn-094d18b7df",
+    "dependabot/npm_and_yarn/admin/npm_and_yarn-17e033073e",
+    "dependabot/npm_and_yarn/head/npm_and_yarn-7d5638c673",
+    "dependabot/npm_and_yarn/head/tar-7.5.22",
+    "dependabot/npm_and_yarn/head/undici-6.28.0",
+    "dependabot/npm_and_yarn/parent/tar-7.5.22",
+    "dependabot/npm_and_yarn/parent/undici-6.28.0",
+    "dependabot/npm_and_yarn/security/tar-7.5.22",
+    "dependabot/npm_and_yarn/security/undici-6.28.0",
+    "dependabot/npm_and_yarn/teachers/tar-7.5.22",
+    "dependabot/npm_and_yarn/teachers/undici-6.28.0",
+    "main",
+    "origin"
+  ],
+  "parent": {
+    "dependabot/npm_and_yarn/admin/npm_and_yarn-094d18b7df": "main",
+    "dependabot/npm_and_yarn/admin/npm_and_yarn-17e033073e": "main",
+    "dependabot/npm_and_yarn/head/npm_and_yarn-7d5638c673": "main",
+    "dependabot/npm_and_yarn/head/tar-7.5.22": "main",
+    "dependabot/npm_and_yarn/head/undici-6.28.0": "main",
+    "dependabot/npm_and_yarn/parent/tar-7.5.22": "main",
+    "dependabot/npm_and_yarn/parent/undici-6.28.0": "main",
+    "dependabot/npm_and_yarn/security/tar-7.5.22": "main",
+    "dependabot/npm_and_yarn/security/undici-6.28.0": "main",
+    "dependabot/npm_and_yarn/teachers/tar-7.5.22": "main",
+    "dependabot/npm_and_yarn/teachers/undici-6.28.0": "main",
+    "main": null,
+    "origin": "main"
+  },
+  "order": [
+    "main",
+    "dependabot/npm_and_yarn/admin/npm_and_yarn-094d18b7df",
+    "dependabot/npm_and_yarn/admin/npm_and_yarn-17e033073e",
+    "dependabot/npm_and_yarn/head/npm_and_yarn-7d5638c673",
+    "dependabot/npm_and_yarn/head/tar-7.5.22",
+    "dependabot/npm_and_yarn/head/undici-6.28.0",
+    "dependabot/npm_and_yarn/parent/tar-7.5.22",
+    "dependabot/npm_and_yarn/parent/undici-6.28.0",
+    "dependabot/npm_and_yarn/security/tar-7.5.22",
+    "dependabot/npm_and_yarn/security/undici-6.28.0",
+    "dependabot/npm_and_yarn/teachers/tar-7.5.22",
+    "dependabot/npm_and_yarn/teachers/undici-6.28.0",
+    "origin"
+  ]
+}
