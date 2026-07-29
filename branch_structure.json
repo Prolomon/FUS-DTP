@@ -1,0 +1,33 @@
+{
+  "default_branch": "main",
+  "branches": [
+    "dependabot/npm_and_yarn/parent/tar-7.5.22",
+    "dependabot/npm_and_yarn/parent/undici-6.28.0",
+    "dependabot/npm_and_yarn/security/tar-7.5.22",
+    "dependabot/npm_and_yarn/security/undici-6.28.0",
+    "dependabot/npm_and_yarn/teachers/tar-7.5.22",
+    "dependabot/npm_and_yarn/teachers/undici-6.28.0",
+    "main",
+    "origin"
+  ],
+  "parent": {
+    "dependabot/npm_and_yarn/parent/tar-7.5.22": "main",
+    "dependabot/npm_and_yarn/parent/undici-6.28.0": "main",
+    "dependabot/npm_and_yarn/security/tar-7.5.22": "main",
+    "dependabot/npm_and_yarn/security/undici-6.28.0": "main",
+    "dependabot/npm_and_yarn/teachers/tar-7.5.22": "main",
+    "dependabot/npm_and_yarn/teachers/undici-6.28.0": "main",
+    "main": null,
+    "origin": "main"
+  },
+  "order": [
+    "main",
+    "dependabot/npm_and_yarn/parent/tar-7.5.22",
+    "dependabot/npm_and_yarn/parent/undici-6.28.0",
+    "dependabot/npm_and_yarn/security/tar-7.5.22",
+    "dependabot/npm_and_yarn/security/undici-6.28.0",
+    "dependabot/npm_and_yarn/teachers/tar-7.5.22",
+    "dependabot/npm_and_yarn/teachers/undici-6.28.0",
+    "origin"
+  ]
+}
