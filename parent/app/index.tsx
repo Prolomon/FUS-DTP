@@ -44,7 +44,7 @@ export default function SplashScreen() {
 			<View style={styles.content}>
 				<View style={styles.brandRow}>
 					<View style={styles.brandBadge}>
-						<Text style={styles.brandBadgeText}>FUS-DITP Platform</Text>
+						<Text style={styles.brandBadgeText}>ADUDA Platform</Text>
 					</View>
 				</View>
 
@@ -52,7 +52,7 @@ export default function SplashScreen() {
 					<View style={styles.logoRing}>
 						<Image source={LOGO} style={styles.logo} resizeMode="contain" />
 					</View>
-					<Text style={styles.title}>FEDERAL UNITY SCHOOL DIGITAL INFRASTRUCTURE & TRANSFORMATION PLATFORM (FUS-DITP).</Text>
+					<Text style={styles.title}>FEDERAL UNITY SCHOOL DIGITAL INFRASTRUCTURE & TRANSFORMATION PLATFORM (ADUDA).</Text>
 					{/* <Text style={styles.subtitle}>Your family dashboard for student progress, school communication, pickup safety, and fee management.</Text> */}
 				</View>
 

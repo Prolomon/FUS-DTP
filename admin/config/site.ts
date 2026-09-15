@@ -1,7 +1,7 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: "FUS-DITP",
+  name: "ADUDA",
   description:
     "A modern student management system for admissions, attendance, staff operations, and parent communication.",
   navItems: [

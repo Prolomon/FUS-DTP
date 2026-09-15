@@ -194,7 +194,7 @@ export default function Home() {
               School operations should feel like a product, not paperwork.
             </h1>
             <p className="mt-5 max-w-2xl text-base leading-7 text-foreground/72 md:text-lg">
-              FUS-DITP gives schools one clear control surface for student
+              ADUDA gives schools one clear control surface for student
               records, staff management, attendance, result checking, parent
               access, and daily administration.
             </p>
@@ -250,7 +250,7 @@ export default function Home() {
                     Live dashboard
                   </p>
                   <p className="mt-1 text-sm font-medium">
-                    FUS-DITP control center
+                    ADUDA control center
                   </p>
                 </div>
                 <Chip className="border-0 bg-emerald-400/20 text-emerald-200">
@@ -261,7 +261,7 @@ export default function Home() {
               <div className="overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/5 p-2">
                 <Image
                   priority
-                  alt="FUS-DITP dashboard showcase"
+                  alt="ADUDA dashboard showcase"
                   className="h-auto w-full rounded-[1.1rem] object-cover"
                   height={600}
                   src="/arqelion-showcase.svg"
@@ -302,7 +302,7 @@ export default function Home() {
               National Problem Statement
             </p>
             <h2 className="mt-2 text-3xl font-semibold tracking-tight md:text-5xl">
-              Why FUS-DITP is needed now
+              Why ADUDA is needed now
             </h2>
           </div>
           <p className="max-w-xl text-sm leading-6 text-foreground/68">
@@ -335,7 +335,7 @@ export default function Home() {
             Integrated modules for all Unity Schools
           </h2>
           <p className="mt-3 text-base leading-7 text-foreground/68">
-            FUS-DITP combines admissions, academics, staff, finance, hostel
+            ADUDA combines admissions, academics, staff, finance, hostel
             operations, and parent collaboration in one centralized national
             platform.
           </p>

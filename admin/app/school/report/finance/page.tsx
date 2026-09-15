@@ -37,7 +37,7 @@ export default function FinancialReportPage() {
           <div>
             <h1 className="text-2xl font-bold text-slate-800 tracking-tight">Financial Management</h1>
             <div className="flex items-center gap-2 mt-1">
-              <p className="text-default-500 text-sm font-medium">FUS-DITP Report Portal</p>
+              <p className="text-default-500 text-sm font-medium">ADUDA Report Portal</p>
               <Chip size="sm" variant="flat" color="success" className="h-5 text-[10px] font-bold uppercase tracking-wider">
                 IPSAS COMPLIANT SYSTEM
               </Chip>
@@ -62,7 +62,7 @@ export default function FinancialReportPage() {
         <CardHeader className="flex flex-col items-start px-8 pt-8 pb-4 bg-white">
           <h2 className="text-xl font-bold text-slate-800 uppercase">Annual Financial Statements</h2>
           <p className="text-sm text-[#009966] font-semibold tracking-wide uppercase">
-            Federal Unified School Digital Transformation Platform (FUS-DITP)
+            Federal Unified School Digital Transformation Platform (ADUDA)
           </p>
           <p className="text-xs text-default-400 mt-1">FOR THE YEAR ENDED 31 DECEMBER 2024</p>
         </CardHeader>
@@ -221,7 +221,7 @@ export default function FinancialReportPage() {
             <Info size={24} className="text-[#009966] mb-2" />
             <p className="text-sm font-bold text-[#009966]">Digital Ledger Verification</p>
             <p className="text-[10px] text-[#009966]/70 mt-1 max-w-[250px]">
-              This statement is generated via the FUS-DITP URMS System. Automated audit trail logs are attached to the PDF export.
+              This statement is generated via the ADUDA URMS System. Automated audit trail logs are attached to the PDF export.
             </p>
           </CardBody>
         </Card>

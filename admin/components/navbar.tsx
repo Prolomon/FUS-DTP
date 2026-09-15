@@ -48,7 +48,7 @@ export const Navbar = () => {
           >
             <Image
               priority
-              alt="FUS-DITP logo"
+              alt="ADUDA logo"
               className="h-8 w-8 shrink-0 object-contain"
               height={32}
               src="/logo.png"
@@ -60,7 +60,7 @@ export const Navbar = () => {
                 fontBrand.className,
               )}
             >
-              FUS-DITP
+              ADUDA
             </p>
           </NextLink>
         </NavbarBrand>
