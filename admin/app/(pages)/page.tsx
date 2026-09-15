@@ -191,7 +191,7 @@ export default function Home() {
               Student management, redesigned
             </Chip>
             <h1 className="mt-5 max-w-4xl text-4xl font-semibold leading-[1.02] tracking-tight text-foreground md:text-6xl">
-              Aduda empowers Abuja Youths in Agripenture, IT-Prenure, Enterprenure and Skill Aqcusition.
+              Aduda empowers Abuja Youths in Agriprenture, IT-Prenure, Enterprenure and Skill Aqcusition.
             </h1>
             <p className="mt-5 max-w-2xl text-base leading-7 text-foreground/72 md:text-lg">
               ADUDA gives schools one clear control surface for student
