@@ -150,14 +150,14 @@ export default function ParentDetailPage() {
 	if (loading) {
 		return (
 			<section className="flex min-h-[60vh] items-center justify-center py-8">
-				<div className="text-lg text-emerald-600">Loading parent data...</div>
+				<div className="text-lg text-violet-600">Loading parent data...</div>
 			</section>
 		);
 	}
 
 	return (
 		<section className="space-y-5 py-4">
-			<Card className="border border-emerald-100/70 bg-white/90 dark:border-emerald-300/20 shadow-lg">
+			<Card className="border border-violet-100/70 bg-white/90 dark:border-violet-300/20 shadow-lg">
 				<CardHeader className="flex flex-wrap items-center justify-between gap-3 px-6 pt-6">
 					<div>
 						<p className="text-xs uppercase tracking-[0.2em] text-foreground/50">Community</p>
@@ -165,15 +165,15 @@ export default function ParentDetailPage() {
 						<p className="mt-1 text-sm text-foreground/70">View, edit, manage, and send reports to a parent.</p>
 					</div>
 					<div className="flex flex-wrap gap-2">
-						<Button className="border-emerald-600 text-emerald-700" variant="bordered" radius="full" onPress={() => setShowReport(true)}>
+						<Button className="border-violet-600 text-violet-700" variant="bordered" radius="full" onPress={() => setShowReport(true)}>
 							Send Report
 						</Button>
 						{!editMode ? (
-							<Button className="bg-emerald-600 text-white" radius="full" onPress={() => setEditMode(true)}>
+							<Button className="bg-violet-600 text-white" radius="full" onPress={() => setEditMode(true)}>
 								Edit Parent
 							</Button>
 						) : (
-							<Button className="bg-emerald-600 text-white" radius="full" onPress={handleUpdate}>
+							<Button className="bg-violet-600 text-white" radius="full" onPress={handleUpdate}>
 								Save Changes
 							</Button>
 						)}
@@ -184,7 +184,7 @@ export default function ParentDetailPage() {
 				</CardHeader>
 
 				<CardBody className="px-6 pb-2 space-y-6">
-					<Card className="border border-emerald-100/70 bg-white/95 dark:border-emerald-300/20">
+					<Card className="border border-violet-100/70 bg-white/95 dark:border-violet-300/20">
 						<CardBody className="grid gap-3 px-6 py-6 md:grid-cols-3">
 							<div>
 								<p className="text-xs uppercase tracking-[0.18em] text-foreground/50">Parent Name</p>
@@ -233,31 +233,31 @@ export default function ParentDetailPage() {
 				<CardFooter className="flex flex-col gap-3 px-6 pb-6 md:flex-row">
 					{editMode && (
 						<>
-							<Button className="w-full bg-emerald-600 text-white" radius="full" onPress={handleUpdate}>Save Changes</Button>
-							<Button className="w-full border-emerald-600 text-emerald-700" variant="bordered" radius="full" onPress={() => setEditMode(false)}>Cancel Edit</Button>
+							<Button className="w-full bg-violet-600 text-white" radius="full" onPress={handleUpdate}>Save Changes</Button>
+							<Button className="w-full border-violet-600 text-violet-700" variant="bordered" radius="full" onPress={() => setEditMode(false)}>Cancel Edit</Button>
 						</>
 					)}
 				</CardFooter>
 			</Card>
 
-			<Card className="border border-emerald-100/70 bg-white/90 dark:border-emerald-300/20 shadow-lg">
+			<Card className="border border-violet-100/70 bg-white/90 dark:border-violet-300/20 shadow-lg">
 				<CardHeader className="px-6 pt-6 pb-2">
 					<h3 className="text-xl font-semibold">Communication Summary</h3>
 				</CardHeader>
 				<CardBody className="grid gap-3 px-6 pb-6 md:grid-cols-3">
-					<div className="rounded-2xl border border-emerald-100/70 p-4 dark:border-emerald-300/20">
+					<div className="rounded-2xl border border-violet-100/70 p-4 dark:border-violet-300/20">
 						<p className="text-xs uppercase tracking-[0.18em] text-foreground/50">Linked Student</p>
 						<p className="mt-1 text-base font-medium">{formData.studentName || "N/A"}</p>
 					</div>
-					<div className="rounded-2xl border border-emerald-100/70 p-4 dark:border-emerald-300/20">
+					<div className="rounded-2xl border border-violet-100/70 p-4 dark:border-violet-300/20">
 						<p className="text-xs uppercase tracking-[0.18em] text-foreground/50">Disabilities</p>
 						<p className="mt-1 text-base font-medium">{formData.disabilities}</p>
 					</div>
-					<div className="rounded-2xl border border-emerald-100/70 p-4 dark:border-emerald-300/20">
+					<div className="rounded-2xl border border-violet-100/70 p-4 dark:border-violet-300/20">
 						<p className="text-xs uppercase tracking-[0.18em] text-foreground/50">Primary Contact</p>
 						<p className="mt-1 text-base font-medium">{formData.phone}</p>
 					</div>
-					<div className="rounded-2xl border border-emerald-100/70 p-4 dark:border-emerald-300/20">
+					<div className="rounded-2xl border border-violet-100/70 p-4 dark:border-violet-300/20">
 						<p className="text-xs uppercase tracking-[0.18em] text-foreground/50">Communication Status</p>
 						<p className="mt-1 text-base font-medium">{formData.status}</p>
 					</div>
@@ -291,7 +291,7 @@ export default function ParentDetailPage() {
 					</ModalBody>
 					<ModalFooter>
 						<Button variant="bordered" radius="full" onPress={() => setShowReport(false)}>Cancel</Button>
-						<Button className="bg-emerald-600 text-white" radius="full" onPress={handleSendReport}>Send Report</Button>
+						<Button className="bg-violet-600 text-white" radius="full" onPress={handleSendReport}>Send Report</Button>
 					</ModalFooter>
 				</ModalContent>
 			</Modal>

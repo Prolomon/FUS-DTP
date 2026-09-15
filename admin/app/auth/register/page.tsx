@@ -161,12 +161,12 @@ export default function RegisterPage() {
 
   return (
     <section className="relative mx-auto w-full overflow-x-clip px-4 pb-16 pt-8 sm:px-6 md:pt-12">
-      <div className="pointer-events-none absolute left-[-70px] top-[-30px] -z-10 h-56 w-56 rounded-full bg-emerald-400/20 blur-3xl" />
+      <div className="pointer-events-none absolute left-[-70px] top-[-30px] -z-10 h-56 w-56 rounded-full bg-violet-400/20 blur-3xl" />
       <div className="pointer-events-none absolute right-[-90px] top-[240px] -z-10 h-56 w-56 rounded-full bg-orange-400/20 blur-3xl" />
 
       <div className="grid items-start gap-6 lg:grid-cols-[1.05fr_0.95fr]">
-        <div className="relative overflow-hidden rounded-[2rem] border border-emerald-950/10 bg-[linear-gradient(135deg,rgba(14,165,233,0.10),rgba(249,115,22,0.12),rgba(255,255,255,0.96))] p-6 shadow-[0_24px_80px_-40px_rgba(8,47,73,0.5)] dark:border-white/10 dark:bg-[linear-gradient(135deg,rgba(8,47,73,0.94),rgba(14,116,144,0.82),rgba(120,53,15,0.68))] md:p-8 lg:sticky lg:top-8 lg:self-start">
-          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-emerald-800 dark:text-emerald-200">
+        <div className="relative overflow-hidden rounded-[2rem] border border-violet-950/10 bg-[linear-gradient(135deg,rgba(14,165,233,0.10),rgba(249,115,22,0.12),rgba(255,255,255,0.96))] p-6 shadow-[0_24px_80px_-40px_rgba(8,47,73,0.5)] dark:border-white/10 dark:bg-[linear-gradient(135deg,rgba(8,47,73,0.94),rgba(14,116,144,0.82),rgba(120,53,15,0.68))] md:p-8 lg:sticky lg:top-8 lg:self-start">
+          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-violet-800 dark:text-violet-200">
             School Onboarding
           </p>
           <h1 className="mt-4 max-w-xl text-3xl font-semibold leading-tight md:text-5xl">
@@ -183,13 +183,13 @@ export default function RegisterPage() {
                 key={step.key}
                 className={`flex w-full items-center gap-3 rounded-2xl border px-4 py-3 text-left backdrop-blur transition ${
                   activeStep === step.key
-                    ? "border-emerald-600 bg-emerald-50/90 text-emerald-900 dark:border-emerald-300 dark:bg-emerald-950/35 dark:text-emerald-100"
+                    ? "border-violet-600 bg-violet-50/90 text-violet-900 dark:border-violet-300 dark:bg-violet-950/35 dark:text-violet-100"
                     : "border-white/50 bg-background/75 text-foreground/85 dark:border-white/10 dark:bg-slate-950/35"
                 }`}
                 type="button"
                 onClick={() => setActiveStep(step.key)}
               >
-                <span className="flex h-7 w-7 items-center justify-center rounded-full bg-emerald-600 text-xs font-semibold text-white">
+                <span className="flex h-7 w-7 items-center justify-center rounded-full bg-violet-600 text-xs font-semibold text-white">
                   {index + 1}
                 </span>
                 <span>
@@ -205,7 +205,7 @@ export default function RegisterPage() {
           </div>
         </div>
 
-        <Card className="rounded-[2rem] border border-default-200/70 bg-background/85 shadow-lg shadow-emerald-900/5 backdrop-blur">
+        <Card className="rounded-[2rem] border border-default-200/70 bg-background/85 shadow-lg shadow-violet-900/5 backdrop-blur">
           <CardHeader className="flex flex-col items-start gap-3 p-6 md:p-8">
             <p className="text-xs uppercase tracking-[0.24em] text-foreground/55">
               Step {stepIndex + 1} of {stepItems.length}
@@ -219,7 +219,7 @@ export default function RegisterPage() {
                   key={step.key}
                   className={`rounded-full px-4 py-2 text-xs font-medium transition ${
                     step.key === activeStep
-                      ? "bg-emerald-600 text-white"
+                      ? "bg-violet-600 text-white"
                       : "text-foreground/65"
                   }`}
                   type="button"
@@ -493,7 +493,7 @@ export default function RegisterPage() {
                 </Button>
                 {stepIndex < stepItems.length - 1 ? (
                   <Button
-                    className="bg-emerald-600 text-white"
+                    className="bg-violet-600 text-white"
                     radius="full"
                     onPress={goNext}
                   >
@@ -501,7 +501,7 @@ export default function RegisterPage() {
                   </Button>
                 ) : (
                   <Button
-                    className="bg-emerald-600 text-white"
+                    className="bg-violet-600 text-white"
                     isLoading={isSubmitting}
                     radius="full"
                     onPress={handleSubmit}

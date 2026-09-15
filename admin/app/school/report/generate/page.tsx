@@ -72,13 +72,13 @@ export default function GenerateReportPage() {
 
 	return (
 		<section className="space-y-5 py-4">
-			<Card className="border border-emerald-100/70 bg-white/90 dark:border-emerald-300/20">
+			<Card className="border border-violet-100/70 bg-white/90 dark:border-violet-300/20">
 				<CardHeader className="flex flex-wrap items-end justify-between gap-3 px-6 pt-6">
 					<div>
-						<p className="text-xs uppercase tracking-[0.2em] text-emerald-700/70 dark:text-emerald-300/80">Analytics Desk</p>
-						<h2 className="text-2xl font-semibold text-emerald-700 dark:text-emerald-300">Generate Report</h2>
+						<p className="text-xs uppercase tracking-[0.2em] text-violet-700/70 dark:text-violet-300/80">Analytics Desk</p>
+						<h2 className="text-2xl font-semibold text-violet-700 dark:text-violet-300">Generate Report</h2>
 					</div>
-					<Button className="bg-emerald-600 text-white" radius="full" size="lg" onPress={handleGenerate}>
+					<Button className="bg-violet-600 text-white" radius="full" size="lg" onPress={handleGenerate}>
 						Generate Now
 					</Button>
 				</CardHeader>
@@ -189,10 +189,10 @@ export default function GenerateReportPage() {
 				</CardBody>
 
 				<CardFooter className="flex flex-col gap-3 px-6 pb-6 md:flex-row">
-					<Button className="w-full border-emerald-600 text-emerald-700" variant="bordered" radius="full" size="lg" onPress={handleReset}>
+					<Button className="w-full border-violet-600 text-violet-700" variant="bordered" radius="full" size="lg" onPress={handleReset}>
 						Reset Form
 					</Button>
-					<Button className="w-full bg-emerald-600 text-white" radius="full" size="lg" onPress={handleGenerate}>
+					<Button className="w-full bg-violet-600 text-white" radius="full" size="lg" onPress={handleGenerate}>
 						Generate Report
 					</Button>
 				</CardFooter>

@@ -14,23 +14,23 @@ const subjects = [
 export default function SubjectsPage() {
   return (
     <section className="space-y-5 py-4">
-      <Card className="border border-emerald-100/70 bg-white/90 dark:border-emerald-300/20 shadow-lg">
+      <Card className="border border-violet-100/70 bg-white/90 dark:border-violet-300/20 shadow-lg">
         <CardHeader className="flex flex-wrap items-end justify-between gap-3 px-6 pt-6">
           <div>
             <p className="text-xs uppercase tracking-[0.2em] text-foreground/50">Academic Office</p>
             <h2 className="text-2xl font-semibold">Subjects Management</h2>
             <p className="mt-1 text-sm text-foreground/70">Manage school subjects and open each subject record for details.</p>
           </div>
-          <Button as={Link} href="/school/subjects/add" className="bg-emerald-600 text-white" radius="full">
+          <Button as={Link} href="/school/subjects/add" className="bg-violet-600 text-white" radius="full">
             Add Subject
           </Button>
         </CardHeader>
         <CardBody className="grid gap-3 px-6 pb-6">
           {subjects.map((subject) => (
-            <div key={subject.id} className="rounded-2xl border border-emerald-100/70 bg-white p-4 dark:border-emerald-300/20 dark:bg-slate-900/40">
+            <div key={subject.id} className="rounded-2xl border border-violet-100/70 bg-white p-4 dark:border-violet-300/20 dark:bg-slate-900/40">
               <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
                 <div>
-                  <Link href={`/school/subjects/${subject.id}`} className="text-sm font-semibold text-emerald-700 hover:underline dark:text-emerald-300">
+                  <Link href={`/school/subjects/${subject.id}`} className="text-sm font-semibold text-violet-700 hover:underline dark:text-violet-300">
                     {subject.name}
                   </Link>
                   <p className="mt-1 text-sm text-foreground/70">Teacher: {subject.teacher}</p>

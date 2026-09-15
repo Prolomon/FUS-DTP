@@ -81,7 +81,7 @@ export default function StudentDetailPage() {
         { date: "2026-01-15", bloodGroup: "O+", genotype: "AA", allergy: "None", note: "No known allergies" },
     ]);
     const [hostelRecords, setHostelRecords] = useState([
-        { date: "2026-01-12", hostelName: "Emerald Hostel", roomNumber: "A-12", bedSpace: "Upper Bunk", status: "Active" },
+        { date: "2026-01-12", hostelName: "violet Hostel", roomNumber: "A-12", bedSpace: "Upper Bunk", status: "Active" },
     ]);
 
     const [reason, setReason] = useState("");
@@ -356,14 +356,14 @@ export default function StudentDetailPage() {
     if (loading) {
         return (
             <section className="flex min-h-[60vh] items-center justify-center py-8">
-                <div className="text-lg text-emerald-600">Loading student data...</div>
+                <div className="text-lg text-violet-600">Loading student data...</div>
             </section>
         );
     }
 
     return (
         <section className="flex min-h-[60vh] items-center justify-center py-8">
-            <Card className="w-full border border-emerald-100/70 bg-white/90 dark:border-emerald-300/20 shadow-lg">
+            <Card className="w-full border border-violet-100/70 bg-white/90 dark:border-violet-300/20 shadow-lg">
                 <CardHeader className="flex flex-col md:flex-row md:items-center md:justify-between px-6 pt-6 pb-2 gap-4">
                     <h2 className="text-xl font-semibold">Student Profile</h2>
                     <div className="flex gap-2 flex-wrap">
@@ -372,7 +372,7 @@ export default function StudentDetailPage() {
                 </CardHeader>
                 <CardBody className="px-6 pb-2 space-y-6">
                     {/* card for avatar */}
-                    <Card className="w-full border border-emerald-100/70 bg-white/90 dark:border-emerald-300/20 shadow-lg">
+                    <Card className="w-full border border-violet-100/70 bg-white/90 dark:border-violet-300/20 shadow-lg">
                         <CardHeader className="flex flex-col md:flex-row md:items-center md:justify-between px-6 pt-6 pb-2 gap-4">
                             <h2 className="text-xl font-semibold">Student Image</h2>
                             <div className="flex gap-2">
@@ -402,7 +402,7 @@ export default function StudentDetailPage() {
                         </CardFooter>
                     </Card>
                     {/* card for student details */}
-                    <Card className="w-full border border-emerald-100/70 bg-white/90 dark:border-emerald-300/20 shadow-lg">
+                    <Card className="w-full border border-violet-100/70 bg-white/90 dark:border-violet-300/20 shadow-lg">
                         <CardHeader className="flex flex-col md:flex-row md:items-center md:justify-between px-6 pt-6 pb-2 gap-4">
                             <h2 className="text-xl font-semibold">Student Details</h2>
                             <div className="flex gap-2">
@@ -647,7 +647,7 @@ export default function StudentDetailPage() {
                         </CardFooter>
                     </Card>
                     {/* student results list */}
-                    <Card className="w-full border border-emerald-100/70 bg-white/90 dark:border-emerald-300/20 shadow-lg">
+                    <Card className="w-full border border-violet-100/70 bg-white/90 dark:border-violet-300/20 shadow-lg">
                         <CardHeader className="flex flex-col md:flex-row md:items-center md:justify-between px-6 pt-6 pb-2 gap-4">
                             <h2 className="text-xl font-semibold">Results</h2>
                             <div className="flex gap-2">
@@ -687,13 +687,13 @@ export default function StudentDetailPage() {
                         </CardBody>
                     </Card>
 
-                    <Card className="w-full border border-emerald-100/70 bg-white/90 dark:border-emerald-300/20 shadow-lg">
+                    <Card className="w-full border border-violet-100/70 bg-white/90 dark:border-violet-300/20 shadow-lg">
                         <CardHeader className="px-6 pt-6 pb-2">
                             <h2 className="text-xl font-semibold">ID Card (Front and Back)</h2>
                         </CardHeader>
                         <CardBody className="px-6 pb-6 space-y-4">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div className="rounded-lg border border-dashed border-emerald-300 p-4">
+                                <div className="rounded-lg border border-dashed border-violet-300 p-4">
                                     <p className="mb-2 font-medium">ID Card Front</p>
                                     <Input
                                         type="file"
@@ -702,7 +702,7 @@ export default function StudentDetailPage() {
                                         onChange={e => setIdCardForm((prev) => ({ ...prev, front: e.target.files?.[0]?.name || "" }))}
                                     />
                                 </div>
-                                <div className="rounded-lg border border-dashed border-emerald-300 p-4">
+                                <div className="rounded-lg border border-dashed border-violet-300 p-4">
                                     <p className="mb-2 font-medium">ID Card Back</p>
                                     <Input
                                         type="file"
@@ -716,9 +716,9 @@ export default function StudentDetailPage() {
                                 <Button color="primary" radius="full" size="lg" className="w-full" onPress={handleIdCardSubmit}>Submit</Button>
                                 <Button variant="bordered" radius="full" size="lg" className="w-full" onPress={handleIdCardCancel}>Cancel</Button>
                             </div>
-                            <div className="overflow-x-auto rounded-lg border border-emerald-100">
+                            <div className="overflow-x-auto rounded-lg border border-violet-100">
                                 <table className="min-w-full text-sm">
-                                    <thead className="bg-emerald-50 text-left">
+                                    <thead className="bg-violet-50 text-left">
                                         <tr>
                                             <th className="px-4 py-3 font-semibold">Date</th>
                                             <th className="px-4 py-3 font-semibold">Front File</th>
@@ -727,7 +727,7 @@ export default function StudentDetailPage() {
                                     </thead>
                                     <tbody>
                                         {idCardRecords.map((record, idx) => (
-                                            <tr key={`${record.date}-${record.front}-${idx}`} className="border-t border-emerald-100">
+                                            <tr key={`${record.date}-${record.front}-${idx}`} className="border-t border-violet-100">
                                                 <td className="px-4 py-3">{record.date}</td>
                                                 <td className="px-4 py-3">{record.front}</td>
                                                 <td className="px-4 py-3">{record.back}</td>
@@ -739,7 +739,7 @@ export default function StudentDetailPage() {
                         </CardBody>
                     </Card>
 
-                    <Card className="w-full border border-emerald-100/70 bg-white/90 dark:border-emerald-300/20 shadow-lg">
+                    <Card className="w-full border border-violet-100/70 bg-white/90 dark:border-violet-300/20 shadow-lg">
                         <CardHeader className="px-6 pt-6 pb-2">
                             <h2 className="text-xl font-semibold">Student Disciplinary Records</h2>
                         </CardHeader>
@@ -784,9 +784,9 @@ export default function StudentDetailPage() {
                                 <Button color="primary" radius="full" size="lg" className="w-full" onPress={handleDisciplinarySubmit}>Submit</Button>
                                 <Button variant="bordered" radius="full" size="lg" className="w-full" onPress={handleDisciplinaryCancel}>Cancel</Button>
                             </div>
-                            <div className="overflow-x-auto rounded-lg border border-emerald-100">
+                            <div className="overflow-x-auto rounded-lg border border-violet-100">
                                 <table className="min-w-full text-sm">
-                                    <thead className="bg-emerald-50 text-left">
+                                    <thead className="bg-violet-50 text-left">
                                         <tr>
                                             <th className="px-4 py-3 font-semibold">Date</th>
                                             <th className="px-4 py-3 font-semibold">Incident</th>
@@ -796,7 +796,7 @@ export default function StudentDetailPage() {
                                     </thead>
                                     <tbody>
                                         {disciplinaryRecords.map((record, idx) => (
-                                            <tr key={`${record.date}-${record.incident}-${idx}`} className="border-t border-emerald-100">
+                                            <tr key={`${record.date}-${record.incident}-${idx}`} className="border-t border-violet-100">
                                                 <td className="px-4 py-3">{record.date}</td>
                                                 <td className="px-4 py-3">{record.incident}</td>
                                                 <td className="px-4 py-3">{record.actionTaken}</td>
@@ -809,7 +809,7 @@ export default function StudentDetailPage() {
                         </CardBody>
                     </Card>
 
-                    <Card className="w-full border border-emerald-100/70 bg-white/90 dark:border-emerald-300/20 shadow-lg">
+                    <Card className="w-full border border-violet-100/70 bg-white/90 dark:border-violet-300/20 shadow-lg">
                         <CardHeader className="px-6 pt-6 pb-2">
                             <h2 className="text-xl font-semibold">Student Medical Records</h2>
                         </CardHeader>
@@ -866,9 +866,9 @@ export default function StudentDetailPage() {
                                 <Button color="primary" radius="full" size="lg" className="w-full" onPress={handleMedicalSubmit}>Submit</Button>
                                 <Button variant="bordered" radius="full" size="lg" className="w-full" onPress={handleMedicalCancel}>Cancel</Button>
                             </div>
-                            <div className="overflow-x-auto rounded-lg border border-emerald-100">
+                            <div className="overflow-x-auto rounded-lg border border-violet-100">
                                 <table className="min-w-full text-sm">
-                                    <thead className="bg-emerald-50 text-left">
+                                    <thead className="bg-violet-50 text-left">
                                         <tr>
                                             <th className="px-4 py-3 font-semibold">Date</th>
                                             <th className="px-4 py-3 font-semibold">Blood Group</th>
@@ -879,7 +879,7 @@ export default function StudentDetailPage() {
                                     </thead>
                                     <tbody>
                                         {medicalRecords.map((record, idx) => (
-                                            <tr key={`${record.date}-${record.bloodGroup}-${idx}`} className="border-t border-emerald-100">
+                                            <tr key={`${record.date}-${record.bloodGroup}-${idx}`} className="border-t border-violet-100">
                                                 <td className="px-4 py-3">{record.date}</td>
                                                 <td className="px-4 py-3">{record.bloodGroup}</td>
                                                 <td className="px-4 py-3">{record.genotype}</td>
@@ -890,14 +890,14 @@ export default function StudentDetailPage() {
                                     </tbody>
                                 </table>
                             </div>
-                            <Card className="w-full border border-emerald-100/70 bg-white/95 dark:border-emerald-300/20">
+                            <Card className="w-full border border-violet-100/70 bg-white/95 dark:border-violet-300/20">
                                 <CardHeader className="px-4 py-3">
                                     <h3 className="text-base font-semibold">Allergies List</h3>
                                 </CardHeader>
                                 <CardBody className="px-0 pb-0">
-                                    <div className="overflow-x-auto rounded-b-lg border-t border-emerald-100">
+                                    <div className="overflow-x-auto rounded-b-lg border-t border-violet-100">
                                         <table className="min-w-full text-sm">
-                                            <thead className="bg-emerald-50 text-left">
+                                            <thead className="bg-violet-50 text-left">
                                                 <tr>
                                                     <th className="px-4 py-3 font-semibold">Date</th>
                                                     <th className="px-4 py-3 font-semibold">Allergy</th>
@@ -906,14 +906,14 @@ export default function StudentDetailPage() {
                                             </thead>
                                             <tbody>
                                                 {medicalRecords.filter((record) => record.allergy && record.allergy !== "None").length === 0 ? (
-                                                    <tr className="border-t border-emerald-100">
+                                                    <tr className="border-t border-violet-100">
                                                         <td className="px-4 py-3" colSpan={3}>No allergy record yet.</td>
                                                     </tr>
                                                 ) : (
                                                     medicalRecords
                                                         .filter((record) => record.allergy && record.allergy !== "None")
                                                         .map((record, idx) => (
-                                                            <tr key={`${record.date}-${record.allergy}-${idx}`} className="border-t border-emerald-100">
+                                                            <tr key={`${record.date}-${record.allergy}-${idx}`} className="border-t border-violet-100">
                                                                 <td className="px-4 py-3">{record.date}</td>
                                                                 <td className="px-4 py-3">{record.allergy}</td>
                                                                 <td className="px-4 py-3">{record.note || "-"}</td>
@@ -928,7 +928,7 @@ export default function StudentDetailPage() {
                         </CardBody>
                     </Card>
 
-                    <Card className="w-full border border-emerald-100/70 bg-white/90 dark:border-emerald-300/20 shadow-lg">
+                    <Card className="w-full border border-violet-100/70 bg-white/90 dark:border-violet-300/20 shadow-lg">
                         <CardHeader className="px-6 pt-6 pb-2">
                             <h2 className="text-xl font-semibold">Student Hostel Record</h2>
                         </CardHeader>
@@ -982,9 +982,9 @@ export default function StudentDetailPage() {
                                 <Button color="primary" radius="full" size="lg" className="w-full" onPress={handleHostelSubmit}>Submit</Button>
                                 <Button variant="bordered" radius="full" size="lg" className="w-full" onPress={handleHostelCancel}>Cancel</Button>
                             </div>
-                            <div className="overflow-x-auto rounded-lg border border-emerald-100">
+                            <div className="overflow-x-auto rounded-lg border border-violet-100">
                                 <table className="min-w-full text-sm">
-                                    <thead className="bg-emerald-50 text-left">
+                                    <thead className="bg-violet-50 text-left">
                                         <tr>
                                             <th className="px-4 py-3 font-semibold">Date</th>
                                             <th className="px-4 py-3 font-semibold">Hostel</th>
@@ -995,7 +995,7 @@ export default function StudentDetailPage() {
                                     </thead>
                                     <tbody>
                                         {hostelRecords.map((record, idx) => (
-                                            <tr key={`${record.date}-${record.hostelName}-${idx}`} className="border-t border-emerald-100">
+                                            <tr key={`${record.date}-${record.hostelName}-${idx}`} className="border-t border-violet-100">
                                                 <td className="px-4 py-3">{record.date}</td>
                                                 <td className="px-4 py-3">{record.hostelName}</td>
                                                 <td className="px-4 py-3">{record.roomNumber}</td>
@@ -1069,7 +1069,7 @@ export default function StudentDetailPage() {
                     <ModalHeader>Edit Student Image</ModalHeader>
                     <ModalBody>
                         <div className="flex flex-col items-center gap-4">
-                            <img src={imageUrl} alt="Current" className="w-32 h-32 rounded-full object-cover border border-emerald-200" />
+                            <img src={imageUrl} alt="Current" className="w-32 h-32 rounded-full object-cover border border-violet-200" />
                             <Input type="file" accept="image/*" onChange={e => setImageFile(e.target.files?.[0] || null)} />
                         </div>
                     </ModalBody>

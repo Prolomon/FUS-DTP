@@ -138,7 +138,7 @@ export default function WalletPage() {
   return (
     <div className="flex flex-col gap-6 py-6">
       {/* Wallet Balance Card */}
-      <Card className="bg-gradient-to-br from-emerald-600 to-emerald-700 border-0">
+      <Card className="bg-gradient-to-br from-violet-600 to-violet-700 border-0">
         <CardBody className="py-8 px-6">
           <div className="flex items-start justify-between">
             <div>
@@ -152,7 +152,7 @@ export default function WalletPage() {
           </div>
           <div className="flex gap-3 mt-6">
             <Button
-              className="bg-white text-emerald-600 font-semibold"
+              className="bg-white text-violet-600 font-semibold"
               onPress={() => setShowAddFunds(true)}
               startContent={<Plus className="w-4 h-4" />}
             >
@@ -176,9 +176,9 @@ export default function WalletPage() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-default-500 text-sm">Total Paid</p>
-                <p className="text-2xl font-bold text-emerald-600">NGN 165.4M</p>
+                <p className="text-2xl font-bold text-violet-600">NGN 165.4M</p>
               </div>
-              <ArrowUpRight className="w-8 h-8 text-emerald-600/30" />
+              <ArrowUpRight className="w-8 h-8 text-violet-600/30" />
             </div>
           </CardBody>
         </Card>
@@ -225,7 +225,7 @@ export default function WalletPage() {
                 <div
                   className={`p-3 rounded-lg ${
                     transaction.type === "credit"
-                      ? "bg-emerald-100 dark:bg-emerald-900/30"
+                      ? "bg-violet-100 dark:bg-violet-900/30"
                       : "bg-blue-100 dark:bg-blue-900/30"
                   }`}
                 >
@@ -233,7 +233,7 @@ export default function WalletPage() {
                     <ArrowDownLeft
                       className={`w-5 h-5 ${
                         transaction.type === "credit"
-                          ? "text-emerald-600"
+                          ? "text-violet-600"
                           : "text-blue-600"
                       }`}
                     />
@@ -251,7 +251,7 @@ export default function WalletPage() {
                 <div className="text-right">
                   <p className={`font-semibold ${
                     transaction.type === "credit"
-                      ? "text-emerald-600"
+                      ? "text-violet-600"
                       : "text-blue-600"
                   }`}>
                     {transaction.type === "credit" ? "+" : "-"}{transaction.amount}
@@ -320,7 +320,7 @@ export default function WalletPage() {
                   Cancel
                 </Button>
                 <Button
-                  className="bg-emerald-600 text-white"
+                  className="bg-violet-600 text-white"
                   onPress={() => {
                     handleAddFunds();
                     onClose();
@@ -377,7 +377,7 @@ export default function WalletPage() {
                   Cancel
                 </Button>
                 <Button
-                  className="bg-emerald-600 text-white"
+                  className="bg-violet-600 text-white"
                   onPress={() => {
                     handleWithdraw();
                     onClose();

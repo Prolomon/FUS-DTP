@@ -80,7 +80,7 @@ export default function CommiteePage() {
 
     return (
         <section className="space-y-5 py-4">
-            <Card className="border border-emerald-100/70 bg-white/90 dark:border-emerald-300/20">
+            <Card className="border border-violet-100/70 bg-white/90 dark:border-violet-300/20">
                 <CardHeader className="flex flex-wrap items-end justify-between gap-3 px-6 pt-6">
                     <div>
                         <p className="text-xs uppercase tracking-[0.2em] text-foreground/50">Create Committee</p>
@@ -152,7 +152,7 @@ export default function CommiteePage() {
                     <Button variant="bordered" radius="full" size="lg" onPress={() => router.push("/school/committee")}>
                         Cancel
                     </Button>
-                    <Button className="bg-emerald-600 text-white" radius="full" size="lg" isLoading={loading} onPress={handleSubmit}>
+                    <Button className="bg-violet-600 text-white" radius="full" size="lg" isLoading={loading} onPress={handleSubmit}>
                         Create Committee
                     </Button>
                 </CardFooter>

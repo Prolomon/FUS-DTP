@@ -49,10 +49,10 @@ export const Navbar = () => {
             <Image
               priority
               alt="ADUDA logo"
-              className="h-8 w-8 shrink-0 object-contain"
-              height={32}
+              className="h-12 w-auto shrink-0 object-contain"
+              height={48}
               src="/logo.png"
-              width={32}
+              width={48}
             />
           </NextLink>
         </NavbarBrand>
@@ -65,7 +65,7 @@ export const Navbar = () => {
               <Link
                 className={clsx(
                   linkStyles({ color: "foreground" }),
-                  "rounded-full px-3 py-2 text-sm data-[active=true]:text-emerald-600 data-[active=true]:font-medium",
+                  "rounded-full px-3 py-2 text-sm data-[active=true]:text-violet-600 data-[active=true]:font-medium",
                 )}
                 href={item.href}
               >
@@ -83,7 +83,7 @@ export const Navbar = () => {
         <NavbarItem className="hidden sm:flex">
           <Button
             as={Link}
-            className="bg-emerald-600 text-white font-medium"
+            className="bg-violet-600 text-white font-medium"
             href="/auth/login"
             radius="full"
           >
@@ -101,7 +101,7 @@ export const Navbar = () => {
         {siteConfig.navMenuItems.map((item, index) => (
           <NavbarMenuItem key={`${item.href}-${index}`}>
             <Link
-              className="block w-full rounded-2xl px-3 py-3 text-base font-medium text-foreground transition-colors hover:bg-default-100 hover:text-emerald-600"
+              className="block w-full rounded-2xl px-3 py-3 text-base font-medium text-foreground transition-colors hover:bg-default-100 hover:text-violet-600"
               href={item.href}
               onPress={() => setIsMenuOpen(false)}
             >
@@ -112,7 +112,7 @@ export const Navbar = () => {
         <NavbarMenuItem>
           <Button
             as={Link}
-            className="mt-2 w-full bg-emerald-600 text-white font-medium"
+            className="mt-2 w-full bg-violet-600 text-white font-medium"
             href="/auth/login"
             radius="full"
             onPress={() => setIsMenuOpen(false)}

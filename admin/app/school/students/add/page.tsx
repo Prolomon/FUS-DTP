@@ -180,7 +180,7 @@ export default function AddStudentPage() {
 
     return (
         <section className="flex min-h-[60vh] items-center justify-center py-8">
-            <Card className="w-full border border-emerald-100/70 bg-white/90 dark:border-emerald-300/20">
+            <Card className="w-full border border-violet-100/70 bg-white/90 dark:border-violet-300/20">
                 <CardHeader className="px-6 pt-6 pb-2">
                     <h2 className="text-xl font-semibold">Add Student</h2>
                 </CardHeader>
@@ -419,13 +419,13 @@ export default function AddStudentPage() {
                     </form>
                 </CardBody>
                 <CardFooter className="px-6 pb-6 flex gap-4 flex-col md:flex-row">
-                    <Button className="w-full border-emerald-600 text-emerald-600" variant="bordered" size="lg" radius="full" onPress={handleClear}>
+                    <Button className="w-full border-violet-600 text-violet-600" variant="bordered" size="lg" radius="full" onPress={handleClear}>
                         Clear
                     </Button>
-                    <Button className="w-full bg-emerald-600 text-white" size="lg" radius="full" type="submit" onPress={handleSubmit}>
+                    <Button className="w-full bg-violet-600 text-white" size="lg" radius="full" type="submit" onPress={handleSubmit}>
                         Add Student
                     </Button>
-                    <Button className="w-full border-emerald-600 text-emerald-600" variant="bordered" size="lg" radius="full" onPress={handleCancel}>
+                    <Button className="w-full border-violet-600 text-violet-600" variant="bordered" size="lg" radius="full" onPress={handleCancel}>
                         Cancel
                     </Button>
                 </CardFooter>

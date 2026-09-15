@@ -10,7 +10,7 @@ import Link from "next/link";
 const attendance = [
   { className: "JSS 1 Gold", present: 34, absent: 2, rate: "94%", trend: "Up" },
   { className: "JSS 2 Ruby", present: 30, absent: 4, rate: "88%", trend: "Down" },
-  { className: "SS 1 Emerald", present: 29, absent: 3, rate: "91%", trend: "Up" },
+  { className: "SS 1 violet", present: 29, absent: 3, rate: "91%", trend: "Up" },
   { className: "SS 3 Platinum", present: 28, absent: 1, rate: "97%", trend: "Up" },
 ];
 
@@ -20,7 +20,7 @@ const pastAttendanceByDate = [
     records: [
       { className: "JSS 1 Gold", present: 33, absent: 3, rate: "92%", trend: "Up" },
       { className: "JSS 2 Ruby", present: 29, absent: 5, rate: "85%", trend: "Down" },
-      { className: "SS 1 Emerald", present: 28, absent: 4, rate: "88%", trend: "Up" },
+      { className: "SS 1 violet", present: 28, absent: 4, rate: "88%", trend: "Up" },
       { className: "SS 3 Platinum", present: 27, absent: 2, rate: "93%", trend: "Up" },
     ],
   },

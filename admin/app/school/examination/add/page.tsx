@@ -164,7 +164,7 @@ export default function AddExaminationPage() {
 
   return (
     <section className="flex min-h-[60vh] items-center justify-center py-8">
-      <Card className="w-full border border-emerald-100/70 bg-white/90 dark:border-emerald-300/20 shadow-lg">
+      <Card className="w-full border border-violet-100/70 bg-white/90 dark:border-violet-300/20 shadow-lg">
         <CardHeader className="px-6 pt-6 pb-2">
           <h2 className="text-xl font-semibold">Add Examination</h2>
         </CardHeader>
@@ -195,7 +195,7 @@ export default function AddExaminationPage() {
             </Select>
           </div>
 
-          <Card className="border border-emerald-100/70 bg-white/95 dark:border-emerald-300/20">
+          <Card className="border border-violet-100/70 bg-white/95 dark:border-violet-300/20">
             <CardHeader className="px-4 py-4">
               <h3 className="text-lg font-semibold">Add Question</h3>
             </CardHeader>
@@ -221,7 +221,7 @@ export default function AddExaminationPage() {
               </Select>
 
               {questionDraft.questionType === "Objective" && (
-                <div className="space-y-3 rounded-xl border border-emerald-100/70 p-3">
+                <div className="space-y-3 rounded-xl border border-violet-100/70 p-3">
                   <div className="flex flex-col gap-3 md:flex-row md:items-end">
                     <Input
                       className="w-full"
@@ -233,17 +233,17 @@ export default function AddExaminationPage() {
                       variant="bordered"
                       labelPlacement="outside"
                     />
-                    <Button className="bg-emerald-600 text-white" radius="full" onPress={handleAddOption}>
+                    <Button className="bg-violet-600 text-white" radius="full" onPress={handleAddOption}>
                       Add Option
                     </Button>
                   </div>
                   <div className="flex flex-wrap gap-2">
                     {draftObjectiveOptions.map((opt, idx) => (
-                      <div key={`${opt}-${idx}`} className="flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs text-emerald-700">
+                      <div key={`${opt}-${idx}`} className="flex items-center gap-2 rounded-full border border-violet-200 bg-violet-50 px-3 py-1 text-xs text-violet-700">
                         <span>{opt}</span>
                         <button
                           type="button"
-                          className="rounded-full px-1 font-bold text-emerald-700 hover:bg-emerald-100"
+                          className="rounded-full px-1 font-bold text-violet-700 hover:bg-violet-100"
                           onClick={() => handleRemoveDraftOption(idx)}
                           aria-label={`Remove option ${opt}`}
                         >
@@ -255,19 +255,19 @@ export default function AddExaminationPage() {
                 </div>
               )}
 
-              <Button className="bg-emerald-600 text-white" radius="full" onPress={handleAddQuestion}>
+              <Button className="bg-violet-600 text-white" radius="full" onPress={handleAddQuestion}>
                 Add Question
               </Button>
 
               {questions.length > 0 && (
-                <div className="space-y-2 rounded-xl border border-emerald-100/70 p-3">
+                <div className="space-y-2 rounded-xl border border-violet-100/70 p-3">
                   <p className="text-sm font-semibold">Added Questions ({questions.length})</p>
                   {questions.map((q, idx) => (
-                    <div key={q.id} className="rounded-lg border border-emerald-100/70 p-3">
+                    <div key={q.id} className="rounded-lg border border-violet-100/70 p-3">
                       <div className="flex items-start justify-between gap-3">
                         <p className="text-sm font-medium">{idx + 1}. {q.nameQuestion}</p>
                         <Button
-                          className="border-emerald-600 text-emerald-700"
+                          className="border-violet-600 text-violet-700"
                           variant="bordered"
                           radius="full"
                           size="sm"
@@ -289,13 +289,13 @@ export default function AddExaminationPage() {
         </CardBody>
 
         <CardFooter className="flex flex-col gap-3 px-6 pb-6 md:flex-row">
-          <Button className="w-full border-emerald-600 text-emerald-700" variant="bordered" radius="full" size="lg" onPress={handleClear}>
+          <Button className="w-full border-violet-600 text-violet-700" variant="bordered" radius="full" size="lg" onPress={handleClear}>
             Clear Form
           </Button>
-          <Button className="w-full bg-emerald-600 text-white" radius="full" size="lg" onPress={handleUpload}>
+          <Button className="w-full bg-violet-600 text-white" radius="full" size="lg" onPress={handleUpload}>
             Upload
           </Button>
-          <Button className="w-full border-emerald-600 text-emerald-700" variant="bordered" radius="full" size="lg" onPress={handleCancel}>
+          <Button className="w-full border-violet-600 text-violet-700" variant="bordered" radius="full" size="lg" onPress={handleCancel}>
             Cancel
           </Button>
         </CardFooter>

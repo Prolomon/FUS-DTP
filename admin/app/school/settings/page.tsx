@@ -164,7 +164,7 @@ export default function SchoolSettingsPage() {
           </div>
         </CardBody>
         <CardFooter className="flex justify-end px-6 pb-6">
-          <Button className="bg-emerald-600 text-white" radius="full" size="lg" onPress={handleSave}>
+          <Button className="bg-violet-600 text-white" radius="full" size="lg" onPress={handleSave}>
             Save Settings
           </Button>
         </CardFooter>
@@ -208,7 +208,7 @@ export default function SchoolSettingsPage() {
           </>)}
         </CardBody>
         <CardFooter className="flex justify-end px-6 pb-6">
-          <Button className="bg-emerald-600 text-white" radius="full" size="lg" onPress={passwordForm.action === "change" ? handlePasswordSave : handleResetPassword}>
+          <Button className="bg-violet-600 text-white" radius="full" size="lg" onPress={passwordForm.action === "change" ? handlePasswordSave : handleResetPassword}>
             {passwordForm.action === "change" ? "Change Password" : "Reset Password"}
           </Button>
         </CardFooter>
@@ -252,7 +252,7 @@ export default function SchoolSettingsPage() {
           </>)}
         </CardBody>
         <CardFooter className="flex justify-end px-6 pb-6">
-          <Button className="bg-emerald-600 text-white" radius="full" size="lg" onPress={pinForm.action === "change" ? handlePinSave : handleResetPin}>
+          <Button className="bg-violet-600 text-white" radius="full" size="lg" onPress={pinForm.action === "change" ? handlePinSave : handleResetPin}>
             {pinForm.action === "change" ? "Change Pin" : "Reset Pin"}
           </Button>
         </CardFooter>
@@ -279,7 +279,7 @@ export default function SchoolSettingsPage() {
           />
         </CardBody>
         <CardFooter className="flex justify-end px-6 pb-6">
-          <Button className="bg-emerald-600 text-white" radius="full" size="lg" onPress={handleFactorSave}>
+          <Button className="bg-violet-600 text-white" radius="full" size="lg" onPress={handleFactorSave}>
             Activate Settings
           </Button>
         </CardFooter>

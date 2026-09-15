@@ -66,14 +66,14 @@ export default function SubjectDetailPage() {
   if (loading) {
     return (
       <section className="flex min-h-[60vh] items-center justify-center py-8">
-        <div className="text-lg text-emerald-600">Loading subject data...</div>
+        <div className="text-lg text-violet-600">Loading subject data...</div>
       </section>
     );
   }
 
   return (
     <section className="space-y-5 py-4">
-      <Card className="border border-emerald-100/70 bg-white/90 dark:border-emerald-300/20 shadow-lg">
+      <Card className="border border-violet-100/70 bg-white/90 dark:border-violet-300/20 shadow-lg">
         <CardHeader className="flex flex-wrap items-center justify-between gap-3 px-6 pt-6">
           <div>
             <p className="text-xs uppercase tracking-[0.2em] text-foreground/50">Academic Office</p>
@@ -81,16 +81,16 @@ export default function SubjectDetailPage() {
           </div>
           <div className="flex flex-wrap gap-2">
             {!editMode ? (
-              <Button className="bg-emerald-600 text-white" radius="full" onPress={() => setEditMode(true)}>Edit Subject</Button>
+              <Button className="bg-violet-600 text-white" radius="full" onPress={() => setEditMode(true)}>Edit Subject</Button>
             ) : (
-              <Button className="bg-emerald-600 text-white" radius="full" onPress={handleUpdate}>Save Changes</Button>
+              <Button className="bg-violet-600 text-white" radius="full" onPress={handleUpdate}>Save Changes</Button>
             )}
             <Button color="danger" variant="flat" radius="full" onPress={() => setShowDelete(true)}>Delete</Button>
           </div>
         </CardHeader>
 
         <CardBody className="px-6 pb-2 space-y-6">
-          <Card className="border border-emerald-100/70 bg-white/95 dark:border-emerald-300/20">
+          <Card className="border border-violet-100/70 bg-white/95 dark:border-violet-300/20">
             <CardBody className="grid gap-3 px-6 py-6 md:grid-cols-3">
               <div>
                 <p className="text-xs uppercase tracking-[0.18em] text-foreground/50">Subject Name</p>
@@ -125,8 +125,8 @@ export default function SubjectDetailPage() {
         <CardFooter className="flex flex-col gap-3 px-6 pb-6 md:flex-row">
           {editMode && (
             <>
-              <Button className="w-full bg-emerald-600 text-white" radius="full" onPress={handleUpdate}>Save Changes</Button>
-              <Button className="w-full border-emerald-600 text-emerald-700" variant="bordered" radius="full" onPress={() => setEditMode(false)}>Cancel Edit</Button>
+              <Button className="w-full bg-violet-600 text-white" radius="full" onPress={handleUpdate}>Save Changes</Button>
+              <Button className="w-full border-violet-600 text-violet-700" variant="bordered" radius="full" onPress={() => setEditMode(false)}>Cancel Edit</Button>
             </>
           )}
         </CardFooter>

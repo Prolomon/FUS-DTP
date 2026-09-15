@@ -36,12 +36,12 @@ export default function ForgotPasswordPage() {
 
 	return (
 		<section className="relative mx-auto w-full max-w-6xl overflow-x-clip px-4 pb-16 pt-8 sm:px-6 md:pt-12">
-			<div className="pointer-events-none absolute left-[-70px] top-[-30px] -z-10 h-56 w-56 rounded-full bg-emerald-400/20 blur-3xl" />
+			<div className="pointer-events-none absolute left-[-70px] top-[-30px] -z-10 h-56 w-56 rounded-full bg-violet-400/20 blur-3xl" />
 			<div className="pointer-events-none absolute right-[-90px] top-[240px] -z-10 h-56 w-56 rounded-full bg-orange-400/20 blur-3xl" />
 
 			<div className="grid items-stretch gap-6 lg:grid-cols-[1.05fr_0.95fr]">
-				<div className="relative overflow-hidden rounded-[2rem] border border-emerald-950/10 bg-[linear-gradient(135deg,rgba(14,165,233,0.10),rgba(249,115,22,0.12),rgba(255,255,255,0.96))] p-6 shadow-[0_24px_80px_-40px_rgba(8,47,73,0.5)] dark:border-white/10 dark:bg-[linear-gradient(135deg,rgba(8,47,73,0.94),rgba(14,116,144,0.82),rgba(120,53,15,0.68))] md:p-8">
-					<p className="text-xs font-semibold uppercase tracking-[0.24em] text-emerald-800 dark:text-emerald-200">
+				<div className="relative overflow-hidden rounded-[2rem] border border-violet-950/10 bg-[linear-gradient(135deg,rgba(14,165,233,0.10),rgba(249,115,22,0.12),rgba(255,255,255,0.96))] p-6 shadow-[0_24px_80px_-40px_rgba(8,47,73,0.5)] dark:border-white/10 dark:bg-[linear-gradient(135deg,rgba(8,47,73,0.94),rgba(14,116,144,0.82),rgba(120,53,15,0.68))] md:p-8">
+					<p className="text-xs font-semibold uppercase tracking-[0.24em] text-violet-800 dark:text-violet-200">
 						ADUDA
 					</p>
 					<h1 className="mt-4 max-w-xl text-3xl font-semibold leading-tight md:text-5xl">
@@ -58,7 +58,7 @@ export default function ForgotPasswordPage() {
 								key={step}
 								className="flex items-center gap-3 rounded-2xl border border-white/50 bg-background/75 px-4 py-3 text-sm font-medium text-foreground/85 backdrop-blur dark:border-white/10 dark:bg-slate-950/35"
 							>
-								<span className="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-600 text-xs font-semibold text-white">
+								<span className="flex h-6 w-6 items-center justify-center rounded-full bg-violet-600 text-xs font-semibold text-white">
 									{index + 1}
 								</span>
 								<span>{step}</span>
@@ -67,7 +67,7 @@ export default function ForgotPasswordPage() {
 					</div>
 				</div>
 
-				<Card className="rounded-[2rem] border border-default-200/70 bg-background/85 shadow-lg shadow-emerald-900/5 backdrop-blur">
+				<Card className="rounded-[2rem] border border-default-200/70 bg-background/85 shadow-lg shadow-violet-900/5 backdrop-blur">
 					<CardHeader className="flex flex-col items-start gap-2 p-6 md:p-8">
 						<p className="text-xs uppercase tracking-[0.24em] text-foreground/55">
 							Password Reset
@@ -111,7 +111,7 @@ export default function ForgotPasswordPage() {
 								onValueChange={(v) => setOtp(v.toUpperCase())}
 								step={1}
 							/> </>)}
-						<Button className="mt-2 bg-emerald-600 text-white" radius="full" size="lg" onClick={handleClick}>
+						<Button className="mt-2 bg-violet-600 text-white" radius="full" size="lg" onClick={handleClick}>
 							Send Reset Link
 						</Button>
 

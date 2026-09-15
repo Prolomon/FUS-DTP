@@ -57,7 +57,7 @@ const modules = [
     text: "Digitize registration, admission ranking, automated letters, identity cards, and student records from entry to graduation.",
     icon: Users,
     className:
-      "md:col-span-2 border-emerald-500/20 bg-[linear-gradient(140deg,rgba(6,182,212,0.16),rgba(14,165,233,0.08),rgba(255,255,255,0.86))] dark:bg-[linear-gradient(140deg,rgba(8,47,73,0.88),rgba(14,116,144,0.52),rgba(15,23,42,0.92))]",
+      "md:col-span-2 border-violet-500/20 bg-[linear-gradient(140deg,rgba(6,182,212,0.16),rgba(14,165,233,0.08),rgba(255,255,255,0.86))] dark:bg-[linear-gradient(140deg,rgba(8,47,73,0.88),rgba(14,116,144,0.52),rgba(15,23,42,0.92))]",
   },
   {
     number: "02",
@@ -73,7 +73,7 @@ const modules = [
     text: "Centralize staff records, attendance, recruitment, training and certification, performance indicators, and evaluations.",
     icon: Briefcase,
     className:
-      "border-emerald-500/20 bg-[linear-gradient(145deg,rgba(16,185,129,0.16),rgba(255,255,255,0.88))] dark:bg-[linear-gradient(145deg,rgba(6,78,59,0.82),rgba(15,23,42,0.92))]",
+      "border-violet-500/20 bg-[linear-gradient(145deg,rgba(16,185,129,0.16),rgba(255,255,255,0.88))] dark:bg-[linear-gradient(145deg,rgba(6,78,59,0.82),rgba(15,23,42,0.92))]",
   },
   {
     number: "04",
@@ -178,16 +178,16 @@ export default function Home() {
 
       <section
         aria-label="Showcase"
-        className="relative overflow-hidden rounded-[2.2rem] border border-emerald-950/10 bg-[linear-gradient(135deg,rgba(14,165,233,0.08),rgba(249,115,22,0.12),rgba(255,255,255,0.95))] px-6 py-8 shadow-[0_30px_100px_-40px_rgba(8,47,73,0.6)] dark:border-white/10 dark:bg-[linear-gradient(135deg,rgba(8,47,73,0.94),rgba(14,116,144,0.85),rgba(120,53,15,0.72))] md:px-10 md:py-12"
+        className="relative overflow-hidden rounded-[2.2rem] border border-violet-950/10 bg-[linear-gradient(135deg,rgba(14,165,233,0.08),rgba(249,115,22,0.12),rgba(255,255,255,0.95))] px-6 py-8 shadow-[0_30px_100px_-40px_rgba(8,47,73,0.6)] dark:border-white/10 dark:bg-[linear-gradient(135deg,rgba(8,47,73,0.94),rgba(14,116,144,0.85),rgba(120,53,15,0.72))] md:px-10 md:py-12"
         id="home"
       >
-        <div className="absolute -left-12 top-0 h-48 w-48 rounded-full bg-emerald-400/20 blur-3xl" />
+        <div className="absolute -left-12 top-0 h-48 w-48 rounded-full bg-violet-400/20 blur-3xl" />
         <div className="absolute -bottom-16 right-0 h-56 w-56 rounded-full bg-orange-400/20 blur-3xl" />
         <div className="absolute inset-y-0 right-[24%] hidden w-px bg-white/25 lg:block" />
 
         <div className="relative grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_420px]">
           <div className="relative z-10">
-            <Chip className="border border-emerald-950/10 bg-background/80 px-4 text-emerald-900 dark:border-white/10 dark:bg-white/10 dark:text-emerald-100">
+            <Chip className="border border-violet-950/10 bg-background/80 px-4 text-violet-900 dark:border-white/10 dark:bg-white/10 dark:text-violet-100">
               Student management, redesigned
             </Chip>
             <h1 className="mt-5 max-w-4xl text-4xl font-semibold leading-[1.02] tracking-tight text-foreground md:text-6xl">
@@ -202,7 +202,7 @@ export default function Home() {
             <div className="mt-8 flex flex-wrap gap-3">
               <Button
                 as={Link}
-                className="bg-emerald-600 px-6 text-white shadow-lg shadow-emerald-900/20"
+                className="bg-violet-600 px-6 text-white shadow-lg shadow-violet-900/20"
                 href="#overview"
                 radius="full"
                 size="lg"
@@ -212,7 +212,7 @@ export default function Home() {
               </Button>
               <Button
                 as={Link}
-                className="border-emerald-700/40 bg-background/60 px-6 text-emerald-900 dark:text-emerald-100"
+                className="border-violet-700/40 bg-background/60 px-6 text-violet-900 dark:text-violet-100"
                 href="#contact"
                 radius="full"
                 size="lg"
@@ -253,7 +253,7 @@ export default function Home() {
                     ADUDA control center
                   </p>
                 </div>
-                <Chip className="border-0 bg-emerald-400/20 text-emerald-200">
+                <Chip className="border-0 bg-violet-400/20 text-violet-200">
                   Online
                 </Chip>
               </div>
@@ -287,7 +287,7 @@ export default function Home() {
                 <p className="text-[11px] uppercase tracking-[0.24em] text-foreground/55">
                   Attendance
                 </p>
-                <p className="text-3xl font-semibold text-emerald-700 dark:text-emerald-300">98%</p>
+                <p className="text-3xl font-semibold text-violet-700 dark:text-violet-300">98%</p>
                 <p className="text-xs text-foreground/68">Daily capture rate across active schools</p>
               </CardBody>
             </Card>
@@ -298,7 +298,7 @@ export default function Home() {
       <section className="scroll-mt-24" id="overview">
         <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-700 dark:text-emerald-300">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-violet-700 dark:text-violet-300">
               National Problem Statement
             </p>
             <h2 className="mt-2 text-3xl font-semibold tracking-tight md:text-5xl">
@@ -367,7 +367,7 @@ export default function Home() {
       <section className="scroll-mt-24" id="deployment">
         <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
           <div className="overflow-hidden rounded-[2rem] border border-slate-900/10 bg-[linear-gradient(160deg,rgba(15,23,42,0.98),rgba(8,47,73,0.95),rgba(120,53,15,0.72))] p-6 text-white md:p-8">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-100/70">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-violet-100/70">
               Project Timeline
             </p>
             <h2 className="mt-3 max-w-xl text-3xl font-semibold tracking-tight md:text-5xl">
@@ -467,7 +467,7 @@ export default function Home() {
               <div className="mt-7 flex flex-wrap gap-3">
                 <Button
                   as={Link}
-                  className="bg-slate-950 text-white dark:bg-emerald-600"
+                  className="bg-slate-950 text-white dark:bg-violet-600"
                   href="mailto:info@tr3-g.com.ng"
                   radius="full"
                 >

@@ -133,7 +133,7 @@ export default function HostelPage() {
 
 	return (
 		<section className="space-y-5 py-4">
-			<Card className="border border-emerald-100/70 bg-white/90 dark:border-emerald-300/20 shadow-lg">
+			<Card className="border border-violet-100/70 bg-white/90 dark:border-violet-300/20 shadow-lg">
 				<CardHeader className="flex flex-wrap items-end justify-between gap-3 px-6 pt-6">
 					<div>
 						<p className="text-xs uppercase tracking-[0.2em] text-foreground/50">Residential Life</p>
@@ -141,10 +141,10 @@ export default function HostelPage() {
 						<p className="mt-1 text-sm text-foreground/70">Track rooms, occupancy, and student lodging in one place.</p>
 					</div>
 					<div className="flex flex-wrap gap-2">
-						<Button as={Link} href="/school/hostel/assign" className="border-emerald-600 text-emerald-700" variant="bordered" radius="full">
+						<Button as={Link} href="/school/hostel/assign" className="border-violet-600 text-violet-700" variant="bordered" radius="full">
 							Assign Student
 						</Button>
-						<Button as={Link} href="/school/hostel/add" className="bg-emerald-600 text-white" radius="full">
+						<Button as={Link} href="/school/hostel/add" className="bg-violet-600 text-white" radius="full">
 							Add Room
 						</Button>
 					</div>
@@ -152,25 +152,25 @@ export default function HostelPage() {
 
 				<CardBody className="grid gap-4 px-6 pb-6">
 					<div className="grid gap-4 md:grid-cols-4">
-						<div className="rounded-2xl border border-emerald-100/70 bg-white p-4 dark:border-emerald-300/20 dark:bg-slate-900/40">
+						<div className="rounded-2xl border border-violet-100/70 bg-white p-4 dark:border-violet-300/20 dark:bg-slate-900/40">
 							<p className="text-xs uppercase tracking-[0.18em] text-foreground/50">Total Rooms</p>
-							<p className="mt-2 text-3xl font-semibold text-emerald-700">{rooms.length}</p>
+							<p className="mt-2 text-3xl font-semibold text-violet-700">{rooms.length}</p>
 						</div>
-						<div className="rounded-2xl border border-emerald-100/70 bg-white p-4 dark:border-emerald-300/20 dark:bg-slate-900/40">
+						<div className="rounded-2xl border border-violet-100/70 bg-white p-4 dark:border-violet-300/20 dark:bg-slate-900/40">
 							<p className="text-xs uppercase tracking-[0.18em] text-foreground/50">Occupied Beds</p>
-							<p className="mt-2 text-3xl font-semibold text-emerald-700">{totalOccupied}</p>
+							<p className="mt-2 text-3xl font-semibold text-violet-700">{totalOccupied}</p>
 						</div>
-						<div className="rounded-2xl border border-emerald-100/70 bg-white p-4 dark:border-emerald-300/20 dark:bg-slate-900/40">
+						<div className="rounded-2xl border border-violet-100/70 bg-white p-4 dark:border-violet-300/20 dark:bg-slate-900/40">
 							<p className="text-xs uppercase tracking-[0.18em] text-foreground/50">Vacant Beds</p>
-							<p className="mt-2 text-3xl font-semibold text-emerald-700">{totalVacant}</p>
+							<p className="mt-2 text-3xl font-semibold text-violet-700">{totalVacant}</p>
 						</div>
-						<div className="rounded-2xl border border-emerald-100/70 bg-white p-4 dark:border-emerald-300/20 dark:bg-slate-900/40">
+						<div className="rounded-2xl border border-violet-100/70 bg-white p-4 dark:border-violet-300/20 dark:bg-slate-900/40">
 							<p className="text-xs uppercase tracking-[0.18em] text-foreground/50">Occupancy Rate</p>
-							<p className="mt-2 text-3xl font-semibold text-emerald-700">{occupancyRate}%</p>
+							<p className="mt-2 text-3xl font-semibold text-violet-700">{occupancyRate}%</p>
 						</div>
 					</div>
 
-					<Card className="border border-emerald-100/70 bg-white/95 dark:border-emerald-300/20">
+					<Card className="border border-violet-100/70 bg-white/95 dark:border-violet-300/20">
 						<CardHeader className="px-6 pt-6 pb-2">
 							<h3 className="text-xl font-semibold">Room Allocation</h3>
 						</CardHeader>
@@ -211,7 +211,7 @@ export default function HostelPage() {
 						</CardBody>
 					</Card>
 
-					<Card className="border border-emerald-100/70 bg-white/95 dark:border-emerald-300/20">
+					<Card className="border border-violet-100/70 bg-white/95 dark:border-violet-300/20">
 						<CardHeader className="px-6 pt-6 pb-2">
 							<h3 className="text-xl font-semibold">Resident List</h3>
 						</CardHeader>
@@ -268,7 +268,7 @@ export default function HostelPage() {
 					</ModalBody>
 					<ModalFooter>
 						<Button variant="bordered" radius="full" onPress={() => setShowAddRoom(false)}>Cancel</Button>
-						<Button className="bg-emerald-600 text-white" radius="full" onPress={handleAddRoom}>Add Room</Button>
+						<Button className="bg-violet-600 text-white" radius="full" onPress={handleAddRoom}>Add Room</Button>
 					</ModalFooter>
 				</ModalContent>
 			</Modal>
@@ -290,7 +290,7 @@ export default function HostelPage() {
 					</ModalBody>
 					<ModalFooter>
 						<Button variant="bordered" radius="full" onPress={() => setShowAssignStudent(false)}>Cancel</Button>
-						<Button className="bg-emerald-600 text-white" radius="full" onPress={handleAssignStudent}>Assign Student</Button>
+						<Button className="bg-violet-600 text-white" radius="full" onPress={handleAssignStudent}>Assign Student</Button>
 					</ModalFooter>
 				</ModalContent>
 			</Modal>

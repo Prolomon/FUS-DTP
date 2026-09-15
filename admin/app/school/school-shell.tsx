@@ -206,9 +206,9 @@ export function SchoolShell({ children }: { children: React.ReactNode }) {
             isSidebarOpen ? "translate-x-0" : "-translate-x-full",
           )}
         >
-          <div className="flex items-center justify-between gap-2 border border-emerald-700 rounded-2xl px-3 py-3 sticky top-0 bg-white/95 mb-5 z-10">
+          <div className="flex items-center justify-between gap-2 border border-violet-700 rounded-2xl px-3 py-3 sticky top-0 bg-white/95 mb-5 z-10">
             <div className="flex items-center gap-2">
-              <div className="rounded-xl border border-emerald-500/25 bg-emerald-500/10 p-2 text-emerald-700 dark:text-emerald-300">
+              <div className="rounded-xl border border-violet-500/25 bg-violet-500/10 p-2 text-violet-700 dark:text-violet-300">
                 <School size={18} />
               </div>
               <div>
@@ -244,7 +244,7 @@ export function SchoolShell({ children }: { children: React.ReactNode }) {
                     className={clsx(
                       "flex items-center justify-between rounded-2xl border px-3 py-3 text-sm transition-colors",
                       active
-                        ? "border-emerald-500/25 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300"
+                        ? "border-violet-500/25 bg-violet-500/10 text-violet-700 dark:text-violet-300"
                         : "border-transparent text-foreground/80 hover:border-default-200/80 hover:bg-default-100/70",
                     )}
                     href={item.href}
@@ -255,7 +255,7 @@ export function SchoolShell({ children }: { children: React.ReactNode }) {
                       {item.label}
                     </span>
                     {active ? (
-                      <span className="h-2 w-2 rounded-full bg-emerald-500" />
+                      <span className="h-2 w-2 rounded-full bg-violet-500" />
                     ) : null}
                   </Link>
                 );
@@ -267,7 +267,7 @@ export function SchoolShell({ children }: { children: React.ReactNode }) {
                       className={clsx(
                         "w-full flex items-center justify-between rounded-2xl border px-3 py-5.5 text-sm transition-colors",
                         active
-                          ? "border-emerald-500/25 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300"
+                          ? "border-violet-500/25 bg-violet-500/10 text-violet-700 dark:text-violet-300"
                           : "border-transparent text-foreground/80 hover:border-default-200/80 hover:bg-default-100/70",
                       )}
                       variant="light"
@@ -283,11 +283,11 @@ export function SchoolShell({ children }: { children: React.ReactNode }) {
                         {item.label}
                       </span>
                       {active ? (
-                        <span className="h-2 w-2 rounded-full bg-emerald-500" />
+                        <span className="h-2 w-2 rounded-full bg-violet-500" />
                       ) : null}
                     </Button>
                     {parent === item.label && (
-                      <div className="space-y-1 p-3 rounded-2xl border border-emerald-500/20 bg-emerald-50/65 dark:border-emerald-400/20 dark:bg-emerald-900/15">
+                      <div className="space-y-1 p-3 rounded-2xl border border-violet-500/20 bg-violet-50/65 dark:border-violet-400/20 dark:bg-violet-900/15">
                         {item.group.map((sub) => {
                           const SubIcon = sub.icon;
                           const subActive = pathname === sub.href;
@@ -298,7 +298,7 @@ export function SchoolShell({ children }: { children: React.ReactNode }) {
                               className={clsx(
                                 "flex items-center justify-between rounded-2xl border px-3 py-3 text-sm transition-colors",
                                 subActive
-                                  ? "border-emerald-500/25 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300"
+                                  ? "border-violet-500/25 bg-violet-500/10 text-violet-700 dark:text-violet-300"
                                   : "border-transparent text-foreground/80 hover:border-default-200/80 hover:bg-default-100/70",
                               )}
                               href={sub.href}
@@ -309,7 +309,7 @@ export function SchoolShell({ children }: { children: React.ReactNode }) {
                                 {sub.label}
                               </span>
                               {subActive ? (
-                                <span className="h-2 w-2 rounded-full bg-emerald-500" />
+                                <span className="h-2 w-2 rounded-full bg-violet-500" />
                               ) : null}
                             </Link>
                           );
@@ -322,7 +322,7 @@ export function SchoolShell({ children }: { children: React.ReactNode }) {
             })}
           </nav>
 
-          <div className="mt-8 rounded-2xl border border-emerald-500/20 bg-emerald-50/65 p-4 dark:border-emerald-400/20 dark:bg-emerald-900/15">
+          <div className="mt-8 rounded-2xl border border-violet-500/20 bg-violet-50/65 p-4 dark:border-violet-400/20 dark:bg-violet-900/15">
             <p className="text-xs uppercase tracking-[0.2em] text-foreground/50">
               Term Focus
             </p>
@@ -371,7 +371,7 @@ export function SchoolShell({ children }: { children: React.ReactNode }) {
                     <Button isIconOnly radius="full" variant="bordered">
                       <span className="relative inline-flex">
                         <Bell size={17} />
-                        <span className="absolute -right-1 -top-1 h-2.5 w-2.5 rounded-full bg-emerald-600" />
+                        <span className="absolute -right-1 -top-1 h-2.5 w-2.5 rounded-full bg-violet-600" />
                       </span>
                     </Button>
                   </DropdownTrigger>

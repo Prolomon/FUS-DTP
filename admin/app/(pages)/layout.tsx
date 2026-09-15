@@ -21,7 +21,7 @@ export default function RootLayout({
             {siteConfig.navItems.map((item) => (
               <Link
                 key={item.href}
-                className="text-sm text-foreground/70 transition-colors hover:text-emerald-600"
+                className="text-sm text-foreground/70 transition-colors hover:text-violet-600"
                 href={item.href}
               >
                 {item.label}

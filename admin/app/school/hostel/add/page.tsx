@@ -87,7 +87,7 @@ export default function AddHostelPage() {
 
 	return (
 		<section className="flex min-h-[60vh] items-center justify-center py-8">
-			<Card className="w-full border border-emerald-100/70 bg-white/90 dark:border-emerald-300/20 shadow-lg">
+			<Card className="w-full border border-violet-100/70 bg-white/90 dark:border-violet-300/20 shadow-lg">
 				<CardHeader className="px-6 pt-6 pb-2">
 					<div>
 						<p className="text-xs uppercase tracking-[0.2em] text-foreground/50">Residential Life</p>
@@ -205,13 +205,13 @@ export default function AddHostelPage() {
 				</CardBody>
 
 				<CardFooter className="flex flex-col gap-3 px-6 pb-6 md:flex-row">
-					<Button className="w-full border-emerald-600 text-emerald-700" variant="bordered" radius="full" size="lg" onPress={handleClear}>
+					<Button className="w-full border-violet-600 text-violet-700" variant="bordered" radius="full" size="lg" onPress={handleClear}>
 						Clear
 					</Button>
-					<Button className="w-full bg-emerald-600 text-white" radius="full" size="lg" onPress={handleSubmit}>
+					<Button className="w-full bg-violet-600 text-white" radius="full" size="lg" onPress={handleSubmit}>
 						Add Hostel
 					</Button>
-					<Button className="w-full border-emerald-600 text-emerald-700" variant="bordered" radius="full" size="lg" onPress={handleCancel}>
+					<Button className="w-full border-violet-600 text-violet-700" variant="bordered" radius="full" size="lg" onPress={handleCancel}>
 						Cancel
 					</Button>
 				</CardFooter>

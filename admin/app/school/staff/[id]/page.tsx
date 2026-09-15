@@ -273,14 +273,14 @@ export default function StaffDetailPage() {
     if (loading) {
         return (
             <section className="flex min-h-[60vh] items-center justify-center py-8">
-                <div className="text-lg text-emerald-600">Loading staff data...</div>
+                <div className="text-lg text-violet-600">Loading staff data...</div>
             </section>
         );
     }
 
     return (
         <section className="flex min-h-[60vh] items-center justify-center py-8">
-            <Card className="w-full border border-emerald-100/70 bg-white/90 dark:border-emerald-300/20 shadow-lg">
+            <Card className="w-full border border-violet-100/70 bg-white/90 dark:border-violet-300/20 shadow-lg">
                 <CardHeader className="flex flex-col md:flex-row md:items-center md:justify-between px-6 pt-6 pb-2 gap-4">
                     <h2 className="text-xl font-semibold">Staff Profile</h2>
                     <div className="flex gap-2 flex-wrap">
@@ -289,7 +289,7 @@ export default function StaffDetailPage() {
                 </CardHeader>
                 <CardBody className="px-6 pb-2 space-y-6">
                     {/* card for avatar */}
-                    <Card className="w-full border border-emerald-100/70 bg-white/90 dark:border-emerald-300/20 shadow-lg">
+                    <Card className="w-full border border-violet-100/70 bg-white/90 dark:border-violet-300/20 shadow-lg">
                         <CardHeader className="flex flex-col md:flex-row md:items-center md:justify-between px-6 pt-6 pb-2 gap-4">
                             <h2 className="text-xl font-semibold">Staff Image</h2>
                             <div className="flex gap-2">
@@ -312,7 +312,7 @@ export default function StaffDetailPage() {
                         </CardFooter>
                     </Card>
                     {/* card for staff details */}
-                    <Card className="w-full border border-emerald-100/70 bg-white/90 dark:border-emerald-300/20 shadow-lg">
+                    <Card className="w-full border border-violet-100/70 bg-white/90 dark:border-violet-300/20 shadow-lg">
                         <CardHeader className="flex flex-col md:flex-row md:items-center md:justify-between px-6 pt-6 pb-2 gap-4">
                             <h2 className="text-xl font-semibold">Staff Details</h2>
                             <div className="flex gap-2">
@@ -522,7 +522,7 @@ export default function StaffDetailPage() {
                         </CardFooter>
                     </Card>
                     {/* staffs documents list */}
-                    <Card className="w-full border border-emerald-100/70 bg-white/90 dark:border-emerald-300/20 shadow-lg">
+                    <Card className="w-full border border-violet-100/70 bg-white/90 dark:border-violet-300/20 shadow-lg">
                         <CardHeader className="flex flex-col md:flex-row md:items-center md:justify-between px-6 pt-6 pb-2 gap-4">
                             <h2 className="text-xl font-semibold">Document(s)</h2>
                             <div className="flex gap-2">
@@ -562,7 +562,7 @@ export default function StaffDetailPage() {
                         </CardBody>
                     </Card>
 
-                    <Card className="w-full border border-emerald-100/70 bg-white/90 dark:border-emerald-300/20 shadow-lg">
+                    <Card className="w-full border border-violet-100/70 bg-white/90 dark:border-violet-300/20 shadow-lg">
                         <CardHeader className="px-6 pt-6 pb-2">
                             <h2 className="text-xl font-semibold">Medical Records</h2>
                         </CardHeader>
@@ -619,9 +619,9 @@ export default function StaffDetailPage() {
                                 <Button color="primary" radius="full" size="lg" className="w-full" onPress={handleMedicalSubmit}>Submit</Button>
                                 <Button variant="bordered" radius="full" size="lg" className="w-full" onPress={handleMedicalCancel}>Cancel</Button>
                             </div>
-                            <div className="overflow-x-auto rounded-lg border border-emerald-100">
+                            <div className="overflow-x-auto rounded-lg border border-violet-100">
                                 <table className="min-w-full text-sm">
-                                    <thead className="bg-emerald-50 text-left">
+                                    <thead className="bg-violet-50 text-left">
                                         <tr>
                                             <th className="px-4 py-3 font-semibold">Date</th>
                                             <th className="px-4 py-3 font-semibold">Blood Group</th>
@@ -632,7 +632,7 @@ export default function StaffDetailPage() {
                                     </thead>
                                     <tbody>
                                         {medicalRecords.map((record, idx) => (
-                                            <tr key={`${record.date}-${record.bloodGroup}-${idx}`} className="border-t border-emerald-100">
+                                            <tr key={`${record.date}-${record.bloodGroup}-${idx}`} className="border-t border-violet-100">
                                                 <td className="px-4 py-3">{record.date}</td>
                                                 <td className="px-4 py-3">{record.bloodGroup}</td>
                                                 <td className="px-4 py-3">{record.genotype}</td>
@@ -706,7 +706,7 @@ export default function StaffDetailPage() {
                     <ModalHeader>Edit Staff Image</ModalHeader>
                     <ModalBody>
                         <div className="flex flex-col items-center gap-4">
-                            <img src={imageUrl} alt="Current" className="w-32 h-32 rounded-full object-cover border border-emerald-200" />
+                            <img src={imageUrl} alt="Current" className="w-32 h-32 rounded-full object-cover border border-violet-200" />
                             <input type="file" accept="image/*" onChange={e => setImageFile(e.target.files?.[0] || null)} />
                         </div>
                     </ModalBody>
@@ -736,10 +736,10 @@ export default function StaffDetailPage() {
                                     <SelectItem key={opt}>{opt}</SelectItem>
                                 ))}
                             </Select>
-                            <label htmlFor="file-upload" className="flex flex-col items-center justify-center w-full px-6 py-10 border-2 border-dashed border-emerald-300 rounded-xl cursor-pointer bg-emerald-50/40 hover:bg-emerald-100/60 transition-colors h-full">
-                                <UploadCloud className="w-10 h-10 text-emerald-500 mb-2" />
-                                <span className="text-base font-medium text-emerald-700">Click to upload or drag & drop</span>
-                                <span className="text-xs text-emerald-400 mt-1">PDF, DOCX, XLSX, PNG, JPG (max 50MB)</span>
+                            <label htmlFor="file-upload" className="flex flex-col items-center justify-center w-full px-6 py-10 border-2 border-dashed border-violet-300 rounded-xl cursor-pointer bg-violet-50/40 hover:bg-violet-100/60 transition-colors h-full">
+                                <UploadCloud className="w-10 h-10 text-violet-500 mb-2" />
+                                <span className="text-base font-medium text-violet-700">Click to upload or drag & drop</span>
+                                <span className="text-xs text-violet-400 mt-1">PDF, DOCX, XLSX, PNG, JPG (max 50MB)</span>
                                 <input id="file-upload" type="file" className="hidden" onChange={(e) => setUploadFormData({ ...uploadFormData, file: e.target.files?.[0] || null })} accept="*" />
                             </label>
                         </div>

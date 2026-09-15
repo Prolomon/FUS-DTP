@@ -16,7 +16,7 @@ import Link from "next/link";
 const classes = [
   { id: 1, name: "JSS 1 Gold", students: 36, teacher: "Mrs. A. Yusuf", completion: 88 },
   { id: 2, name: "JSS 2 Ruby", students: 34, teacher: "Mr. D. Ibrahim", completion: 82 },
-  { id: 3, name: "SS 1 Emerald", students: 32, teacher: "Mrs. K. Ade", completion: 91 },
+  { id: 3, name: "SS 1 violet", students: 32, teacher: "Mrs. K. Ade", completion: 91 },
   { id: 4, name: "SS 3 Platinum", students: 29, teacher: "Mr. T. Okafor", completion: 95 },
 ];
 
@@ -70,7 +70,7 @@ export default function ClassesPage() {
             <p className="text-xs uppercase tracking-[0.2em] text-foreground/50">Academic Structure</p>
             <h2 className="text-2xl font-semibold">Classrooms</h2>
           </div>
-          <Button color="primary" className="bg-emerald-600 text-white" radius="full" onPress={() => setShowModal(true)}>
+          <Button color="primary" className="bg-violet-600 text-white" radius="full" onPress={() => setShowModal(true)}>
             Add Class
           </Button>
         </CardHeader>

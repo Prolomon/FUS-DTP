@@ -227,7 +227,7 @@ export default function FeeDetailsPage() {
           <CardBody className="p-5">
             <p className="text-xs text-foreground/60">Fee Amount</p>
             <div className="mt-2 flex items-center gap-2">
-              <CircleDollarSign className="h-5 w-5 text-emerald-600" />
+              <CircleDollarSign className="h-5 w-5 text-violet-600" />
               <p className="text-xl font-semibold">{fee.amount}</p>
             </div>
             <p className="mt-2 text-sm text-foreground/70">
@@ -263,7 +263,7 @@ export default function FeeDetailsPage() {
           <CardBody className="p-5">
             <p className="text-xs text-foreground/60">Paid Students</p>
             <div className="mt-2 flex items-center gap-2">
-              <Users className="h-5 w-5 text-emerald-600" />
+              <Users className="h-5 w-5 text-violet-600" />
               <p className="text-xl font-semibold">
                 {fee.paidStudents} / {fee.targetStudents}
               </p>
@@ -301,7 +301,7 @@ export default function FeeDetailsPage() {
                   </p>
                 </div>
                 <div className="text-right">
-                  <p className="text-sm font-semibold text-emerald-700">
+                  <p className="text-sm font-semibold text-violet-700">
                     {record.amountPaid}
                   </p>
                   <p className="text-xs text-foreground/60">{record.paidOn}</p>

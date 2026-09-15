@@ -75,7 +75,7 @@ export default function AddSchedulePage() {
 
     return (
         <section className="flex min-h-[60vh] items-center justify-center py-8">
-            <Card className="w-full border border-emerald-100/70 bg-white/90 dark:border-emerald-300/20">
+            <Card className="w-full border border-violet-100/70 bg-white/90 dark:border-violet-300/20">
                 <CardHeader className="px-6 pt-6 pb-2">
                     <h2 className="text-xl font-semibold">Add Schedule</h2>
                 </CardHeader>

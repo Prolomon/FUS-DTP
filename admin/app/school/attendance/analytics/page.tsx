@@ -14,7 +14,7 @@ const attendanceMetrics = [
 const classAnalytics = [
 	{ name: "JSS 1 Gold", attendance: 96, trend: "Improving", absenteeism: "Low" },
 	{ name: "JSS 2 Ruby", attendance: 88, trend: "Declining", absenteeism: "Moderate" },
-	{ name: "SS 1 Emerald", attendance: 91, trend: "Improving", absenteeism: "Low" },
+	{ name: "SS 1 violet", attendance: 91, trend: "Improving", absenteeism: "Low" },
 	{ name: "SS 3 Platinum", attendance: 97, trend: "Improving", absenteeism: "Low" },
 ];
 

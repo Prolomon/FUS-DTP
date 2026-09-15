@@ -129,7 +129,7 @@ export default function FeesPage() {
             >
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <NextLink
-                  className="text-sm font-semibold text-emerald-700 hover:text-emerald-600 hover:underline"
+                  className="text-sm font-semibold text-violet-700 hover:text-violet-600 hover:underline"
                   href={`/school/fees/${item.id}`}
                 >
                   {item.label}

@@ -35,7 +35,7 @@ const students = [
     {
         id: "STU-1002",
         name: "David Okafor",
-        className: "SS 1 Emerald",
+        className: "SS 1 violet",
         guardian: "Mrs. Okafor",
         attendance: "89%",
         status: "Active",
@@ -67,10 +67,10 @@ export default function ClassDetailPage() {
             <CardHeader className="flex items-center justify-between px-2 md:px-0">
                 <h1 className="text-2xl font-bold">Classroom Details</h1>
                 <div className="flex items-center gap-2">
-                    <Button color="primary" className="bg-emerald-600 text-white" radius="full" startContent={<Edit size={18} />}>
+                    <Button color="primary" className="bg-violet-600 text-white" radius="full" startContent={<Edit size={18} />}>
                         Update
                     </Button>
-                    <Button color="primary" className="bg-emerald-600 text-white" radius="full" startContent={<Download size={18} />}>
+                    <Button color="primary" className="bg-violet-600 text-white" radius="full" startContent={<Download size={18} />}>
                         Download
                     </Button>
                 </div>
@@ -82,7 +82,7 @@ export default function ClassDetailPage() {
                         <p className="text-xs uppercase tracking-[0.2em] text-foreground/50">Academic Structure</p>
                         <h2 className="text-2xl font-semibold">{classData.name}</h2>
                     </div>
-                    <Button color="primary" className="bg-emerald-600 text-white" radius="full">
+                    <Button color="primary" className="bg-violet-600 text-white" radius="full">
                         View Curriculum
                     </Button>
                 </CardHeader>
@@ -124,7 +124,7 @@ export default function ClassDetailPage() {
                             <p className="text-xs text-foreground/60">{classData.teacher.email}</p>
                         </div>
                     </div>
-                    <Button size="sm" color="primary" className="bg-emerald-600 text-white" radius="full">
+                    <Button size="sm" color="primary" className="bg-violet-600 text-white" radius="full">
                         Change
                     </Button>
                 </CardHeader>
@@ -139,7 +139,7 @@ export default function ClassDetailPage() {
                             <p className="text-xs text-foreground/60">Assistant Class Captain</p>
                         </div>
                     </div>
-                    <Button size="sm" color="primary" className="bg-emerald-600 text-white" radius="full">
+                    <Button size="sm" color="primary" className="bg-violet-600 text-white" radius="full">
                         Change
                     </Button>
                 </CardHeader>
@@ -154,7 +154,7 @@ export default function ClassDetailPage() {
                             <p className="text-xs text-foreground/60">Assistant Class Captain</p>
                         </div>
                     </div>
-                    <Button size="sm" color="primary" className="bg-emerald-600 text-white" radius="full">
+                    <Button size="sm" color="primary" className="bg-violet-600 text-white" radius="full">
                         Change
                     </Button>
                 </CardHeader>

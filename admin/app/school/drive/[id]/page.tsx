@@ -109,7 +109,7 @@ export default function DriveFilePage() {
 
   return (
     <section className="space-y-5 py-4">
-      <Card className="border border-emerald-100/70 bg-white/90 dark:border-emerald-300/20">
+      <Card className="border border-violet-100/70 bg-white/90 dark:border-violet-300/20">
         <CardHeader className="flex flex-wrap items-start justify-between gap-3 px-6 pt-6">
           <div>
             <p className="text-xs uppercase tracking-[0.2em] text-foreground/50">File Preview</p>
@@ -188,8 +188,8 @@ export default function DriveFilePage() {
           </div>
         </CardHeader>
         <CardBody className="grid gap-4 px-6 pb-6">
-          <div className="rounded-xl border border-emerald-100/70 bg-white p-6 dark:border-emerald-300/20 dark:bg-slate-900/40 min-h-[200px] flex items-center justify-center">
-            <span className="text-emerald-600 font-medium">PDF Preview Here</span>
+          <div className="rounded-xl border border-violet-100/70 bg-white p-6 dark:border-violet-300/20 dark:bg-slate-900/40 min-h-[200px] flex items-center justify-center">
+            <span className="text-violet-600 font-medium">PDF Preview Here</span>
           </div>
           <div className="flex gap-3 justify-end">
             <Button
@@ -206,7 +206,7 @@ export default function DriveFilePage() {
             >
               Delete
             </Button>
-            <Button className="bg-emerald-600 text-white" radius="full" onPress={() => setSendModal(true)}>Send</Button>
+            <Button className="bg-violet-600 text-white" radius="full" onPress={() => setSendModal(true)}>Send</Button>
           </div>
           {/* Action Modal for Update/Delete */}
           <Modal isOpen={!!actionModal.type} onClose={() => setActionModal({ type: null })} size="2xl">
@@ -241,7 +241,7 @@ export default function DriveFilePage() {
               <ModalFooter>
                 <Button variant="bordered" onPress={() => setActionModal({ type: null })}>Cancel</Button>
                 <Button
-                  className="bg-emerald-600 text-white"
+                  className="bg-violet-600 text-white"
                   radius="full"
                   isLoading={actionLoading}
                   onPress={handleAction}
@@ -302,7 +302,7 @@ export default function DriveFilePage() {
           </ModalBody>
           <ModalFooter>
             <Button variant="bordered" onPress={() => setSendModal(false)}>Cancel</Button>
-            <Button className="bg-emerald-600 text-white" radius="full" onPress={() => setSendModal(false)}>Send</Button>
+            <Button className="bg-violet-600 text-white" radius="full" onPress={() => setSendModal(false)}>Send</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

@@ -199,13 +199,13 @@ export default function ExaminationDetailPage() {
 
   return (
     <section className="space-y-5 py-4">
-      <Card className="border border-emerald-100/70 bg-white/90 dark:border-emerald-300/20 shadow-lg">
+      <Card className="border border-violet-100/70 bg-white/90 dark:border-violet-300/20 shadow-lg">
         <CardHeader className="flex flex-wrap items-end justify-between gap-3 px-6 pt-6">
           <div>
             <h2 className="text-2xl font-semibold">Examination Detail</h2>
             <p className="mt-1 text-sm text-foreground/70">Exam ID: {examId}</p>
           </div>
-          <Button className="bg-emerald-600 text-white" radius="full" onPress={handlePublishToTeachers}>
+          <Button className="bg-violet-600 text-white" radius="full" onPress={handlePublishToTeachers}>
             Publish to Teachers
           </Button>
         </CardHeader>
@@ -213,7 +213,7 @@ export default function ExaminationDetailPage() {
           <p className="text-sm text-foreground/70">Questions for this examination:</p>
 
           {questions.map((question, index) => (
-            <div key={question.id} className="rounded-xl border border-emerald-100/70 bg-white p-4 dark:border-emerald-300/20 dark:bg-slate-900/40">
+            <div key={question.id} className="rounded-xl border border-violet-100/70 bg-white p-4 dark:border-violet-300/20 dark:bg-slate-900/40">
               {editingQuestionId === question.id ? (
                 <div className="space-y-3">
                   <Input
@@ -231,7 +231,7 @@ export default function ExaminationDetailPage() {
                     labelPlacement="outside"
                   />
                   {editingQuestionType === "Objective" && (
-                    <div className="space-y-3 rounded-xl border border-emerald-100/70 p-3">
+                    <div className="space-y-3 rounded-xl border border-violet-100/70 p-3">
                       <div className="flex flex-col gap-3 md:flex-row md:items-end">
                         <Input
                           className="w-full"
@@ -242,17 +242,17 @@ export default function ExaminationDetailPage() {
                           variant="bordered"
                           labelPlacement="outside"
                         />
-                        <Button className="bg-emerald-600 text-white" radius="full" size="sm" onPress={handleAddEditOption}>
+                        <Button className="bg-violet-600 text-white" radius="full" size="sm" onPress={handleAddEditOption}>
                           Add Option
                         </Button>
                       </div>
                       <div className="flex flex-wrap gap-2">
                         {editingOptions.map((opt, idx) => (
-                          <div key={`${opt}-${idx}`} className="flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs text-emerald-700">
+                          <div key={`${opt}-${idx}`} className="flex items-center gap-2 rounded-full border border-violet-200 bg-violet-50 px-3 py-1 text-xs text-violet-700">
                             <span>{opt}</span>
                             <button
                               type="button"
-                              className="rounded-full px-1 font-bold text-emerald-700 hover:bg-emerald-100"
+                              className="rounded-full px-1 font-bold text-violet-700 hover:bg-violet-100"
                               onClick={() => handleRemoveEditOption(idx)}
                               aria-label={`Remove option ${opt}`}
                             >
@@ -264,7 +264,7 @@ export default function ExaminationDetailPage() {
                     </div>
                   )}
                   <div className="flex gap-2">
-                    <Button className="bg-emerald-600 text-white" radius="full" size="sm" onPress={handleSaveQuestionEdit}>
+                    <Button className="bg-violet-600 text-white" radius="full" size="sm" onPress={handleSaveQuestionEdit}>
                       Save
                     </Button>
                     <Button variant="bordered" radius="full" size="sm" onPress={handleCancelQuestionEdit}>
@@ -276,7 +276,7 @@ export default function ExaminationDetailPage() {
                 <div className="space-y-2">
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <p className="text-sm font-semibold">{index + 1}. {question.question}</p>
-                    <Button className="border-emerald-600 text-emerald-700" variant="bordered" radius="full" size="sm" onPress={() => handleStartQuestionEdit(question)}>
+                    <Button className="border-violet-600 text-violet-700" variant="bordered" radius="full" size="sm" onPress={() => handleStartQuestionEdit(question)}>
                       Edit
                     </Button>
                   </div>
@@ -292,10 +292,10 @@ export default function ExaminationDetailPage() {
             </div>
           ))}
 
-          <Card className="border border-emerald-100/70 bg-white/95 dark:border-emerald-300/20">
+          <Card className="border border-violet-100/70 bg-white/95 dark:border-violet-300/20">
             <CardHeader className="flex flex-wrap items-end justify-between gap-3 px-4 pt-4 pb-2">
               <h3 className="text-lg font-semibold">Assigned Teachers</h3>
-              <Button className="bg-emerald-600 text-white" radius="full" size="sm" onPress={() => setShowAssignTeacherModal(true)}>
+              <Button className="bg-violet-600 text-white" radius="full" size="sm" onPress={() => setShowAssignTeacherModal(true)}>
                 Assign New Teacher
               </Button>
             </CardHeader>
@@ -304,7 +304,7 @@ export default function ExaminationDetailPage() {
                 <p className="text-sm text-foreground/70">No teacher assigned yet.</p>
               ) : (
                 teachers.map((teacher) => (
-                  <div key={teacher.id} className="flex flex-wrap items-center justify-between gap-2 rounded-lg border border-emerald-100/70 p-3">
+                  <div key={teacher.id} className="flex flex-wrap items-center justify-between gap-2 rounded-lg border border-violet-100/70 p-3">
                     <div>
                       <p className="text-sm font-medium">{teacher.name}</p>
                       <p className="text-xs text-foreground/70">Subject: {teacher.subject}</p>
@@ -318,7 +318,7 @@ export default function ExaminationDetailPage() {
             </CardBody>
           </Card>
 
-          <Card className="border border-emerald-100/70 bg-white/95 dark:border-emerald-300/20">
+          <Card className="border border-violet-100/70 bg-white/95 dark:border-violet-300/20">
             <CardHeader className="px-4 pt-4 pb-2">
               <h3 className="text-lg font-semibold">Student Participation & Scores</h3>
             </CardHeader>
@@ -337,7 +337,7 @@ export default function ExaminationDetailPage() {
                   {studentScores.map((student) => (
                     <tr key={student.admissionNo} className="border-b border-default-100">
                       <td className="px-4 py-3 text-foreground/75">
-                        <Link className="text-emerald-700 hover:underline dark:text-emerald-300" href={`/school/students/${student.admissionNo}`}>
+                        <Link className="text-violet-700 hover:underline dark:text-violet-300" href={`/school/students/${student.admissionNo}`}>
                           {student.admissionNo}
                         </Link>
                       </td>
@@ -352,7 +352,7 @@ export default function ExaminationDetailPage() {
             </CardBody>
           </Card>
 
-          <Button className="w-full md:w-auto border-emerald-600 text-emerald-700" variant="bordered" radius="full" onPress={() => router.back()}>
+          <Button className="w-full md:w-auto border-violet-600 text-violet-700" variant="bordered" radius="full" onPress={() => router.back()}>
             Back
           </Button>
         </CardBody>
@@ -379,7 +379,7 @@ export default function ExaminationDetailPage() {
             <Button variant="bordered" radius="full" onPress={() => setShowAssignTeacherModal(false)}>
               Cancel
             </Button>
-            <Button className="bg-emerald-600 text-white" radius="full" onPress={handleAssignTeacher}>
+            <Button className="bg-violet-600 text-white" radius="full" onPress={handleAssignTeacher}>
               Assign Teacher
             </Button>
           </ModalFooter>

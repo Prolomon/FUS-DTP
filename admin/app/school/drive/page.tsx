@@ -59,24 +59,24 @@ export default function DrivePage() {
 
   return (
     <section className="space-y-5 py-4">
-      <Card className="border border-emerald-100/70 bg-white/90 dark:border-emerald-300/20">
+      <Card className="border border-violet-100/70 bg-white/90 dark:border-violet-300/20">
         <CardHeader className="flex flex-wrap items-end justify-between gap-3 px-6 pt-6">
           <div>
             <p className="text-xs uppercase tracking-[0.2em] text-foreground/50">Document Hub</p>
             <h2 className="text-2xl font-semibold">School Drive</h2>
           </div>
-          <Button className="bg-emerald-600 text-white" radius="full" onPress={() => setShowUpload(true)}>Upload File</Button>
+          <Button className="bg-violet-600 text-white" radius="full" onPress={() => setShowUpload(true)}>Upload File</Button>
         </CardHeader>
         <CardBody className="grid gap-3 px-6 pb-6">
           {driveFiles.map((file) => (
             <div
               key={file.id}
-              className="rounded-2xl border border-emerald-100/70 bg-white p-4 dark:border-emerald-300/20 dark:bg-slate-900/40 hover:bg-emerald-50/60 transition-colors"
+              className="rounded-2xl border border-violet-100/70 bg-white p-4 dark:border-violet-300/20 dark:bg-slate-900/40 hover:bg-violet-50/60 transition-colors"
             >
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <div className="flex items-center gap-2">
-                  <Link2 className="w-4 h-4 text-emerald-700" />
-                  <Link href={`/school/drive/${file.id}`} className="text-sm font-semibold text-emerald-600 hover:text-emerald-700 focus:outline-none">
+                  <Link2 className="w-4 h-4 text-violet-700" />
+                  <Link href={`/school/drive/${file.id}`} className="text-sm font-semibold text-violet-600 hover:text-violet-700 focus:outline-none">
                     {file.name}
                   </Link>
                 </div>
@@ -93,16 +93,16 @@ export default function DrivePage() {
           <ModalHeader>Upload File</ModalHeader>
           <ModalBody>
             <div className="flex flex-col items-center justify-center gap-4 h-[20rem]">
-              <label htmlFor="file-upload" className="flex flex-col items-center justify-center w-full p-6 border-2 border-dashed border-emerald-300 rounded-xl cursor-pointer bg-emerald-50/40 hover:bg-emerald-100/60 transition-colors h-full">
-                <UploadCloud className="w-10 h-10 text-emerald-500 mb-2" />
-                <span className="text-base font-medium text-emerald-700">Click to upload or drag & drop</span>
-                <span className="text-xs text-emerald-400 mt-1">PDF, DOCX, XLSX, PNG, JPG (max 50MB)</span>
+              <label htmlFor="file-upload" className="flex flex-col items-center justify-center w-full p-6 border-2 border-dashed border-violet-300 rounded-xl cursor-pointer bg-violet-50/40 hover:bg-violet-100/60 transition-colors h-full">
+                <UploadCloud className="w-10 h-10 text-violet-500 mb-2" />
+                <span className="text-base font-medium text-violet-700">Click to upload or drag & drop</span>
+                <span className="text-xs text-violet-400 mt-1">PDF, DOCX, XLSX, PNG, JPG (max 50MB)</span>
                 <input id="file-upload" type="file" className="hidden" onChange={(e) => setFile(e.target.files?.[0])} />
               </label>
             </div>
           </ModalBody>
           <ModalFooter>
-            <Button className="bg-emerald-600 text-white" radius="full" onPress={handleUpload}>
+            <Button className="bg-violet-600 text-white" radius="full" onPress={handleUpload}>
               Upload
             </Button>
           </ModalFooter>

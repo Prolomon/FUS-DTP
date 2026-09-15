@@ -17,7 +17,7 @@ const students = [
   {
     id: "STU-1002",
     name: "David Okafor",
-    className: "SS 1 Emerald",
+    className: "SS 1 violet",
     guardian: "Mrs. Okafor",
     attendance: "89%",
     status: "Active",
@@ -51,7 +51,7 @@ export default function StudentsPage() {
             <h2 className="text-2xl font-semibold">Students</h2>
             <p className="mt-1 text-sm text-foreground/70">Manage enrollment, class assignment, and guardian records.</p>
           </div>
-          <Button className="text-white bg-emerald-600" radius="full" onPress={() => router.push("/school/students/add")}>
+          <Button className="text-white bg-violet-600" radius="full" onPress={() => router.push("/school/students/add")}>
             Add Student
           </Button>
         </CardHeader>

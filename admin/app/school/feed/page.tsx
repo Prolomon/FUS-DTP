@@ -131,7 +131,7 @@ export default function FeedPage() {
 
             <div className="rounded-2xl border border-default-200/70 bg-default-50/35 p-4 dark:border-white/10 dark:bg-slate-900/35">
               <div className="mb-3 flex items-center gap-2">
-                <ShieldCheck className="h-4 w-4 text-emerald-600" />
+                <ShieldCheck className="h-4 w-4 text-violet-600" />
                 <p className="text-sm font-semibold">Feed Sources</p>
               </div>
               <div className="space-y-2">

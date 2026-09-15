@@ -10,7 +10,7 @@ import { Accordion, AccordionItem } from "@heroui/accordion";
 const results = [
   { className: "JSS 1 Gold", published: "Yes", average: "73%", pendingSubjects: 1 },
   { className: "JSS 2 Ruby", published: "No", average: "68%", pendingSubjects: 3 },
-  { className: "SS 1 Emerald", published: "Yes", average: "76%", pendingSubjects: 0 },
+  { className: "SS 1 violet", published: "Yes", average: "76%", pendingSubjects: 0 },
   { className: "SS 3 Platinum", published: "No", average: "81%", pendingSubjects: 2 },
 ];
 
@@ -27,7 +27,7 @@ const uploadedResultsByTermDate = [
     term: "First Term",
     date: "2026-03-10",
     results: [
-      { className: "SS 1 Emerald", published: "Yes", average: "76%", pendingSubjects: 0 },
+      { className: "SS 1 violet", published: "Yes", average: "76%", pendingSubjects: 0 },
       { className: "SS 3 Platinum", published: "No", average: "81%", pendingSubjects: 1 },
     ],
   },
@@ -43,7 +43,7 @@ const uploadedResultsByTermDate = [
     term: "Second Term",
     date: "2026-06-15",
     results: [
-      { className: "SS 1 Emerald", published: "No", average: "78%", pendingSubjects: 1 },
+      { className: "SS 1 violet", published: "No", average: "78%", pendingSubjects: 1 },
       { className: "SS 3 Platinum", published: "Yes", average: "82%", pendingSubjects: 0 },
     ],
   },
@@ -90,7 +90,7 @@ export default function ResultsPage() {
             <p className="text-xs uppercase tracking-[0.2em] text-foreground/50">Assessment</p>
             <h2 className="text-2xl font-semibold">Result Checker</h2>
           </div>
-          <Button className="bg-emerald-600 text-white" radius="full">Publish Pending Results</Button>
+          <Button className="bg-violet-600 text-white" radius="full">Publish Pending Results</Button>
         </CardHeader>
         <CardBody className="grid gap-3 px-6 pb-6">
           {results.map((item) => (

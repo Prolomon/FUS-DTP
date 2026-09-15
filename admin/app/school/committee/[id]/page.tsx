@@ -74,13 +74,13 @@ export default function CommitteeDetailPage() {
       <div className="flex items-center justify-between mb-4">
         <div className="flex gap-2">
           <Button variant="bordered" onPress={() => setEditMode((v) => !v)}>{editMode ? "Save" : "Edit"}</Button>
-          <Button className="bg-emerald-600 text-white" radius="full" onPress={() => setAddMemberModal(true)}>
+          <Button className="bg-violet-600 text-white" radius="full" onPress={() => setAddMemberModal(true)}>
             Add Member
           </Button>
         </div>
       </div>
       {/* Committee Name input moved to Add Member modal */}
-      <Card className="border border-emerald-100/70 bg-white/90 dark:border-emerald-300/20">
+      <Card className="border border-violet-100/70 bg-white/90 dark:border-violet-300/20">
         <CardHeader className="flex flex-wrap items-end justify-between gap-3 px-6 pt-6">
           <h2 className="text-xl font-semibold">Members</h2>
         </CardHeader>
@@ -177,7 +177,7 @@ export default function CommitteeDetailPage() {
           </ModalBody>
           <ModalFooter>
             <Button variant="bordered" onPress={() => setAddMemberModal(false)}>Cancel</Button>
-            <Button className="bg-emerald-600 text-white" radius="full" onPress={() => setAddMemberModal(false)}>Save</Button>
+            <Button className="bg-violet-600 text-white" radius="full" onPress={() => setAddMemberModal(false)}>Save</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
@@ -219,7 +219,7 @@ export default function CommitteeDetailPage() {
               setPin("")
             }}>Cancel</Button>
             <Button
-              className="bg-emerald-600 text-white"
+              className="bg-violet-600 text-white"
               radius="full"
               isLoading={loading}
               onPress={handleAction}
