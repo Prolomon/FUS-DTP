@@ -213,7 +213,7 @@ export function SchoolShell({ children }: { children: React.ReactNode }) {
               </div>
               <div>
                 <p className="text-xs uppercase tracking-[0.2em] text-foreground/50">
-                  FUS - DTP
+                  ADUDA
                 </p>
                 <p className="text-sm font-semibold">School Portal</p>
               </div>

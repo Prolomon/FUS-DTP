@@ -54,14 +54,6 @@ export const Navbar = () => {
               src="/logo.png"
               width={32}
             />
-            <p
-              className={clsx(
-                "truncate font-semibold text-inherit tracking-wide",
-                fontBrand.className,
-              )}
-            >
-              ADUDA
-            </p>
           </NextLink>
         </NavbarBrand>
       </NavbarContent>
